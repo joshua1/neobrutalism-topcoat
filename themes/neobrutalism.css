@@ -1,0 +1,150 @@
+/* Neobrutalism: the theme for the neobrutalism Topcoat components.
+   Make your own at the docs site's /styling page.
+
+   Components refer to tokens only, never to raw values, so a project restyles
+   itself by editing `:root` below.
+
+     --main                    the accent fill: buttons, badges, highlights
+     --main-foreground         text on a main-filled surface
+     --background              the page background
+     --secondary-background    cards, inputs and neutral surfaces
+     --foreground              text on the background
+     --border                  the thick outlines (and the hard shadow's color)
+     --ring                    the focus ring
+     --overlay                 the backdrop behind dialogs and sheets
+     --border-radius           corner radius (`rounded-base`)
+     --box-shadow-x/-y         the hard shadow's offset; hover states translate
+                               by the same amount so the element "presses" in
+     --base/heading-font-weight  `font-base` and `font-heading`
+
+   The font is not bundled; load it with topcoat-font and set
+   --base-font-family. */
+
+@import "tailwindcss";
+
+/* Scan the project's Rust sources for the Tailwind classes they use. This
+   file is installed at the project root, so `./src` is the crate's source. */
+@source "./src/**/*.rs";
+
+:root {
+  --border-radius: 5px;
+  --box-shadow-x: 4px;
+  --box-shadow-y: 4px;
+  --reverse-box-shadow-x: -4px;
+  --reverse-box-shadow-y: -4px;
+
+  --heading-font-weight: 700;
+  --base-font-weight: 500;
+  --base-font-family: "DM Sans", sans-serif;
+
+  --background: hsl(214, 95%, 93%);
+  --secondary-background: oklch(100% 0 0);
+  --foreground: oklch(0% 0 0);
+  --main-foreground: oklch(0% 0 0);
+
+  --main: hsl(217, 100%, 66%);
+  --border: oklch(0% 0 0);
+  --ring: oklch(0% 0 0);
+  --overlay: oklch(0% 0 0 / 0.8);
+
+  --shadow: var(--box-shadow-x) var(--box-shadow-y) 0px 0px var(--border);
+
+  --chart-1: #5294ff;
+  --chart-2: #ff4d50;
+  --chart-3: #facc00;
+  --chart-4: #05e17a;
+  --chart-5: #7a83ff;
+  --chart-active-dot: #000;
+}
+
+/* Expose the tokens as Tailwind utilities (`bg-main`, `border-border`,
+   `shadow-shadow`, `translate-x-boxShadowX`, `rounded-base`, ...). */
+@theme inline {
+  --color-main: var(--main);
+  --color-background: var(--background);
+  --color-secondary-background: var(--secondary-background);
+  --color-foreground: var(--foreground);
+  --color-main-foreground: var(--main-foreground);
+  --color-border: var(--border);
+  --color-overlay: var(--overlay);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--secondary-background);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --spacing-boxShadowX: var(--box-shadow-x);
+  --spacing-boxShadowY: var(--box-shadow-y);
+  --spacing-reverseBoxShadowX: var(--reverse-box-shadow-x);
+  --spacing-reverseBoxShadowY: var(--reverse-box-shadow-y);
+
+  --radius-base: var(--border-radius);
+
+  --shadow-shadow: var(--shadow);
+
+  --font-weight-base: var(--base-font-weight);
+  --font-weight-heading: var(--heading-font-weight);
+
+  /* Marquee: two copies of the row scroll in step (`animate-marquee` and
+     `animate-marquee2`), so the loop has no gap. */
+  --animate-marquee: marquee 5s linear infinite;
+  --animate-marquee2: marquee2 5s linear infinite;
+
+  /* The fake caret in the active input-otp slot. */
+  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+
+  @keyframes caret-blink {
+    0%,
+    70%,
+    100% {
+      opacity: 1;
+    }
+    20%,
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes marquee2 {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+@layer base {
+  /* Native modal <dialog>s leave the page scrollable; lock it while one is
+     open, as Base UI does. */
+  html:has(dialog:modal) {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground font-base;
+    font-family: var(--base-font-family);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}

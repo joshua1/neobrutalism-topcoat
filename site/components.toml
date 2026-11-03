@@ -1,0 +1,261 @@
+# Topcoat UI install state. Managed by `topcoat ui`.
+version = 1
+components_dir = "src/components"
+
+[theme]
+name = "neutral"
+registry = "topcoat"
+hash = "sha256:6e451a2d3470b0ee544ccf4240da8631bad4c807a06ae0d3a1fc77154b86c3b9"
+file = "styles.css"
+
+[registries.neobrutalism.components.accordion]
+hash = "sha256:836e835ccac1feff95eaa68c7b8ac32de2ee1cb16fd5ec757d378dbf39e27e7a"
+file = "src/components/accordion.rs"
+
+[registries.neobrutalism.components.alert]
+hash = "sha256:aa5b776f5bd1cc1782a83c8fc27800d6645f707e1f7b45aae7876b76ec035544"
+file = "src/components/alert.rs"
+
+[registries.neobrutalism.components.alert_dialog]
+hash = "sha256:d9e4807891c523662da08d7365a602a2124eca10205d871dbf2923225fcada18"
+file = "src/components/alert_dialog.rs"
+
+[registries.neobrutalism.components.attachment]
+hash = "sha256:05f232b95001c64c7af3f862a43260d57ebc375643410059cdb3e3db62e4adc1"
+file = "src/components/attachment.rs"
+
+[registries.neobrutalism.components.avatar]
+hash = "sha256:4ed2e718a4f4bb06823b3c44ce64ea06c0f6a92296bdab30da2c404efbf4972a"
+file = "src/components/avatar.rs"
+
+[registries.neobrutalism.components.badge]
+hash = "sha256:e8fa1f4ac9b8e0aa4ceace4527a539739f8973a2f1e4915c49027377b80c9a25"
+file = "src/components/badge.rs"
+
+[registries.neobrutalism.components.breadcrumb]
+hash = "sha256:bced0c8cc28d8f7bfe5b99d48950322d38131078657f83ad0294afc87b4af566"
+file = "src/components/breadcrumb.rs"
+
+[registries.neobrutalism.components.bubble]
+hash = "sha256:2f0bf90800fdda1699460951032436cebe3b65bbf1fc924b9c3462eb653c88a9"
+file = "src/components/bubble.rs"
+
+[registries.neobrutalism.components.button]
+hash = "sha256:795b89c8f6df6bef07ccb70d2f139e62e977e4b58ed9fb3cb44d0675b20aa43e"
+file = "src/components/button.rs"
+
+[registries.neobrutalism.components.button_group]
+hash = "sha256:ed8451d24918737bf461a717d76e20150596c702fe039b332012638e27cc7f6e"
+file = "src/components/button_group.rs"
+
+[registries.neobrutalism.components.calendar]
+hash = "sha256:fc65799c10e5e791a8e1300cc2862462f51a1f33a0f1d7e1746f22ef9d07d4f9"
+file = "src/components/calendar.rs"
+
+[registries.neobrutalism.components.card]
+hash = "sha256:913617a1b7d6fc88bb77689c49f5296a851bc094978d5da76489e29b79d0ff45"
+file = "src/components/card.rs"
+
+[registries.neobrutalism.components.carousel]
+hash = "sha256:f7a5780b2100877f300b828d94f65feae58762de536a29141c9ad9a50e45f939"
+file = "src/components/carousel.rs"
+
+[registries.neobrutalism.components.chart]
+hash = "sha256:1a43d06a9b4ac153b7cc55250074042ae3803cc1850492e0bc73f1ef4e481db5"
+file = "src/components/chart.rs"
+
+[registries.neobrutalism.components.checkbox]
+hash = "sha256:15a844ed3a9f0150c57f9c0ea77f2ade3b31a965c350e2a47aeb3e3e488f3338"
+file = "src/components/checkbox.rs"
+
+[registries.neobrutalism.components.collapsible]
+hash = "sha256:ddc6f3ba08fa3c2be5fe667ec162cf796602256743abd3d854bbf6e97bbda58c"
+file = "src/components/collapsible.rs"
+
+[registries.neobrutalism.components.combobox]
+hash = "sha256:4b341b3c85ab9fe8924f639526051029d85f53c8a59a00b5fa40233b969fefc3"
+file = "src/components/combobox.rs"
+
+[registries.neobrutalism.components.command]
+hash = "sha256:e6e45aea873f18f0be067e46c856e9591e8ee696a9cfb9173e9f7e4731109dbe"
+file = "src/components/command.rs"
+
+[registries.neobrutalism.components.context_menu]
+hash = "sha256:9704285896572fd7b9583fba637648810bc53d2a3ce37cf71668e1b0bc620b1a"
+file = "src/components/context_menu.rs"
+
+[registries.neobrutalism.components.data_table]
+hash = "sha256:d5ba46f5110610e2d3f6b4ab32d3190eb5d6bc0501d0c31575320838ed15748c"
+file = "src/components/data_table.rs"
+
+[registries.neobrutalism.components.dialog]
+hash = "sha256:e37172c5236adf587b469b443f72c9b1dfaa834fbc42674672d12ca2900a5942"
+file = "src/components/dialog.rs"
+
+[registries.neobrutalism.components.direction]
+hash = "sha256:5e759462c8fbaa287e492dbf2ea85df45701ddc6d50407bbeca85529cce97c91"
+file = "src/components/direction.rs"
+
+[registries.neobrutalism.components.drawer]
+hash = "sha256:62e9eb8f1c53a4e8625e626750f7b9bbec39a200af74eed069bbed6e32289a88"
+file = "src/components/drawer.rs"
+
+[registries.neobrutalism.components.dropdown_menu]
+hash = "sha256:fb1d5ee88a1683a675263dbe1ce5f982292be26e84d41efc857efe10c8b5031a"
+file = "src/components/dropdown_menu.rs"
+
+[registries.neobrutalism.components.empty]
+hash = "sha256:b7aaae703f0ded7da82675c2529ab54eb8f5ed182beda93645b6686d90c80b1c"
+file = "src/components/empty.rs"
+
+[registries.neobrutalism.components.field]
+hash = "sha256:be2b6204886f151bf2d735d4020ff20179e92ceea3249e08910d47221ad11152"
+file = "src/components/field.rs"
+
+[registries.neobrutalism.components.form]
+hash = "sha256:be0e33d726f45e88438025503de8fc8f511b470a56b7754ec3ba2b740dc038bf"
+file = "src/components/form.rs"
+
+[registries.neobrutalism.components.hover_card]
+hash = "sha256:f6a553a94bf5be61dd2c89eba378d7943ac430bf6b20ba76a591fb2e32135e1b"
+file = "src/components/hover_card.rs"
+
+[registries.neobrutalism.components.image_card]
+hash = "sha256:d20613cf60a32e6e0eade505b26107768a87bbec40c3b329108df34862cebebc"
+file = "src/components/image_card.rs"
+
+[registries.neobrutalism.components.input]
+hash = "sha256:000e212bd1a6483c3a7ffdc025a1b7d1fb24756ffb52eda7325a1a3a680891e4"
+file = "src/components/input.rs"
+
+[registries.neobrutalism.components.input_group]
+hash = "sha256:4bcb7d2b0499300880d7d7349588dddf2cfd007c6ed2a694915ebd4d21cddfed"
+file = "src/components/input_group.rs"
+
+[registries.neobrutalism.components.input_otp]
+hash = "sha256:0cadebc1590f368bb125090f3f0763788a555351ad607ade0208dc471b749b78"
+file = "src/components/input_otp.rs"
+
+[registries.neobrutalism.components.item]
+hash = "sha256:f8ed716f729ee5abf4a050c2824341824fbb67db3e83b9b5d04e0c08f82fd6c8"
+file = "src/components/item.rs"
+
+[registries.neobrutalism.components.kbd]
+hash = "sha256:c6f8981239bae9898d38df58555591d78dc9f48e6f85b805df35d8c385584382"
+file = "src/components/kbd.rs"
+
+[registries.neobrutalism.components.label]
+hash = "sha256:1bbcfc6c4aac74c56a0f25fc962ad1541ca68ec747c84420ea9236bfe3b73c3b"
+file = "src/components/label.rs"
+
+[registries.neobrutalism.components.marker]
+hash = "sha256:0580d5303a9e7e397ce52b3cf4ee6529fc1fcc08e263c6f4e3f08188f59e088b"
+file = "src/components/marker.rs"
+
+[registries.neobrutalism.components.marquee]
+hash = "sha256:93b5d5f20b87fd734329120ab7e7f5f7b51b04b37a5d35e39f3e8ff3f63d8796"
+file = "src/components/marquee.rs"
+
+[registries.neobrutalism.components.menubar]
+hash = "sha256:8dfd95f4565fdee0963ab8491cf4f390ecca139e945f5c6991aebb1963ffdf40"
+file = "src/components/menubar.rs"
+
+[registries.neobrutalism.components.message]
+hash = "sha256:a6c1043172596ea7bf440efce6852c6ef9d0bdc4b97e058369c34cfbc548c256"
+file = "src/components/message.rs"
+
+[registries.neobrutalism.components.message_scroller]
+hash = "sha256:5db78f48340677a752d04b89d546798fb36f474bca80d7339a0981aec9c95d7e"
+file = "src/components/message_scroller.rs"
+
+[registries.neobrutalism.components.native_select]
+hash = "sha256:9c356eeba5ac3cf0a7e56b481ed25b67de5be3c855a9bf2f95e3e71ef7abc62c"
+file = "src/components/native_select.rs"
+
+[registries.neobrutalism.components.navigation_menu]
+hash = "sha256:ef0e07b0b82b8bd6f2f7a044e09c0f15c1ff00fb5ddee336c15d2ecd2018ca0d"
+file = "src/components/navigation_menu.rs"
+
+[registries.neobrutalism.components.pagination]
+hash = "sha256:597a1bc010617ecf59f0793a8a79a7bd1a2e125bfb2c8cb73a07c68d95aaedb4"
+file = "src/components/pagination.rs"
+
+[registries.neobrutalism.components.popover]
+hash = "sha256:75face6dc258d5c8b6c2bbae42a7e785b2c54ad2b722699c2e1808dd82e74e95"
+file = "src/components/popover.rs"
+
+[registries.neobrutalism.components.progress]
+hash = "sha256:63049f872c44699f7cd6a074a38d028fde105e8a1ad9bbe67b4f276cd6429cac"
+file = "src/components/progress.rs"
+
+[registries.neobrutalism.components.questionnaire]
+hash = "sha256:bd45cf0d0f68b673ff2c35a5496af77f2b3c9bc4451738d2aa25f63e9d2dd0a8"
+file = "src/components/questionnaire.rs"
+
+[registries.neobrutalism.components.radio_group]
+hash = "sha256:299ff28c699b9599f60ad11e13b38a15e4a1c392d2d6043ba577bdade72cf80d"
+file = "src/components/radio_group.rs"
+
+[registries.neobrutalism.components.resizable]
+hash = "sha256:034081114bd758f3e18fc04997bebc654dec3b18d2b4b538faf8222e8d7790fd"
+file = "src/components/resizable.rs"
+
+[registries.neobrutalism.components.scroll_area]
+hash = "sha256:bcab49f66970b8c37dbf3c110078d95f800e87ebb39be91eb50204c952bc09b3"
+file = "src/components/scroll_area.rs"
+
+[registries.neobrutalism.components.select]
+hash = "sha256:3fd4f3b39511686fdcb344557385682f71b6e296dbe7af5e4e254a39069e1b98"
+file = "src/components/select.rs"
+
+[registries.neobrutalism.components.sheet]
+hash = "sha256:a3e1a6a183a8f4eb64cc0df17e163b133c2ecb20fc4be786b71c8b39bbede7f0"
+file = "src/components/sheet.rs"
+
+[registries.neobrutalism.components.sidebar]
+hash = "sha256:30523b8278cd2ff37d7dd306070eee665d8c3f4fcf1f978b23da8852145b637e"
+file = "src/components/sidebar.rs"
+
+[registries.neobrutalism.components.skeleton]
+hash = "sha256:841842483554d5c3521635cc9b93d90cd61e5dd8aa2e3d271074bca6330ce8ec"
+file = "src/components/skeleton.rs"
+
+[registries.neobrutalism.components.slider]
+hash = "sha256:25443ad1e5ca0a82352a4c46ddb312e09b73191c8756bc085c2f246ec18983bc"
+file = "src/components/slider.rs"
+
+[registries.neobrutalism.components.spinner]
+hash = "sha256:69d93ec88ec46a6f19a8818225bf53534ce33323cecd6ff4a4bc171e2fcdf82e"
+file = "src/components/spinner.rs"
+
+[registries.neobrutalism.components.switch]
+hash = "sha256:55a90f7e1b50ea1d8c74f617fc564312546be84a63339afd0bc019712ef0771a"
+file = "src/components/switch.rs"
+
+[registries.neobrutalism.components.table]
+hash = "sha256:6a586bd681f72dcb64fd8032578f6e96b0a077a28c3309bd0680c6597f3e5579"
+file = "src/components/table.rs"
+
+[registries.neobrutalism.components.tabs]
+hash = "sha256:2a116f891a88040c522892048a2c43be10e0a696439d4b6be10ed0c40fcbce35"
+file = "src/components/tabs.rs"
+
+[registries.neobrutalism.components.textarea]
+hash = "sha256:1245c610e8c7dcd0a3e001aad4e17c6a335972e5c7d659b8d636ac1aac3dc793"
+file = "src/components/textarea.rs"
+
+[registries.neobrutalism.components.toast]
+hash = "sha256:1a3df85b55543f617bac36ad7857f4b470121aa2b65ee7e0e3e14bb191b97e19"
+file = "src/components/toast.rs"
+
+[registries.neobrutalism.components.toggle]
+hash = "sha256:d42345c48ea7b2255e5e2d3ddda84f3c717a2153e28444b3ec4d6704052f4af5"
+file = "src/components/toggle.rs"
+
+[registries.neobrutalism.components.toggle_group]
+hash = "sha256:65c5d5b38f94468ce04c267ca640e2688d430311e6d8a63c971a7e66a8b5341a"
+file = "src/components/toggle_group.rs"
+
+[registries.neobrutalism.components.tooltip]
+hash = "sha256:45d0596b6c003378e6951d5e22bf752314ee0e826b8fc3eed7ab1a0a275a8990"
+file = "src/components/tooltip.rs"

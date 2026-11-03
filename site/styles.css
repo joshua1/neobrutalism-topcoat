@@ -1,0 +1,14 @@
+/* The docs site uses the registry's theme directly, so a change to
+   themes/neobrutalism.css shows up here on the next build. Apps copy that
+   file over their own styles.css instead. */
+@import "../themes/neobrutalism.css";
+
+/* The theme scans the registry's src/; the site's own sources (installed
+   components, examples, pages) live here. */
+@source "./src/**/*.rs";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}

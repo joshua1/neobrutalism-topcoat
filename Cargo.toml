@@ -1,0 +1,30 @@
+[package]
+name = "neobrutalism"
+version = "0.1.0"
+edition = "2024"
+description = "Neobrutalism components for Topcoat UI, installed with `topcoat ui add --registry neobrutalism`."
+license = "MIT"
+publish = false
+
+# Declares this crate as a topcoat-ui component registry: `topcoat ui` reads
+# `registry.toml` (and the theme and component sources it names) under this
+# directory. A project uses it by depending on this crate directly (path or
+# git) and running `topcoat ui add <name> --registry neobrutalism`.
+[package.metadata.topcoat-ui]
+registry = "."
+
+# Stages the Lucide icon set at build time so the `#[cfg(test)]` component
+# sources (whose `iconify_icon!` references read the staged set) compile. Off
+# by default so apps depending on this crate never run the download; check the
+# components with `cargo check-components` (see .cargo/config.toml).
+[features]
+stage-icons = ["dep:topcoat"]
+
+# The component sources are written against the `topcoat` facade, the way they
+# read once copied into an app, so `topcoat` is only needed to compile-check
+# them here. Apps that depend on this crate pull in nothing.
+[dev-dependencies]
+topcoat = { version = "0.10.0", features = ["icon-iconify", "runtime"] }
+
+[build-dependencies]
+topcoat = { version = "0.10.0", default-features = false, features = ["icon-iconify"], optional = true }

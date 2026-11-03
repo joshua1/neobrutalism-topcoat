@@ -1,0 +1,215 @@
+# The neobrutalism component registry. Each theme and component names its
+# source file; `topcoat ui` hashes the sources itself. The registry's
+# command-line name is the crate name, `neobrutalism`.
+
+version = 1
+
+[themes.neobrutalism]
+source = "themes/neobrutalism.css"
+
+[components.button]
+source = "src/components/button.rs"
+
+[components.badge]
+source = "src/components/badge.rs"
+
+[components.card]
+source = "src/components/card.rs"
+
+[components.alert]
+source = "src/components/alert.rs"
+
+[components.avatar]
+source = "src/components/avatar.rs"
+
+[components.breadcrumb]
+source = "src/components/breadcrumb.rs"
+
+[components.kbd]
+source = "src/components/kbd.rs"
+
+[components.skeleton]
+source = "src/components/skeleton.rs"
+
+[components.spinner]
+source = "src/components/spinner.rs"
+
+[components.empty]
+source = "src/components/empty.rs"
+
+[components.progress]
+source = "src/components/progress.rs"
+
+[components.table]
+source = "src/components/table.rs"
+
+[components.item]
+source = "src/components/item.rs"
+
+[components.image_card]
+source = "src/components/image_card.rs"
+
+[components.marker]
+source = "src/components/marker.rs"
+
+[components.bubble]
+source = "src/components/bubble.rs"
+
+[components.message]
+source = "src/components/message.rs"
+
+[components.marquee]
+source = "src/components/marquee.rs"
+
+[components.direction]
+source = "src/components/direction.rs"
+
+[components.scroll_area]
+source = "src/components/scroll_area.rs"
+
+[components.attachment]
+source = "src/components/attachment.rs"
+dependencies = ["button"]
+
+[components.message_scroller]
+source = "src/components/message_scroller.rs"
+dependencies = ["button"]
+
+[components.label]
+source = "src/components/label.rs"
+
+[components.input]
+source = "src/components/input.rs"
+
+[components.textarea]
+source = "src/components/textarea.rs"
+
+[components.native_select]
+source = "src/components/native_select.rs"
+
+[components.checkbox]
+source = "src/components/checkbox.rs"
+
+[components.switch]
+source = "src/components/switch.rs"
+
+[components.radio_group]
+source = "src/components/radio_group.rs"
+
+[components.slider]
+source = "src/components/slider.rs"
+
+[components.input_otp]
+source = "src/components/input_otp.rs"
+
+[components.field]
+source = "src/components/field.rs"
+dependencies = ["label"]
+
+[components.input_group]
+source = "src/components/input_group.rs"
+dependencies = ["button", "input", "textarea"]
+
+[components.accordion]
+source = "src/components/accordion.rs"
+
+[components.collapsible]
+source = "src/components/collapsible.rs"
+
+[components.dialog]
+source = "src/components/dialog.rs"
+
+[components.popover]
+source = "src/components/popover.rs"
+
+[components.tooltip]
+source = "src/components/tooltip.rs"
+
+[components.hover_card]
+source = "src/components/hover_card.rs"
+
+[components.alert_dialog]
+source = "src/components/alert_dialog.rs"
+dependencies = ["dialog", "button"]
+
+[components.sheet]
+source = "src/components/sheet.rs"
+dependencies = ["dialog"]
+
+[components.drawer]
+source = "src/components/drawer.rs"
+dependencies = ["dialog"]
+
+[components.dropdown_menu]
+source = "src/components/dropdown_menu.rs"
+
+[components.context_menu]
+source = "src/components/context_menu.rs"
+
+[components.menubar]
+source = "src/components/menubar.rs"
+
+[components.navigation_menu]
+source = "src/components/navigation_menu.rs"
+
+[components.tabs]
+source = "src/components/tabs.rs"
+
+[components.toggle]
+source = "src/components/toggle.rs"
+
+[components.button_group]
+source = "src/components/button_group.rs"
+
+[components.select]
+source = "src/components/select.rs"
+
+[components.toggle_group]
+source = "src/components/toggle_group.rs"
+dependencies = ["toggle"]
+
+[components.pagination]
+source = "src/components/pagination.rs"
+dependencies = ["button"]
+
+[components.command]
+source = "src/components/command.rs"
+dependencies = ["dialog"]
+
+[components.combobox]
+source = "src/components/combobox.rs"
+dependencies = ["button", "command", "input", "popover"]
+
+[components.toast]
+source = "src/components/toast.rs"
+dependencies = ["button"]
+
+[components.form]
+source = "src/components/form.rs"
+dependencies = ["label"]
+
+[components.data_table]
+source = "src/components/data_table.rs"
+dependencies = ["button", "checkbox", "dropdown_menu", "input", "table"]
+
+[components.calendar]
+source = "src/components/calendar.rs"
+dependencies = ["button"]
+
+[components.carousel]
+source = "src/components/carousel.rs"
+dependencies = ["button"]
+
+[components.resizable]
+source = "src/components/resizable.rs"
+
+[components.chart]
+source = "src/components/chart.rs"
+
+[components.questionnaire]
+source = "src/components/questionnaire.rs"
+dependencies = ["button"]
+
+[components.sidebar]
+source = "src/components/sidebar.rs"
+dependencies = ["button", "input", "sheet", "skeleton", "tooltip"]

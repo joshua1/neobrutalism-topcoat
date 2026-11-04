@@ -1,0 +1,7 @@
+# `vercel deploy` from this directory uploads it as the Docker build context.
+# Leave out local build output (several GB) and what the image doesn't use.
+**/target
+lessons
+# Vercel CLI's link and its OIDC token: never part of the upload.
+.vercel
+.env*

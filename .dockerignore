@@ -1,2 +1,4 @@
 **/target
 lessons
+.vercel
+.env*

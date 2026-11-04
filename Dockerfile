@@ -8,7 +8,7 @@
 #   docker run --rm -p 3000:80 neobrutalism-site
 #
 # Vercel (Container runtime), Railway, Render, Fly.io and Cloud Run can all
-# build this file; set the project's root directory to `topcoat`.
+# build this file from the repository root.
 
 FROM rust:1.98-trixie AS build
 

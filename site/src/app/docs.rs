@@ -85,8 +85,8 @@ const INLINE_CODE: &str = "mx-0.5 whitespace-nowrap rounded-base border-2 border
 
 const CARGO_TOML: &str = r#"[dependencies]
 topcoat = { version = "0.10.0", features = ["ui", "tailwind", "icon-iconify"] }
-neobrutalism = { path = "../neo-octane/topcoat" }
-# or: neobrutalism = { git = "https://github.com/joshua1/neo-octane" }
+neobrutalism = { git = "https://github.com/joshua1/neobrutalism-topcoat" }
+# or, from a local checkout: neobrutalism = { path = "../neobrutalism-topcoat" }
 
 [build-dependencies]
 topcoat = { version = "0.10.0", default-features = false, features = ["tailwind", "icon-iconify"] }"#;
@@ -106,7 +106,7 @@ const BUILD_RS: &str = r#"fn main() {
 }"#;
 
 const THEME: &str = r#"topcoat ui init
-cp ../neo-octane/topcoat/themes/neobrutalism.css styles.css"#;
+curl -fsSL https://raw.githubusercontent.com/joshua1/neobrutalism-topcoat/main/themes/neobrutalism.css -o styles.css"#;
 
 const LAYOUT_RS: &str = r#"use topcoat::{Result, router::{Slot, layout}, tailwind, view::{View, view}};
 

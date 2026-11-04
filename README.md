@@ -1,15 +1,18 @@
 # neobrutalism (Topcoat UI registry)
 
-Neobrutalism components for [Topcoat](https://topcoat.rs), ported from this
-repo's Octane components (`../src/components/ui`). All 63 components are here,
-from Button to Sidebar.
+Neobrutalism components for [Topcoat](https://github.com/tokio-rs/topcoat),
+ported from the Octane components in
+[neobrutalism-octane](https://github.com/joshua1/neobrutalism-octane)
+(`src/components/ui`). All 63 components are here, from Button to Sidebar.
+
+**Docs:** https://neobrutalism-topcoat.vercel.app
 
 This crate is a topcoat-ui **registry**: `topcoat ui add` copies component
 sources into your app, the same way Topcoat's built-in components are
 installed. Once installed, a component is your code to edit.
 
 ```
-topcoat/
+neobrutalism-topcoat/
 ├── registry.toml            the components and theme `topcoat ui` can install
 ├── themes/neobrutalism.css  the theme (tokens + Tailwind setup)
 ├── src/components/*.rs      the component sources
@@ -27,8 +30,8 @@ topcoat/
    ```toml
    [dependencies]
    topcoat = { version = "0.10.0", features = ["ui", "tailwind", "icon-iconify"] }
-   neobrutalism = { path = "../path/to/neo-octane/topcoat" }
-   # or: neobrutalism = { git = "https://github.com/joshua1/neo-octane" }
+   neobrutalism = { git = "https://github.com/joshua1/neobrutalism-topcoat" }
+   # or, from a local checkout: neobrutalism = { path = "../neobrutalism-topcoat" }
 
    [build-dependencies]
    topcoat = { version = "0.10.0", default-features = false, features = ["tailwind", "icon-iconify"] }
@@ -54,7 +57,7 @@ topcoat/
 
    ```sh
    topcoat ui init
-   cp ../path/to/neo-octane/topcoat/themes/neobrutalism.css styles.css
+   curl -fsSL https://raw.githubusercontent.com/joshua1/neobrutalism-topcoat/main/themes/neobrutalism.css -o styles.css
    ```
 
    An app that already has its own theme (spendeed does) can merge the
@@ -114,7 +117,9 @@ topcoat/
 ## Docs site
 
 `site/` documents every component with live previews, their source, and the
-install command, generated from the Octane docs (`../src/markdown/components`).
+install command, generated from the Octane docs (`src/markdown/components` in
+a [neobrutalism-octane](https://github.com/joshua1/neobrutalism-octane)
+checkout next to this one, or wherever `NEOBRUTALISM_OCTANE` points).
 Its `/styling` page is the theme generator: pick any colors (or start from
 one of 30 palettes), radius, shadow, font weights and font, see the whole site
 restyle live, and copy the resulting `styles.css`. The generator lives in
@@ -143,3 +148,12 @@ scripts/sync.sh        # reinstall every component into site/ and regenerate the
   their docs examples in a scratch app.
 - Examples live in `site/src/examples/<name>.rs`: one `#[component]` per
   Octane example file.
+
+## Deploying the docs site
+
+The `Dockerfile` builds `site/` in release mode with its asset bundle. The
+site is deployed on Vercel's Container runtime from this directory:
+
+```sh
+vercel deploy --prod
+```

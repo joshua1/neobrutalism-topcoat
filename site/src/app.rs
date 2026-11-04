@@ -102,8 +102,9 @@ async fn navbar() -> Result<impl View> {
                         "Styling"
                         <span class="bg-chart-3 px-1.5 text-[10px] uppercase text-main-foreground">"new"</span>
                     </a>
+                    <a href="https://github.com/joshua1/neobrutalism-topcoat" class="hover:underline">"GitHub"</a>
                     <a
-                        href="https://topcoat.rs"
+                        href="https://github.com/tokio-rs/topcoat"
                         class="flex h-9 items-center rounded-base border-2 border-border px-3 shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
                     >
                         "Topcoat"

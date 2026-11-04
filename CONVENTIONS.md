@@ -1,6 +1,7 @@
 # Porting conventions
 
-How each Octane component in `../src/components/ui/<name>.tsrx` becomes a
+How each Octane component in `src/components/ui/<name>.tsrx` of
+[neobrutalism-octane](https://github.com/joshua1/neobrutalism-octane) becomes a
 Topcoat component in `src/components/<snake_name>.rs`.
 
 ## Sources of truth
@@ -105,7 +106,7 @@ the listed component files (and their docs-site examples, when present).
 ## Docs-site examples
 
 Each component gets `site/src/examples/<snake_name>.rs`, a port of the
-Octane examples in `../src/examples/ui/<name>/`. One
+Octane examples in neobrutalism-octane's `src/examples/ui/<name>/`. One
 `#[component] pub async fn` per Octane example file, named after the file in
 snake_case (`demo.tsrx` -> `demo`). Examples import components from
 `crate::components::<name>`, the way an app would after `topcoat ui add`.

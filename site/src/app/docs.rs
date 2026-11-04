@@ -86,7 +86,7 @@ const INLINE_CODE: &str = "mx-0.5 whitespace-nowrap rounded-base border-2 border
 const CARGO_TOML: &str = r#"[dependencies]
 topcoat = { version = "0.10.0", features = ["ui", "tailwind", "icon-iconify"] }
 neobrutalism = { path = "../neo-octane/topcoat" }
-# or: neobrutalism = { git = "https://github.com/<you>/neo-octane" }
+# or: neobrutalism = { git = "https://github.com/joshua1/neo-octane" }
 
 [build-dependencies]
 topcoat = { version = "0.10.0", default-features = false, features = ["tailwind", "icon-iconify"] }"#;

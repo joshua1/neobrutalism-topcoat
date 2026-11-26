@@ -22,7 +22,7 @@ neobrutalism-topcoat/
 └── scripts/                 sandbox.sh, sync.sh, gen_catalog.py
 ```
 
-## Use it in a Topcoat app (spendeed, kred, ...)
+## Use it in a Topcoat app
 
 1. Depend on this crate **directly** (the CLI only sees direct dependencies)
    and enable Topcoat's `ui`, `tailwind` and `icon-iconify` features:
@@ -60,8 +60,8 @@ neobrutalism-topcoat/
    curl -fsSL https://raw.githubusercontent.com/joshua1/neobrutalism-topcoat/main/themes/neobrutalism.css -o styles.css
    ```
 
-   An app that already has its own theme (spendeed does) can merge the
-   `:root` tokens and `@theme inline` block into it instead.
+   An app that already has its own theme can merge the `:root` tokens and
+   `@theme inline` block into it instead.
 
 4. In the root layout, load the stylesheet, the DM Sans font, and
    `topcoat::runtime::script()`. Add `.assets(AssetBundle::load().unwrap())`
@@ -85,7 +85,7 @@ neobrutalism-topcoat/
 
    `topcoat ui list --installed` shows which installed components have
    changed in the registry; `topcoat ui add <name> --overwrite --registry
-   neobrutalism` updates one (and discards your local edits to it).
+neobrutalism` updates one (and discards your local edits to it).
 
 ### Things to know
 
@@ -98,8 +98,8 @@ neobrutalism-topcoat/
   browser.
 - **Inline scripts.** Several components use inline event handlers, so a
   Content-Security-Policy has to allow them.
-- **Apps that already use Topcoat's built-in components** (spendeed has them
-  in `src/components/ui/`) can keep both sets side by side, because
+- **Apps that already use Topcoat's built-in components** (installed in
+  `src/components/ui/`) can keep both sets side by side, because
   `components.toml` tracks each component by registry and file. Point the
   install directory at a new folder, add ours, and declare the module once:
 
@@ -136,13 +136,21 @@ After changing a component, an example or the theme:
 scripts/sync.sh        # reinstall every component into site/ and regenerate the catalog
 ```
 
+### Build site
+
+```sh
+cd site
+cargo build --release --locked
+topcoat asset bundle --release
+```
+
 ## Developing
 
 - Each component lives in `src/components/<name>.rs`, is listed in
   `registry.toml` (with its `dependencies`), and is declared in
   `src/components.rs`.
 - `cargo check-components` (an alias for `cargo test --features
-  stage-icons`) compiles every component, so a broken one fails here before
+stage-icons`) compiles every component, so a broken one fails here before
   anyone installs it.
 - `scripts/sandbox.sh <dir> <component>...` compiles a few components and
   their docs examples in a scratch app.

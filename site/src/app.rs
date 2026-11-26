@@ -104,7 +104,7 @@ async fn navbar() -> Result<impl View> {
                     </a>
                     <a href="https://github.com/joshua1/neobrutalism-topcoat" class="hover:underline">"GitHub"</a>
                     <a
-                        href="https://github.com/tokio-rs/topcoat"
+                        href="https://topcoat-site.topcoat.clusters.miren.run/"
                         class="flex h-9 items-center rounded-base border-2 border-border px-3 shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
                     >
                         "Topcoat"

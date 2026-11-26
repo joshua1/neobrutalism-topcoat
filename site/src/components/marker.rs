@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, Class, StaticClass, View, class, component, view},
 };
 
@@ -93,6 +94,7 @@ pub fn marker_variants(variant: MarkerVariant) -> Class<(StaticClass, Option<Sta
 /// ```
 #[component]
 pub async fn marker(
+    cx: &Cx,
     #[default] variant: MarkerVariant,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -113,6 +115,7 @@ pub async fn marker(
 #[component]
 #[allow(dead_code)]
 pub async fn marker_icon(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -135,6 +138,7 @@ pub async fn marker_icon(
 #[component]
 #[allow(dead_code)]
 pub async fn marker_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

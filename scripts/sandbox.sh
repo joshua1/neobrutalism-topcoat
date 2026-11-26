@@ -21,10 +21,10 @@ edition = "2024"
 publish = false
 
 [dependencies]
-topcoat = { version = "0.10.0", features = ["icon-iconify", "runtime"] }
+topcoat = { version = "0.12.1", features = ["icon-iconify", "runtime"] }
 
 [build-dependencies]
-topcoat = { version = "0.10.0", default-features = false, features = ["icon-iconify"] }
+topcoat = { version = "0.12.1", default-features = false, features = ["icon-iconify"] }
 EOF
 
 cat > "$DIR/build.rs" <<'EOF'

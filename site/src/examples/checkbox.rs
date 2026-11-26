@@ -18,7 +18,7 @@ use crate::components::{
 // component already sets carries Tailwind's `!` (important) modifier.
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field_group(attrs: attributes! { class="mx-auto w-56!" },
             field(orientation: FieldOrientation::Horizontal,
@@ -34,7 +34,7 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn description() -> Result<impl View> {
+pub async fn description(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field_group(attrs: attributes! { class="mx-auto w-72!" },
             field(orientation: FieldOrientation::Horizontal,
@@ -55,7 +55,7 @@ pub async fn description() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field_group(attrs: attributes! { class="mx-auto w-56!" },
             field(
@@ -73,7 +73,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn group() -> Result<impl View> {
+pub async fn group(cx: &Cx) -> Result<impl View> {
     let items = [
         ("finder-pref-hard-disks-checkbox", "Hard disks", true),
         ("finder-pref-external-disks-checkbox", "External disks", true),
@@ -98,12 +98,12 @@ pub async fn group() -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! { checkbox() })
 }
 
 #[component]
-pub async fn invalid_state() -> Result<impl View> {
+pub async fn invalid_state(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field_group(attrs: attributes! { class="mx-auto w-56!" },
             field(

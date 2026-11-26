@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -101,6 +102,7 @@ fn css_string(c: char) -> String {
 /// ```
 #[component]
 pub async fn input_otp(
+    cx: &Cx,
     max_length: usize,
     #[default] value: &str,
     #[default] pattern: Option<&str>,
@@ -154,6 +156,7 @@ pub async fn input_otp(
 /// A run of [`input_otp_slot`]s drawn as one joined box.
 #[component]
 pub async fn input_otp_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -187,6 +190,7 @@ const SLOT: StaticClass = class!(
 /// `aria-invalid="true"` for the red error border.
 #[component]
 pub async fn input_otp_slot(
+    cx: &Cx,
     index: usize,
     #[default] mut attrs: Attributes,
 ) -> Result<impl View> {
@@ -211,7 +215,7 @@ pub async fn input_otp_slot(
 
 /// A dot between [`input_otp_group`]s.
 #[component]
-pub async fn input_otp_separator(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn input_otp_separator(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="input-otp-separator"

@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, class, component, view},
 };
@@ -13,7 +14,7 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         item(attrs: attributes! { class="max-w-md" },
             item_media(variant: ItemMediaVariant::Icon,
@@ -31,7 +32,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn as_link() -> Result<impl View> {
+pub async fn as_link(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <a
             href="#"
@@ -57,7 +58,7 @@ pub async fn as_link() -> Result<impl View> {
 }
 
 #[component]
-pub async fn group() -> Result<impl View> {
+pub async fn group(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         item_group(attrs: attributes! { class="max-w-md" },
             item(
@@ -86,7 +87,7 @@ pub async fn group() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_image() -> Result<impl View> {
+pub async fn with_image(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         item(attrs: attributes! { class="max-w-md" },
             item_media(variant: ItemMediaVariant::Image,

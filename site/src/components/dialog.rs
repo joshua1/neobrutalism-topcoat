@@ -29,6 +29,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     runtime::Expr,
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
@@ -147,6 +148,7 @@ fn unless_given(attrs: &Attributes, key: &str, value: &'static str) -> Option<&'
 /// ```
 #[component]
 pub async fn dialog(
+    cx: &Cx,
     /// Whether the dialog shows without being opened by a trigger. A runtime
     /// expression keeps it in sync with a signal.
     #[into]
@@ -190,6 +192,7 @@ pub async fn dialog(
 /// dialog-like components can reuse it.
 #[component]
 pub async fn dialog_trigger(
+    cx: &Cx,
     /// The `id` of the dialog to open.
     target: &str,
     /// Extra attributes for the `<button>` element.
@@ -222,6 +225,7 @@ pub async fn dialog_trigger(
 /// `attrs`. A `data-slot` in `attrs` replaces `dialog-close`.
 #[component]
 pub async fn dialog_close(
+    cx: &Cx,
     #[default] attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -248,6 +252,7 @@ const CONTENT: StaticClass = class!(
 /// `sm:max-w-[425px]!` so it wins over the default `sm:max-w-lg`.
 #[component]
 pub async fn dialog_content(
+    cx: &Cx,
     /// Whether to render the close button in the top-right corner.
     #[default(true)]
     show_close_button: bool,
@@ -285,6 +290,7 @@ pub async fn dialog_content(
 /// and a [`dialog_description`].
 #[component]
 pub async fn dialog_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -303,6 +309,7 @@ pub async fn dialog_header(
 /// screens, with the first action at the bottom.
 #[component]
 pub async fn dialog_footer(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -324,6 +331,7 @@ pub async fn dialog_footer(
 /// point the dialog's `aria-labelledby` at it.
 #[component]
 pub async fn dialog_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -341,6 +349,7 @@ pub async fn dialog_title(
 /// Text that explains the dialog's purpose, rendered as a `<p>`.
 #[component]
 pub async fn dialog_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -13,7 +14,7 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         empty(
             attrs: attributes! { class="max-w-md" },
@@ -39,7 +40,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_input() -> Result<impl View> {
+pub async fn with_input(cx: &Cx) -> Result<impl View> {
     // The search field is a native `<input>` with the `input` component's
     // classes, standing in for that component.
     Ok(view! {

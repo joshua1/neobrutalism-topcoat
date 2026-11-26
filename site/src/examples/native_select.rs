@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -11,7 +12,7 @@ use crate::components::native_select::{
 // component already sets carries Tailwind's `!` (important) modifier.
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         native_select(attrs: attributes! { class="w-full! max-w-xs" },
             native_select_option(attrs: attributes! { value="" }, "Select a fruit")
@@ -25,7 +26,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         native_select(attrs: attributes! { class="w-full! max-w-xs" disabled="" },
             native_select_option(attrs: attributes! { value="" }, "Disabled")
@@ -37,7 +38,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_optgroup() -> Result<impl View> {
+pub async fn with_optgroup(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         native_select(attrs: attributes! { class="w-full! max-w-xs" },
             native_select_option(attrs: attributes! { value="" }, "Select a food")

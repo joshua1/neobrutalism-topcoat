@@ -26,7 +26,7 @@ const MENU_ITEM: StaticClass = class!(
 );
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     // `size-4!` beats the ellipsis's own `size-9`: `class!` does not drop
     // conflicting classes the way Octane's `cn` does.
     Ok(view! {
@@ -76,7 +76,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         breadcrumb(
             breadcrumb_list(

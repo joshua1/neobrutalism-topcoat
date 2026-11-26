@@ -25,6 +25,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -126,6 +127,7 @@ const COMMAND: StaticClass = class!(
 /// ```
 #[component]
 pub async fn command(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -182,6 +184,7 @@ const DIALOG_COMMAND: &str = "**:data-[slot=command-input-wrapper]:h-12 \
 /// ```
 #[component]
 pub async fn command_dialog(
+    cx: &Cx,
     /// The `id` that the dialog trigger's `target` refers to.
     id: &str,
     /// The dialog's accessible title.
@@ -224,7 +227,7 @@ pub async fn command_dialog(
 /// with extra classes appended. Inside a popover, add `autofocus=""` so the
 /// box takes focus when the popover opens.
 #[component]
-pub async fn command_input(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn command_input(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="command-input-wrapper"
@@ -256,6 +259,7 @@ pub async fn command_input(#[default] mut attrs: Attributes) -> Result<impl View
 /// The scrolling list of a [`command`]'s groups and items.
 #[component]
 pub async fn command_list(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -279,6 +283,7 @@ pub async fn command_list(
 /// It is hidden until a search leaves no item visible.
 #[component]
 pub async fn command_empty(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -300,6 +305,7 @@ pub async fn command_empty(
 /// leaves none of its items visible.
 #[component]
 pub async fn command_group(
+    cx: &Cx,
     /// The group's heading, shown above its items.
     #[into]
     #[default]
@@ -332,7 +338,7 @@ pub async fn command_group(
 
 /// A line between groups. It hides itself while a search is active.
 #[component]
-pub async fn command_separator(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn command_separator(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="command-separator"
@@ -361,6 +367,7 @@ const ITEM: StaticClass = class!(
 /// visible but can't be highlighted or chosen.
 #[component]
 pub async fn command_item(
+    cx: &Cx,
     /// The text the search matches besides the item's own text, such as an id.
     #[into]
     #[default]
@@ -392,6 +399,7 @@ pub async fn command_item(
 /// A keyboard shortcut shown at the end of a [`command_item`].
 #[component]
 pub async fn command_shortcut(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

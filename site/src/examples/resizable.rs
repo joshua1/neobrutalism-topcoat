@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -8,7 +9,7 @@ use crate::components::resizable::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     // The inner group is vertical, so its handle is told so: it runs across
     // the group, as a horizontal line.
     Ok(view! {

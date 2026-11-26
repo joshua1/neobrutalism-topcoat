@@ -18,6 +18,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, View, attributes, class, component, view},
 };
@@ -72,6 +73,7 @@ impl ResizableOrientation {
 /// ```
 #[component]
 pub async fn resizable_panel_group(
+    cx: &Cx,
     #[default] orientation: ResizableOrientation,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -99,6 +101,7 @@ pub async fn resizable_panel_group(
 /// size is set in its `style`.
 #[component]
 pub async fn resizable_panel(
+    cx: &Cx,
     #[default] default_size: Option<f64>,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -158,6 +161,7 @@ const KEYS: &str = "const y=this.getAttribute('aria-orientation')==='horizontal'
 /// extra classes appended.
 #[component]
 pub async fn resizable_handle(
+    cx: &Cx,
     #[default] orientation: ResizableOrientation,
     #[default] with_handle: bool,
     #[default] mut attrs: Attributes,

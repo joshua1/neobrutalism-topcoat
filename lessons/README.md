@@ -4,7 +4,7 @@ One short lesson per component, written while porting it. Each covers only the R
 ideas that were new at that point, so reading them in this order builds up from
 enums and `match` to generics, iterators, closures and shared runtime state.
 
-1. [Button](button.md): Enums replace `cva` variants; `#[derive(...)]` generates code for you; `impl` + `match` maps each variant to classes; `const BASE: StaticClass = class!(...)`; `#[component] pub async fn button(...)`; `mut attrs` and `attrs.remove("class")`; `Result<impl View>` and `Ok(...)`; `Child<'_>` is a first look at lifetimes; `#[cfg(test)]` and `[dev-dependencies]`; `bool::then_some` turns a condition into an `Option`
+1. [Button](button.md): Enums replace `cva` variants; `#[derive(...)]` generates code for you; `impl` + `match` maps each variant to classes; `const BASE: StaticClass = class!(...)`; `#[component] pub async fn button(cx: &Cx, ...)`; `mut attrs` and `attrs.remove("class")`; `Result<impl View>` and `Ok(...)`; `Child<'_>` is a first look at lifetimes; `#[cfg(test)]` and `[dev-dependencies]`; `bool::then_some` turns a condition into an `Option`
 2. [Badge](badge.md): `///` doc comments and `[`badge`]` links; Generic types holding a tuple: `Class<(StaticClass, StaticClass)>`; `#[must_use]`; `#[allow(dead_code)]`; No `render` prop
 3. [Card](card.md): `&'static str`: text that lives forever; `const fn`; Private methods on a public type; `use` paths and grouped imports
 4. [Alert](alert.md): `\` at the end of a line inside a string; `Self` inside an `impl`; A variant named `Default` vs the `Default` trait

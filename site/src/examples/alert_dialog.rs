@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -12,7 +13,7 @@ use crate::components::alert_dialog::{
 use crate::components::button::{ButtonSize, ButtonVariant, button_variants};
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert_dialog_trigger(
             target: "alert-dialog-demo",
@@ -49,7 +50,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert_dialog_trigger(
             target: "alert-dialog-basic",
@@ -82,7 +83,7 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn destructive() -> Result<impl View> {
+pub async fn destructive(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert_dialog_trigger(
             target: "alert-dialog-destructive",
@@ -120,7 +121,7 @@ pub async fn destructive() -> Result<impl View> {
 }
 
 #[component]
-pub async fn media() -> Result<impl View> {
+pub async fn media(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert_dialog_trigger(
             target: "alert-dialog-media",
@@ -153,7 +154,7 @@ pub async fn media() -> Result<impl View> {
 }
 
 #[component]
-pub async fn small_with_media() -> Result<impl View> {
+pub async fn small_with_media(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert_dialog_trigger(
             target: "alert-dialog-small-with-media",
@@ -186,7 +187,7 @@ pub async fn small_with_media() -> Result<impl View> {
 }
 
 #[component]
-pub async fn small() -> Result<impl View> {
+pub async fn small(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert_dialog_trigger(
             target: "alert-dialog-small",

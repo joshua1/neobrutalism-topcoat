@@ -29,13 +29,18 @@ neobrutalism-topcoat/
 
    ```toml
    [dependencies]
-   topcoat = { version = "0.10.0", features = ["ui", "tailwind", "icon-iconify"] }
+   topcoat = { version = "0.12.1", features = ["ui", "tailwind", "icon-iconify"] }
    neobrutalism = { git = "https://github.com/joshua1/neobrutalism-topcoat" }
    # or, from a local checkout: neobrutalism = { path = "../neobrutalism-topcoat" }
 
    [build-dependencies]
-   topcoat = { version = "0.10.0", default-features = false, features = ["tailwind", "icon-iconify"] }
+   topcoat = { version = "0.12.1", default-features = false, features = ["tailwind", "icon-iconify"] }
    ```
+
+   The components need Topcoat 0.12 (each takes a leading `cx: &Cx`). Nothing
+   from this crate is linked into your app, so Cargo (1.100 and later) warns
+   that the dependency is unused; add `use neobrutalism as _;` to `main.rs`
+   to quiet it.
 
 2. Build Tailwind and stage the Lucide icons in `build.rs`:
 
@@ -49,7 +54,7 @@ neobrutalism-topcoat/
    }
    ```
 
-3. Install the theme. `topcoat ui init` (Topcoat 0.10) only installs themes
+3. Install the theme. `topcoat ui init` (as of Topcoat 0.12) only installs themes
    from the built-in registry, so run it once and then copy ours over the
    `styles.css` it wrote. To use your own colors, radius, shadow and font,
    make a theme on the docs site's **Styling** page (`/styling`) and copy or

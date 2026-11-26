@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, class, component, view},
 };
@@ -24,7 +25,7 @@ const INPUT: &str = "flex h-10 w-full rounded-base border-2 border-border bg-sec
     disabled:opacity-50";
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     // The trigger sits inside the header row while the first package stays
     // visible, so the always-visible rows are outside the `<details>` and the
     // trigger is positioned over the header's empty slot (inside its 2px
@@ -72,7 +73,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class=(class!(CARD, "mx-auto w-full max-w-sm"))>
             <div class="px-(--card-spacing)">
@@ -110,7 +111,7 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn settings_panel() -> Result<impl View> {
+pub async fn settings_panel(cx: &Cx) -> Result<impl View> {
     // The top two fields stay visible, so they sit outside the `<details>`;
     // the trigger is positioned beside them. In Octane the trigger is a flex
     // item next to a `w-full` field group, so it shrinks from 40px to about

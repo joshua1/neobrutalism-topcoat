@@ -2,6 +2,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, ViewExt, component, view},
 };
 
@@ -454,7 +455,7 @@ pub const DOCS: &[Doc] = &[
 ///
 /// Each arm is a different view type, so `.boxed()` gives them one type.
 #[component]
-pub async fn render_example(module: &str, example: &str) -> Result<impl View> {
+pub async fn render_example(cx: &Cx, module: &str, example: &str) -> Result<impl View> {
     Ok(match (module, example) {
         ("accordion", "demo") => view! { examples::accordion::demo() }.boxed(),
         ("accordion", "basic") => view! { examples::accordion::basic() }.boxed(),

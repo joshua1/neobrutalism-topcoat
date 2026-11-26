@@ -166,7 +166,7 @@ impl<'a> FormField<'a> {
     /// ```
     #[must_use]
     pub fn control(&self, cx: &Cx) -> Attributes {
-        attributes! { cx =>
+        attributes! {
             id=(self.item_id())
             aria-describedby=(self.described_by())
             aria-invalid=(self.invalid())
@@ -193,6 +193,7 @@ impl<'a> FormField<'a> {
 /// ```
 #[component]
 pub async fn form_item(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -210,6 +211,7 @@ pub async fn form_item(
 /// replaces the default one.
 #[component]
 pub async fn form_label(
+    cx: &Cx,
     /// The field this label names.
     field: FormField<'_>,
     #[default] mut attrs: Attributes,
@@ -232,6 +234,7 @@ pub async fn form_label(
 /// Supporting text for a field, named by its control's `aria-describedby`.
 #[component]
 pub async fn form_description(
+    cx: &Cx,
     /// The field this text describes.
     field: FormField<'_>,
     #[default] mut attrs: Attributes,
@@ -257,6 +260,7 @@ pub async fn form_description(
 /// Octane renders nothing.
 #[component]
 pub async fn form_message(
+    cx: &Cx,
     /// The field whose error this shows.
     field: FormField<'_>,
     #[default] mut attrs: Attributes,

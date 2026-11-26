@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -68,6 +69,7 @@ const OPTION: StaticClass = class!("bg-[Canvas] text-[CanvasText]");
 /// ```
 #[component]
 pub async fn native_select(
+    cx: &Cx,
     #[default] size: NativeSelectSize,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -104,6 +106,7 @@ pub async fn native_select(
 /// children.
 #[component]
 pub async fn native_select_option(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -123,6 +126,7 @@ pub async fn native_select_option(
 /// Pass the group's `label` in `attrs` and its options as children.
 #[component]
 pub async fn native_select_opt_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

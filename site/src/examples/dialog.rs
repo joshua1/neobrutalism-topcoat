@@ -3,6 +3,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -31,7 +32,7 @@ const LOREM: &str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Se
     laborum.";
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <form>
             dialog_trigger(
@@ -78,7 +79,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn scrollable_content() -> Result<impl View> {
+pub async fn scrollable_content(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         dialog_trigger(
             target: "dialog-scrollable",
@@ -111,7 +112,7 @@ pub async fn scrollable_content() -> Result<impl View> {
 }
 
 #[component]
-pub async fn sticky_footer() -> Result<impl View> {
+pub async fn sticky_footer(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         dialog_trigger(
             target: "dialog-sticky-footer",

@@ -21,7 +21,7 @@ use crate::components::{
 
 /// An avatar showing initials, styled like `avatar` + `avatar_fallback`.
 #[component]
-async fn fallback(initials: &str) -> Result<impl View> {
+async fn fallback(cx: &Cx, initials: &str) -> Result<impl View> {
     Ok(view! {
         <span
             data-slot="avatar"
@@ -40,7 +40,7 @@ async fn fallback(initials: &str) -> Result<impl View> {
 
 /// One chat line, aligned and colored by who sent it.
 #[component]
-async fn chat_message(index: usize, from_me: bool, text: &str) -> Result<impl View> {
+async fn chat_message(cx: &Cx, index: usize, from_me: bool, text: &str) -> Result<impl View> {
     let id = format!("message-{index}");
     Ok(view! {
         message_scroller_item(message_id: Some(&id),
@@ -59,7 +59,7 @@ async fn chat_message(index: usize, from_me: bool, text: &str) -> Result<impl Vi
 
 /// The chat's title bar, with a reset button.
 #[component]
-async fn chat_header(#[default] reset: Option<Signal<usize>>) -> Result<impl View> {
+async fn chat_header(cx: &Cx, #[default] reset: Option<Signal<usize>>) -> Result<impl View> {
     Ok(view! {
         <div class="flex items-center gap-3 p-4">
             <div class="flex min-w-0 flex-1 flex-col gap-0.5 text-sm">
@@ -106,7 +106,7 @@ const MESSAGES: [(bool, &str); 12] = [
 ];
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div
             class="flex h-[360px] w-full max-w-md flex-col overflow-hidden rounded-base border-2 \
@@ -200,6 +200,6 @@ async fn add_messages_chat(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn add_messages() -> Result<impl View> {
+pub async fn add_messages(cx: &Cx) -> Result<impl View> {
     Ok(view! { add_messages_chat() })
 }

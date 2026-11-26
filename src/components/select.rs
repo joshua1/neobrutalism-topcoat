@@ -144,6 +144,7 @@ pub async fn select(
 #[component]
 #[allow(dead_code)]
 pub async fn select_trigger(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -166,7 +167,7 @@ pub async fn select_trigger(
 /// browser (a `<selectedcontent>` element).
 #[component]
 #[allow(dead_code)]
-pub async fn select_value(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn select_value(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <selectedcontent
             data-slot="select-value"
@@ -179,6 +180,7 @@ pub async fn select_value(#[default] mut attrs: Attributes) -> Result<impl View>
 /// The list of options inside a [`select`], padded inside the picker.
 #[component]
 pub async fn select_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -195,6 +197,7 @@ pub async fn select_content(
 /// [`select_label`] first inside it for the styled picker.
 #[component]
 pub async fn select_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -209,6 +212,7 @@ pub async fn select_group(
 /// `<legend>`.
 #[component]
 pub async fn select_label(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -251,6 +255,7 @@ const ITEM: StaticClass = class!(
 /// content may include an icon, shown by browsers with customizable selects.
 #[component]
 pub async fn select_item(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -268,7 +273,7 @@ pub async fn select_item(
 
 /// A thin rule between options, rendered as an `<hr>`.
 #[component]
-pub async fn select_separator(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn select_separator(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <hr
             data-slot="select-separator"
@@ -290,7 +295,10 @@ const SCROLL_HINT: StaticClass = class!(
 /// assistive technology. Place it first inside a [`select_content`].
 #[component]
 #[allow(dead_code)]
-pub async fn select_scroll_up_button(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn select_scroll_up_button(
+    cx: &Cx,
+    #[default] mut attrs: Attributes,
+) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="select-scroll-up"
@@ -312,7 +320,10 @@ pub async fn select_scroll_up_button(#[default] mut attrs: Attributes) -> Result
 /// assistive technology. Place it last inside a [`select_content`].
 #[component]
 #[allow(dead_code)]
-pub async fn select_scroll_down_button(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn select_scroll_down_button(
+    cx: &Cx,
+    #[default] mut attrs: Attributes,
+) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="select-scroll-down"

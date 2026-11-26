@@ -3,6 +3,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, class, component, view},
 };
 
@@ -24,7 +25,7 @@ const INPUT: &str = "flex h-10 w-full rounded-base border-2 border-border bg-sec
     disabled:opacity-50";
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     // The `!` on `w-80` and `h-8` overrides the panel's `w-72` and the input's
     // `h-10`.
     Ok(view! {
@@ -66,7 +67,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn align() -> Result<impl View> {
+pub async fn align(cx: &Cx) -> Result<impl View> {
     // `w-40!` overrides the panel's `w-72`.
     Ok(view! {
         <div class="flex gap-6">
@@ -93,7 +94,7 @@ pub async fn align() -> Result<impl View> {
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         popover(
             popover_trigger(
@@ -117,7 +118,7 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_form() -> Result<impl View> {
+pub async fn with_form(cx: &Cx) -> Result<impl View> {
     // `w-64!` overrides the panel's `w-72`. The rows are `Field`s with
     // `orientation="horizontal"` in Octane.
     Ok(view! {

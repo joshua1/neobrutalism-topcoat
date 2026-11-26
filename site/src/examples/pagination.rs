@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -11,7 +12,7 @@ use crate::components::pagination::{
 use crate::components::select::{select, select_content, select_group, select_item};
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         pagination(
             pagination_content(
@@ -29,7 +30,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn icons_only() -> Result<impl View> {
+pub async fn icons_only(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex items-center justify-between gap-4">
             // `w-fit!` overrides the field's `w-full`.
@@ -61,7 +62,7 @@ pub async fn icons_only() -> Result<impl View> {
 }
 
 #[component]
-pub async fn simple() -> Result<impl View> {
+pub async fn simple(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         pagination(
             pagination_content(

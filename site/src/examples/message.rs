@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -19,7 +20,7 @@ use crate::components::{
 
 /// An avatar showing initials, styled like `avatar` + `avatar_fallback`.
 #[component]
-async fn fallback(initials: &str) -> Result<impl View> {
+async fn fallback(cx: &Cx, initials: &str) -> Result<impl View> {
     Ok(view! {
         <span
             data-slot="avatar"
@@ -37,7 +38,7 @@ async fn fallback(initials: &str) -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-md flex-col gap-4">
             message(
@@ -79,7 +80,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn group() -> Result<impl View> {
+pub async fn group(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-md flex-col gap-6">
             message_group(
@@ -115,7 +116,7 @@ pub async fn group() -> Result<impl View> {
 }
 
 #[component]
-pub async fn header_footer() -> Result<impl View> {
+pub async fn header_footer(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-md flex-col gap-6">
             message(
@@ -143,7 +144,7 @@ pub async fn header_footer() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_actions() -> Result<impl View> {
+pub async fn with_actions(cx: &Cx) -> Result<impl View> {
     let actions = [
         ("Copy", iconify_icon!("lucide:copy")),
         ("Regenerate", iconify_icon!("lucide:refresh-cw")),

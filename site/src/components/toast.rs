@@ -38,6 +38,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{IconData, icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, Unescaped, View, attributes, class, component, view},
 };
@@ -329,6 +330,7 @@ const VIEWPORT: StaticClass = class!(
 /// ```
 #[component]
 pub async fn toaster(
+    cx: &Cx,
     /// Where the toasts stack.
     #[default]
     position: ToasterPosition,
@@ -497,6 +499,7 @@ const TOAST: StaticClass = class!(
 /// ```
 #[component]
 pub async fn toast(
+    cx: &Cx,
     /// The kind of message, which picks the icon.
     #[default]
     variant: ToastVariant,
@@ -537,6 +540,7 @@ pub async fn toast(
 /// action button.
 #[component]
 async fn toast_frame(
+    cx: &Cx,
     #[default] variant: ToastVariant,
     #[default] template: bool,
     #[default] title: Option<&str>,
@@ -600,6 +604,7 @@ async fn toast_frame(
 /// fades out behind the frontmost toast while the stack is collapsed.
 #[component]
 pub async fn toast_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -624,6 +629,7 @@ pub async fn toast_content(
 /// The heading of a [`toast`], rendered as an `<h2>`.
 #[component]
 pub async fn toast_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -641,6 +647,7 @@ pub async fn toast_title(
 /// The message of a [`toast`], rendered as a `<p>`.
 #[component]
 pub async fn toast_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -662,6 +669,7 @@ pub async fn toast_description(
 /// forwarded to the `<button>`, with extra classes appended.
 #[component]
 pub async fn toast_action(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -688,7 +696,7 @@ pub async fn toast_action(
 /// The button that closes a [`toast`]: an "x" in a borderless icon button.
 /// `attrs` are forwarded to the `<button>`, with extra classes appended.
 #[component]
-pub async fn toast_close(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn toast_close(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     // `!` overrides the `Neutral` icon button's size, border, fill, shadow and
     // hover shift.
     Ok(view! {

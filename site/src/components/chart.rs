@@ -45,6 +45,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{IconData, icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -335,6 +336,7 @@ const GRID_STROKE: &str = "#80808080";
 /// `attrs` are forwarded to the `<div>`, with extra classes appended.
 #[component]
 pub async fn chart_container(
+    cx: &Cx,
     config: ChartConfig<'_>,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -361,6 +363,7 @@ pub async fn chart_container(
 /// forwarded to the `<div>`, with extra classes appended.
 #[component]
 pub async fn chart_legend_content(
+    cx: &Cx,
     config: ChartConfig<'_>,
     /// Lists the series by key, A to Z, as the bar, line and area charts do
     /// (Recharts sorts their legend by value). Otherwise config order.
@@ -406,6 +409,7 @@ struct TooltipItem {
 /// The tooltip box (Octane's `ChartTooltipContent`). `attrs` place it.
 #[component]
 async fn chart_tooltip_content(
+    cx: &Cx,
     tooltip: ChartTooltip<'_>,
     heading: Option<String>,
     items: Vec<TooltipItem>,
@@ -624,6 +628,7 @@ fn shows_tick(index: usize, count: usize, max: Option<usize>) -> bool {
 /// columns over them, then the legend.
 #[component]
 async fn cartesian_plot(
+    cx: &Cx,
     config: ChartConfig<'_>,
     margins: Margins,
     grid: Vec<GridLine>,
@@ -795,6 +800,7 @@ fn column(
 /// bars carry `data-slot="chart-bar"` for styling them from there.
 #[component]
 pub async fn bar_chart(
+    cx: &Cx,
     config: ChartConfig<'_>,
     data: &[ChartRow<'_>],
     #[default] horizontal: bool,
@@ -1285,6 +1291,7 @@ fn point_axes(
 /// `attrs` are forwarded to the chart's root, with extra classes appended.
 #[component]
 pub async fn line_chart(
+    cx: &Cx,
     config: ChartConfig<'_>,
     data: &[ChartRow<'_>],
     #[default] curve: ChartCurve,
@@ -1486,6 +1493,7 @@ fn point_columns(
 /// `attrs` are forwarded to the chart's root, with extra classes appended.
 #[component]
 pub async fn area_chart(
+    cx: &Cx,
     config: ChartConfig<'_>,
     data: &[ChartRow<'_>],
     #[default] curve: ChartCurve,
@@ -1729,6 +1737,7 @@ struct Slice {
 /// forwarded to the chart's root, with extra classes appended.
 #[component]
 pub async fn pie_chart(
+    cx: &Cx,
     config: ChartConfig<'_>,
     rings: &[PieRing<'_>],
     #[default] active_index: Option<usize>,

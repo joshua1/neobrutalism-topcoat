@@ -24,7 +24,7 @@ async fn single_calendar(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! { single_calendar() })
 }
 
@@ -48,6 +48,6 @@ async fn range_calendar(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn range() -> Result<impl View> {
+pub async fn range(cx: &Cx) -> Result<impl View> {
     Ok(view! { range_calendar() })
 }

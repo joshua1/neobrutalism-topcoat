@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{StaticClass, View, attributes, class, component, view},
 };
@@ -66,7 +67,7 @@ const INVOICES: [Invoice; 7] = [
 ];
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         table(
             table_caption(
@@ -103,7 +104,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn footer() -> Result<impl View> {
+pub async fn footer(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         table(
             table_caption("A list of your recent invoices.")
@@ -158,7 +159,7 @@ const MENU_ITEM: StaticClass = class!(
 );
 
 #[component]
-pub async fn actions() -> Result<impl View> {
+pub async fn actions(cx: &Cx) -> Result<impl View> {
     // `size-8!` and `text-foreground!` beat the button's own size and color:
     // `class!` does not drop conflicting classes the way Octane's `cn` does.
     Ok(view! {

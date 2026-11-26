@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -8,7 +9,7 @@ use crate::components::accordion::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         accordion(attrs: attributes! { class="w-full max-w-xl" },
             accordion_item(
@@ -42,7 +43,7 @@ const BASIC_ITEMS: [(&str, &str, &str); 3] = [
 ];
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         accordion(attrs: attributes! { class="w-full max-w-xl space-y-4" },
             for (value, trigger, content) in BASIC_ITEMS {
@@ -61,7 +62,7 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         accordion(attrs: attributes! { class="w-full max-w-xl space-y-4" },
             accordion_item(attrs: attributes! { name="accordion-disabled" },
@@ -114,7 +115,7 @@ const MULTIPLE_ITEMS: [(&str, &str, &str); 3] = [
 ];
 
 #[component]
-pub async fn multiple() -> Result<impl View> {
+pub async fn multiple(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         accordion(attrs: attributes! { class="w-full max-w-xl space-y-4" },
             for (value, trigger, content) in MULTIPLE_ITEMS {

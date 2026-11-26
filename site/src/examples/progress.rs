@@ -11,7 +11,7 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     // Octane sets the value from 13 to 66 on a 500ms timer. Here CSS does it:
     // `@starting-style` (`starting:`) draws the bar at 13% on first render and
     // the indicator's transition grows it to 66% after a 500ms delay.
@@ -30,7 +30,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn label() -> Result<impl View> {
+pub async fn label(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         progress(
             value: 56.0,

@@ -5,6 +5,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -29,7 +30,7 @@ const FRAMEWORKS: [(&str, &str); 5] = [
 ];
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         combobox(name: "framework",
             combobox_trigger(
@@ -64,7 +65,7 @@ pub async fn demo() -> Result<impl View> {
 const USERS: [(&str, &str); 3] = [("1", "shadcn"), ("2", "leerob"), ("3", "evilrabbit")];
 
 #[component]
-pub async fn users() -> Result<impl View> {
+pub async fn users(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         combobox(name: "user", value: "1",
             combobox_trigger(
@@ -160,7 +161,7 @@ const TIMEZONES: [(&str, [(&str, &str); 6]); 3] = [
 ];
 
 #[component]
-pub async fn timezones() -> Result<impl View> {
+pub async fn timezones(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         combobox(name: "timezone", value: "America/New_York",
             combobox_trigger(
@@ -213,7 +214,7 @@ pub async fn timezones() -> Result<impl View> {
 }
 
 #[component]
-pub async fn multiselect() -> Result<impl View> {
+pub async fn multiselect(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         combobox(name: "frameworks", multiple: true,
             combobox_trigger(

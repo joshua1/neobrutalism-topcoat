@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
 
@@ -49,6 +50,7 @@ const GROUP: StaticClass = class!(
 /// ```
 #[component]
 pub async fn input_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -137,6 +139,7 @@ const FOCUS_INPUT: &str = "if (!event.target.closest('button')) \
 /// `<div>`, with extra classes appended to its classes.
 #[component]
 pub async fn input_group_addon(
+    cx: &Cx,
     #[default] align: InputGroupAddonAlign,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -241,6 +244,7 @@ const SOLID: StaticClass = class!(
 /// ```
 #[component]
 pub async fn input_group_button(
+    cx: &Cx,
     #[default] variant: Option<ButtonVariant>,
     #[default] size: InputGroupButtonSize,
     #[default] mut attrs: Attributes,
@@ -274,6 +278,7 @@ pub async fn input_group_button(
 /// Plain text inside an [`input_group_addon`], such as a unit or hint.
 #[component]
 pub async fn input_group_text(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -304,7 +309,7 @@ const CONTROL: StaticClass = class!(
 ///
 /// `attrs` are forwarded to the `<input>`, with extra classes appended.
 #[component]
-pub async fn input_group_input(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn input_group_input(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         input(attrs: attributes! {
             data-slot="input-group-control"
@@ -321,6 +326,7 @@ pub async fn input_group_input(#[default] mut attrs: Attributes) -> Result<impl 
 /// `<textarea>`, with extra classes appended.
 #[component]
 pub async fn input_group_textarea(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

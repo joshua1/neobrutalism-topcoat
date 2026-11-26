@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -55,6 +56,7 @@ const CLOSE_JS: &str = "const d=this.closest('[data-slot=menubar-menu]');\
 /// ```
 #[component]
 pub async fn menubar(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -81,6 +83,7 @@ pub async fn menubar(
 /// to stop it closing when menus of other bars open.
 #[component]
 pub async fn menubar_menu(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -108,6 +111,7 @@ const SUMMARY: StaticClass = class!("list-none [&::-webkit-details-marker]:hidde
 /// menu is open.
 #[component]
 pub async fn menubar_trigger(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -152,6 +156,7 @@ const POPUP: StaticClass = class!(
 /// classes.
 #[component]
 pub async fn menubar_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -177,6 +182,7 @@ pub async fn menubar_content(
 /// A labelled set of related items, rendered as a `<div role="group">`.
 #[component]
 pub async fn menubar_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -193,7 +199,7 @@ pub async fn menubar_group(
 /// this part only exists to keep ported markup compiling.
 #[component]
 #[allow(dead_code)]
-pub async fn menubar_portal(#[default] child: Child<'_>) -> Result<impl View> {
+pub async fn menubar_portal(cx: &Cx, #[default] child: Child<'_>) -> Result<impl View> {
     Ok(view! { (child) })
 }
 
@@ -203,6 +209,7 @@ pub async fn menubar_portal(#[default] child: Child<'_>) -> Result<impl View> {
 /// It does not open on hover. Closing the parent menu also closes it.
 #[component]
 pub async fn menubar_sub(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -225,6 +232,7 @@ pub async fn menubar_sub(
 /// Give every item in the group the same `name` attribute.
 #[component]
 pub async fn menubar_radio_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -254,6 +262,7 @@ const ITEM: StaticClass = class!(
 /// and handlers such as `@click` through `attrs`.
 #[component]
 pub async fn menubar_item(
+    cx: &Cx,
     /// Indents the item to line up with items that have an indicator.
     #[default]
     inset: bool,
@@ -307,6 +316,7 @@ const INDICATOR: StaticClass = class!(
 /// the `<input>`.
 #[component]
 pub async fn menubar_checkbox_item(
+    cx: &Cx,
     /// Extra attributes for the `<input>`; classes go on the row.
     #[default]
     mut attrs: Attributes,
@@ -339,6 +349,7 @@ pub async fn menubar_checkbox_item(
 /// each, and `checked=""` on the selected one.
 #[component]
 pub async fn menubar_radio_item(
+    cx: &Cx,
     /// Extra attributes for the `<input>`; classes go on the row.
     #[default]
     mut attrs: Attributes,
@@ -368,6 +379,7 @@ pub async fn menubar_radio_item(
 /// Set `inset` to line it up with checkbox and radio items.
 #[component]
 pub async fn menubar_label(
+    cx: &Cx,
     /// Indents the label to line up with items that have an indicator.
     #[default]
     inset: bool,
@@ -391,7 +403,7 @@ pub async fn menubar_label(
 
 /// A thick rule separating groups of items.
 #[component]
-pub async fn menubar_separator(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn menubar_separator(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="menubar-separator"
@@ -407,6 +419,7 @@ pub async fn menubar_separator(#[default] mut attrs: Attributes) -> Result<impl 
 /// It is only a label: register the shortcut itself in application code.
 #[component]
 pub async fn menubar_shortcut(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -425,6 +438,7 @@ pub async fn menubar_shortcut(
 /// the submenu. It stays highlighted while the submenu is open.
 #[component]
 pub async fn menubar_sub_trigger(
+    cx: &Cx,
     /// Indents the row to line up with items that have an indicator.
     #[default]
     inset: bool,
@@ -464,6 +478,7 @@ pub async fn menubar_sub_trigger(
 /// (or to the left when there is no room).
 #[component]
 pub async fn menubar_sub_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

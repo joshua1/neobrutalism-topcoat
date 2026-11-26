@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -16,7 +17,7 @@ use crate::components::{
 // component already sets carries Tailwind's `!` (important) modifier.
 
 #[component]
-pub async fn choice_card() -> Result<impl View> {
+pub async fn choice_card(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field_group(attrs: attributes! { class="w-full max-w-sm" },
             field_label(attrs: attributes! { for="switch-share" },
@@ -46,7 +47,7 @@ pub async fn choice_card() -> Result<impl View> {
 }
 
 #[component]
-pub async fn description() -> Result<impl View> {
+pub async fn description(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field(orientation: FieldOrientation::Horizontal, attrs: attributes! { class="max-w-sm" },
             field_content(
@@ -61,7 +62,7 @@ pub async fn description() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field(
             orientation: FieldOrientation::Horizontal,
@@ -73,7 +74,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex items-center space-x-2">
             switch(attrs: attributes! { id="airplane-mode" })
@@ -83,7 +84,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn invalid() -> Result<impl View> {
+pub async fn invalid(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field(
             orientation: FieldOrientation::Horizontal,
@@ -98,7 +99,7 @@ pub async fn invalid() -> Result<impl View> {
 }
 
 #[component]
-pub async fn size() -> Result<impl View> {
+pub async fn size(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field_group(attrs: attributes! { class="w-full max-w-[10rem]" },
             field(orientation: FieldOrientation::Horizontal,

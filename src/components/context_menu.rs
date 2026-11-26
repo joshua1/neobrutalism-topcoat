@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -106,6 +107,7 @@ const CLOSE_JS: &str = "this.closest('[popover]')?.hidePopover()";
 /// ```
 #[component]
 pub async fn context_menu(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -126,6 +128,7 @@ pub async fn context_menu(
 /// classes.
 #[component]
 pub async fn context_menu_trigger(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -144,6 +147,7 @@ pub async fn context_menu_trigger(
 /// A labelled set of related items, rendered as a `<div role="group">`.
 #[component]
 pub async fn context_menu_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -160,7 +164,7 @@ pub async fn context_menu_group(
 /// nothing to move. This part only exists to keep ported markup compiling.
 #[component]
 #[allow(dead_code)]
-pub async fn context_menu_portal(#[default] child: Child<'_>) -> Result<impl View> {
+pub async fn context_menu_portal(cx: &Cx, #[default] child: Child<'_>) -> Result<impl View> {
     Ok(view! { (child) })
 }
 
@@ -177,6 +181,7 @@ const POPUP: StaticClass = class!(
 /// to its classes; set a width such as `w-64` there.
 #[component]
 pub async fn context_menu_content(
+    cx: &Cx,
     /// Which way the menu opens from the pointer.
     #[default]
     side: ContextMenuSide,
@@ -232,6 +237,7 @@ const DESTRUCTIVE: StaticClass = class!(
 /// `@click` through `attrs`.
 #[component]
 pub async fn context_menu_item(
+    cx: &Cx,
     /// Indents the item to line up with items that have an indicator.
     #[default]
     inset: bool,
@@ -288,6 +294,7 @@ const INDICATOR: StaticClass = class!(
 /// the `<input>`.
 #[component]
 pub async fn context_menu_checkbox_item(
+    cx: &Cx,
     /// Extra attributes for the `<input>`; classes go on the row.
     #[default]
     mut attrs: Attributes,
@@ -317,6 +324,7 @@ pub async fn context_menu_checkbox_item(
 /// Give every item in the group the same `name` attribute.
 #[component]
 pub async fn context_menu_radio_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -340,6 +348,7 @@ pub async fn context_menu_radio_group(
 /// each, and `checked=""` on the selected one.
 #[component]
 pub async fn context_menu_radio_item(
+    cx: &Cx,
     /// Extra attributes for the `<input>`; classes go on the row.
     #[default]
     mut attrs: Attributes,
@@ -369,6 +378,7 @@ pub async fn context_menu_radio_item(
 /// Set `inset` to line it up with checkbox and radio items.
 #[component]
 pub async fn context_menu_label(
+    cx: &Cx,
     /// Indents the label to line up with items that have an indicator.
     #[default]
     inset: bool,
@@ -392,7 +402,10 @@ pub async fn context_menu_label(
 
 /// A thick rule separating groups of items.
 #[component]
-pub async fn context_menu_separator(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn context_menu_separator(
+    cx: &Cx,
+    #[default] mut attrs: Attributes,
+) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="context-menu-separator"
@@ -408,6 +421,7 @@ pub async fn context_menu_separator(#[default] mut attrs: Attributes) -> Result<
 /// It is only a label: register the shortcut itself in application code.
 #[component]
 pub async fn context_menu_shortcut(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -445,6 +459,7 @@ const SUMMARY: StaticClass = class!("list-none [&::-webkit-details-marker]:hidde
 /// ```
 #[component]
 pub async fn context_menu_sub(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -466,6 +481,7 @@ pub async fn context_menu_sub(
 /// pointing at the submenu. It stays highlighted while the submenu is open.
 #[component]
 pub async fn context_menu_sub_trigger(
+    cx: &Cx,
     /// Indents the row to line up with items that have an indicator.
     #[default]
     inset: bool,
@@ -508,6 +524,7 @@ pub async fn context_menu_sub_trigger(
 /// panel just below the trigger row.
 #[component]
 pub async fn context_menu_sub_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

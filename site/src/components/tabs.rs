@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     runtime::Expr,
     view::{Attributes, Child, Class, StaticClass, View, class, component, view},
 };
@@ -64,6 +65,7 @@ const SELECT_JS: &str = "const r=this.closest('[data-slot=tabs]'),v=this.dataset
 /// ```
 #[component]
 pub async fn tabs(
+    cx: &Cx,
     /// Whether the triggers sit above or beside the panels.
     #[default]
     orientation: TabsOrientation,
@@ -138,6 +140,7 @@ pub fn tabs_list_variants(variant: TabsListVariant) -> Class<(StaticClass, Stati
 /// The row (or column) of [`tabs_trigger`]s.
 #[component]
 pub async fn tabs_list(
+    cx: &Cx,
     /// A boxed or underlined look.
     #[default]
     variant: TabsListVariant,
@@ -194,6 +197,7 @@ const TRIGGER: StaticClass = class!(
 /// `disabled=""` through `attrs` to disable a button trigger.
 #[component]
 pub async fn tabs_trigger(
+    cx: &Cx,
     /// The `value` of the panel this trigger shows.
     #[default]
     value: &str,
@@ -246,6 +250,7 @@ pub async fn tabs_trigger(
 /// Set `active` on the initially selected panel; the others render `hidden`.
 #[component]
 pub async fn tabs_content(
+    cx: &Cx,
     /// The value its trigger selects.
     #[default]
     value: &str,

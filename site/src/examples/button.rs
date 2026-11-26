@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -7,27 +8,27 @@ use topcoat::{
 use crate::components::button::{ButtonSize, ButtonVariant, button};
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! { button("Button") })
 }
 
 #[component]
-pub async fn neutral() -> Result<impl View> {
+pub async fn neutral(cx: &Cx) -> Result<impl View> {
     Ok(view! { button(variant: ButtonVariant::Neutral, "Button") })
 }
 
 #[component]
-pub async fn no_shadow() -> Result<impl View> {
+pub async fn no_shadow(cx: &Cx) -> Result<impl View> {
     Ok(view! { button(variant: ButtonVariant::NoShadow, "Button") })
 }
 
 #[component]
-pub async fn reverse() -> Result<impl View> {
+pub async fn reverse(cx: &Cx) -> Result<impl View> {
     Ok(view! { button(variant: ButtonVariant::Reverse, "Button") })
 }
 
 #[component]
-pub async fn icon_button() -> Result<impl View> {
+pub async fn icon_button(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         button(size: ButtonSize::Icon, attrs: attributes! { aria-label="More" },
             icon(data: iconify_icon!("lucide:ellipsis"))
@@ -36,14 +37,14 @@ pub async fn icon_button() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_icon() -> Result<impl View> {
+pub async fn with_icon(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         button(icon(data: iconify_icon!("lucide:send")) " Send")
     })
 }
 
 #[component]
-pub async fn size() -> Result<impl View> {
+pub async fn size(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-col items-start gap-4">
             <div class="flex items-center gap-2">

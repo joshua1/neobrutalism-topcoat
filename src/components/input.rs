@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, StaticClass, View, class, component, view},
 };
 
@@ -31,7 +32,7 @@ const INPUT: StaticClass = class!(
 /// }
 /// ```
 #[component]
-pub async fn input(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn input(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     // An element takes each attribute once, so the default slot is only
     // written when the caller did not bring its own.
     let default_slot = !attrs.contains_key("data-slot");

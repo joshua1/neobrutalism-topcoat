@@ -3,6 +3,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{IconData, icon, iconify::iconify_icon},
     view::{Unescaped, View, attributes, class, component, view},
 };
@@ -26,7 +27,7 @@ document.addEventListener('keydown', (e) => {
 "#;
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <p class="text-foreground text-sm">
             "Press "
@@ -79,7 +80,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-col gap-4">
             dialog_trigger(
@@ -105,7 +106,7 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn shortcuts() -> Result<impl View> {
+pub async fn shortcuts(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-col gap-4">
             dialog_trigger(
@@ -143,7 +144,7 @@ pub async fn shortcuts() -> Result<impl View> {
 }
 
 #[component]
-pub async fn groups() -> Result<impl View> {
+pub async fn groups(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-col gap-4">
             dialog_trigger(
@@ -251,7 +252,7 @@ const SCROLLABLE: [(&str, &[Entry]); 5] = [
 ];
 
 #[component]
-pub async fn scrollable() -> Result<impl View> {
+pub async fn scrollable(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-col gap-4">
             dialog_trigger(

@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -20,7 +21,7 @@ use crate::components::{
 // component already sets carries Tailwind's `!` (important) modifier.
 
 #[component]
-pub async fn choice_card() -> Result<impl View> {
+pub async fn choice_card(cx: &Cx) -> Result<impl View> {
     let plans = [
         ("free", "Free", "For hobby projects and experiments."),
         ("pro", "Pro", "For professionals and small teams."),
@@ -51,7 +52,7 @@ pub async fn choice_card() -> Result<impl View> {
 }
 
 #[component]
-pub async fn horizontal() -> Result<impl View> {
+pub async fn horizontal(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field_group(attrs: attributes! { class="max-w-md" },
             field(orientation: FieldOrientation::Horizontal,
@@ -77,7 +78,7 @@ pub async fn horizontal() -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         // Octane's submit handler only called `preventDefault()`.
         <form class="w-full max-w-md" onsubmit="event.preventDefault()">
@@ -115,7 +116,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_error() -> Result<impl View> {
+pub async fn with_error(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field(attrs: attributes! { data-invalid="true" class="max-w-sm" },
             field_label(attrs: attributes! { for="field-username" }, "Username")

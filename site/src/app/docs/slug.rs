@@ -3,7 +3,7 @@
 use topcoat::{
     Result,
     context::Cx,
-    router::{error::RouterErrorExt, module_param, page, path_param},
+    router::{error::RouterErrorExt, module_param, page},
     view::{View, class, component, view},
 };
 
@@ -13,7 +13,7 @@ module_param!(slug);
 
 #[page]
 async fn page(cx: &Cx) -> Result<impl View> {
-    let slug = path_param::<Slug>(cx);
+    let slug = slug(cx);
     let doc = DOCS.iter().find(|doc| doc.slug == slug).ok_or_not_found()?;
 
     Ok(view! {
@@ -41,7 +41,7 @@ async fn page(cx: &Cx) -> Result<impl View> {
 
 /// "On this page": the page's example headings, then Installation.
 #[component]
-async fn toc(doc: &Doc) -> Result<impl View> {
+async fn toc(cx: &Cx, doc: &Doc) -> Result<impl View> {
     Ok(view! {
         <aside class="fixed right-0 top-[70px] hidden h-[calc(100svh-70px)] w-[250px] flex-col overflow-y-auto border-l-4 border-border bg-secondary-background xl:flex">
             <p class="border-b-4 border-border p-4 font-heading text-xl">"On this page"</p>
@@ -65,7 +65,7 @@ const FLUSH_PREVIEWS: &[&str] = &["sidebar"];
 /// The tabs are CSS only: two radio inputs share a name per example, and
 /// `group-has-[…:checked]` shows the matching panel.
 #[component]
-async fn example_section(doc: &Doc, section: &Section, first: bool) -> Result<impl View> {
+async fn example_section(cx: &Cx, doc: &Doc, section: &Section, first: bool) -> Result<impl View> {
     let name = format!("{}-{}", doc.module, section.example);
     let source = example_source(doc.module, section.example);
 
@@ -108,7 +108,7 @@ async fn example_section(doc: &Doc, section: &Section, first: bool) -> Result<im
 
 /// How to install the component, and its full source.
 #[component]
-async fn installation(doc: &Doc) -> Result<impl View> {
+async fn installation(cx: &Cx, doc: &Doc) -> Result<impl View> {
     let command = format!("topcoat ui add {} --registry neobrutalism", doc.module);
     let source = component_source(doc.module);
 
@@ -129,7 +129,7 @@ async fn installation(doc: &Doc) -> Result<impl View> {
 /// Docs prose with `backtick` spans rendered as inline code. Splitting on the
 /// backtick puts code at every odd index.
 #[component]
-async fn prose(text: &str) -> Result<impl View> {
+async fn prose(cx: &Cx, text: &str) -> Result<impl View> {
     Ok(view! {
         for (index, part) in text.split('`').enumerate() {
             if index % 2 == 1 {
@@ -144,7 +144,7 @@ async fn prose(text: &str) -> Result<impl View> {
 }
 
 #[component]
-async fn code_block(code: &str) -> Result<impl View> {
+async fn code_block(cx: &Cx, code: &str) -> Result<impl View> {
     Ok(view! {
         <pre class="max-h-[600px] overflow-auto border-2 border-border bg-[#272933] p-4 text-sm leading-6 text-white"><code>(code)</code></pre>
     })

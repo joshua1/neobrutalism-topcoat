@@ -640,8 +640,8 @@ fn month_grid(
 /// clicks that land elsewhere, such as between the days.
 fn on_day_click(cx: &Cx, mode: &CalendarMode) -> Attributes {
     match mode {
-        CalendarMode::None => attributes! { cx => },
-        CalendarMode::Single(selected) => attributes! { cx =>
+        CalendarMode::None => attributes! { },
+        CalendarMode::Single(selected) => attributes! {
             @click=$(|e: Event| {
                 let day = e.target.value;
                 if !day.is_empty() {
@@ -657,7 +657,7 @@ fn on_day_click(cx: &Cx, mode: &CalendarMode) -> Attributes {
                 }
             })
         },
-        CalendarMode::Range { from, to } => attributes! { cx =>
+        CalendarMode::Range { from, to } => attributes! {
             @click=$(|e: Event| {
                 let day = e.target.value;
                 if !day.is_empty() {
@@ -977,6 +977,7 @@ pub async fn calendar(
 /// shows the current option and a chevron. Picking an option sets `month`.
 #[component]
 async fn caption_dropdown(
+    cx: &Cx,
     month: Signal<String>,
     label: &str,
     options: Vec<DropdownOption>,

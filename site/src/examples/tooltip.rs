@@ -3,6 +3,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, class, component, view},
 };
@@ -20,7 +21,7 @@ const KBD: &str = "pointer-events-none inline-flex h-5 w-fit min-w-5 items-cente
     in-data-[slot=tooltip-content]:text-main-foreground [&_svg:not([class*='size-'])]:size-3";
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         tooltip_provider(
             tooltip(
@@ -37,7 +38,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled_button() -> Result<impl View> {
+pub async fn disabled_button(cx: &Cx) -> Result<impl View> {
     // A disabled button gets no pointer events, so the hover lands on the
     // wrapper span, which shows the tooltip.
     Ok(view! {
@@ -57,7 +58,7 @@ pub async fn disabled_button() -> Result<impl View> {
 }
 
 #[component]
-pub async fn side() -> Result<impl View> {
+pub async fn side(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         tooltip_provider(
             <div class="flex flex-wrap justify-center gap-2">
@@ -86,7 +87,7 @@ pub async fn side() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_keyboard_shortcut() -> Result<impl View> {
+pub async fn with_keyboard_shortcut(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         tooltip_provider(
             tooltip(

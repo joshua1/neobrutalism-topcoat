@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -35,6 +36,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn radio_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -81,7 +83,7 @@ const INDICATOR: StaticClass =
 /// `@change`. Classes in `attrs` go on the visible circle instead. Pair it
 /// with a `label` whose `for` matches the `id`.
 #[component]
-pub async fn radio_group_item(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn radio_group_item(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <span data-slot="radio-group-item" class=(class!(ITEM, attrs.remove("class")))>
             <input type="radio" class=(INPUT) (attrs)>

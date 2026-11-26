@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, StaticClass, View, attributes, class, component, view},
 };
@@ -58,7 +59,7 @@ const INDICATOR: StaticClass = class!(
 /// }
 /// ```
 #[component]
-pub async fn checkbox(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn checkbox(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <span data-slot="checkbox" class=(class!(ROOT, attrs.remove("class")))>
             <input type="checkbox" class=(INPUT) (attrs)>

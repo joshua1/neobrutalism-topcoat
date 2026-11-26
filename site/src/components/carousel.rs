@@ -23,6 +23,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -116,6 +117,7 @@ const ARROW_KEYS: &str = "if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')r
 /// `attrs` are forwarded to the root `<div>`, with extra classes appended.
 #[component]
 pub async fn carousel(
+    cx: &Cx,
     #[default] orientation: CarouselOrientation,
     #[default] on_select: Option<&str>,
     #[default] mut attrs: Attributes,
@@ -175,6 +177,7 @@ const TRACK: StaticClass = class!(
 /// margin with `!` (`-ml-1!`) to go with smaller slide padding.
 #[component]
 pub async fn carousel_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -199,6 +202,7 @@ pub async fn carousel_content(
 /// with extra classes appended.
 #[component]
 pub async fn carousel_item(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -252,6 +256,7 @@ const NEXT: StaticClass = class!(
 /// forwarded to the [`button`], with extra classes appended.
 #[component]
 pub async fn carousel_previous(
+    cx: &Cx,
     #[default(ButtonVariant::NoShadow)] variant: ButtonVariant,
     #[default(ButtonSize::Icon)] size: ButtonSize,
     #[default] mut attrs: Attributes,
@@ -280,6 +285,7 @@ pub async fn carousel_previous(
 /// forwarded to the [`button`], with extra classes appended.
 #[component]
 pub async fn carousel_next(
+    cx: &Cx,
     #[default(ButtonVariant::NoShadow)] variant: ButtonVariant,
     #[default(ButtonSize::Icon)] size: ButtonSize,
     #[default] mut attrs: Attributes,

@@ -8,9 +8,9 @@ use topcoat::{
     Result,
     asset::{AssetBundle, RouterBuilderAssetExt},
     context::Cx,
-    cookie::{Cookies, RouterBuilderCookieExt, cookies},
+    cookie::{CookieLayer, Cookies, cookies},
     router::{Router, RouterBuilderDiscoverExt, Slot, layout, module_router, page},
-    runtime::RouterBuilderRuntimeExt,
+    runtime::RuntimeLayer,
     tailwind,
     view::{Unescaped, View, component, view},
 };
@@ -24,8 +24,8 @@ pub fn router() -> Router {
     module_router!()
         .discover()
         .assets(AssetBundle::load().unwrap())
-        .cookies()
-        .runtime()
+        .layer(CookieLayer::new())
+        .layer(RuntimeLayer::new())
         .build()
 }
 
@@ -84,7 +84,7 @@ async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
 }
 
 #[component]
-async fn navbar() -> Result<impl View> {
+async fn navbar(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <nav class="fixed left-0 top-0 z-20 flex h-[70px] w-full items-center border-b-4 border-border bg-secondary-background px-5">
             <div class="mx-auto flex w-[1300px] max-w-full items-center justify-between text-foreground">
@@ -117,7 +117,7 @@ async fn navbar() -> Result<impl View> {
 
 /// The landing page: what this is, how to install, and every component.
 #[page]
-async fn home() -> Result<impl View> {
+async fn home(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <main class="bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-size-[70px_70px] px-5 pt-[70px]">
             <section class="mx-auto max-w-[900px] py-20 text-center">

@@ -17,6 +17,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, View, class, component, view},
 };
 
@@ -41,6 +42,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn collapsible(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -60,6 +62,7 @@ pub async fn collapsible(
 /// `class=(button_variants(..))` or your own classes.
 #[component]
 pub async fn collapsible_trigger(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -77,6 +80,7 @@ pub async fn collapsible_trigger(
 /// The content shown while a [`collapsible`] is open.
 #[component]
 pub async fn collapsible_content(
+    cx: &Cx,
     #[default] attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

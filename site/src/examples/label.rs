@@ -1,12 +1,13 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
 use crate::components::{checkbox::checkbox, label::label};
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div>
             <div class="flex items-center space-x-2">

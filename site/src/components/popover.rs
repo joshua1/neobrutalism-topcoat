@@ -17,6 +17,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -51,7 +52,7 @@ pub fn popover_anchor(id: &str) -> String {
 /// Groups a [`popover_trigger`] with its [`popover_content`]. It renders only
 /// its children; the two parts are linked by the content's `id`.
 #[component]
-pub async fn popover(#[default] child: Child<'_>) -> Result<impl View> {
+pub async fn popover(cx: &Cx, #[default] child: Child<'_>) -> Result<impl View> {
     Ok(view! { (child) })
 }
 
@@ -64,6 +65,7 @@ pub async fn popover(#[default] child: Child<'_>) -> Result<impl View> {
 /// element carries [`popover_anchor`].
 #[component]
 pub async fn popover_trigger(
+    cx: &Cx,
     /// The `id` of the popover content to toggle.
     target: &str,
     /// Whether this button is the element the content is placed against.
@@ -230,6 +232,7 @@ const MOTION: StaticClass = class!(
 /// ```
 #[component]
 pub async fn popover_content(
+    cx: &Cx,
     /// The `id` that [`popover_trigger`]'s `target` refers to.
     id: &str,
     /// The side of the trigger to open on.
@@ -274,6 +277,7 @@ pub async fn popover_content(
 /// and a [`popover_description`].
 #[component]
 pub async fn popover_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -291,6 +295,7 @@ pub async fn popover_header(
 /// The heading of a popover, rendered as an `<h2>`.
 #[component]
 pub async fn popover_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -308,6 +313,7 @@ pub async fn popover_title(
 /// Text that explains the popover's purpose, rendered as a `<p>`.
 #[component]
 pub async fn popover_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

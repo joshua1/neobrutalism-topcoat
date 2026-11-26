@@ -6,6 +6,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Class, StaticClass, View, attributes, class, component, view},
 };
 
@@ -52,7 +53,7 @@ fn primary() -> Class<(StaticClass, StaticClass, StaticClass)> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         drawer_trigger(target: "drawer-demo", attrs: attributes! { class=(primary()) }, "Open")
         drawer(
@@ -88,7 +89,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn nested() -> Result<impl View> {
+pub async fn nested(cx: &Cx) -> Result<impl View> {
     // Octane uses a bottom drawer with a handle on mobile and a right drawer
     // without one on desktop; this keeps the desktop layout.
     let nested_placeholder = "bg-secondary-background \
@@ -173,7 +174,7 @@ pub async fn nested() -> Result<impl View> {
 }
 
 #[component]
-pub async fn non_modal() -> Result<impl View> {
+pub async fn non_modal(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         drawer_trigger(target: "drawer-non-modal", modal: false, attrs: attributes! { class=(neutral()) }, "Non Modal")
         drawer(id: "drawer-non-modal", modal: false, disable_pointer_dismissal: true,
@@ -187,7 +188,7 @@ pub async fn non_modal() -> Result<impl View> {
 }
 
 #[component]
-pub async fn position() -> Result<impl View> {
+pub async fn position(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         drawer_trigger(target: "drawer-position", attrs: attributes! { class=(neutral()) }, "Open Left Drawer")
         drawer(id: "drawer-position",
@@ -208,7 +209,11 @@ pub async fn position() -> Result<impl View> {
 /// The profile form shared by both halves of [`responsive`]. `prefix` keeps
 /// the field ids unique, since both copies are on the page.
 #[component]
-async fn profile_form(prefix: &str, #[default] mut attrs: Attributes) -> Result<impl View> {
+async fn profile_form(
+    cx: &Cx,
+    prefix: &str,
+    #[default] mut attrs: Attributes,
+) -> Result<impl View> {
     let email = format!("{prefix}-email");
     let username = format!("{prefix}-username");
 
@@ -228,7 +233,7 @@ async fn profile_form(prefix: &str, #[default] mut attrs: Attributes) -> Result<
 }
 
 #[component]
-pub async fn responsive() -> Result<impl View> {
+pub async fn responsive(cx: &Cx) -> Result<impl View> {
     // Octane renders one or the other with `useIsMobile`; here both are on the
     // page and CSS shows the dialog's trigger from `md` up and the drawer's
     // below it.
@@ -270,7 +275,7 @@ pub async fn responsive() -> Result<impl View> {
 }
 
 #[component]
-pub async fn scrollable_content() -> Result<impl View> {
+pub async fn scrollable_content(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         drawer_trigger(target: "drawer-scrollable", attrs: attributes! { class=(primary()) }, "Scrollable Content")
         drawer(id: "drawer-scrollable",
@@ -295,7 +300,7 @@ pub async fn scrollable_content() -> Result<impl View> {
 }
 
 #[component]
-pub async fn snap_points() -> Result<impl View> {
+pub async fn snap_points(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         drawer_trigger(target: "drawer-snap-points", attrs: attributes! { class=(neutral()) }, "Open Snap Drawer")
         drawer(id: "drawer-snap-points",
@@ -315,7 +320,7 @@ pub async fn snap_points() -> Result<impl View> {
 }
 
 #[component]
-pub async fn swipe_handle() -> Result<impl View> {
+pub async fn swipe_handle(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         drawer_trigger(target: "drawer-swipe-handle", attrs: attributes! { class=(neutral()) }, "Open Drawer")
         drawer(id: "drawer-swipe-handle",

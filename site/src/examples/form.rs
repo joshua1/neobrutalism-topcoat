@@ -58,7 +58,7 @@ fn submitted(cx: &Cx, id: &str) -> bool {
 /// The values of a valid submission, which the Octane examples show in a
 /// toast.
 #[component]
-async fn submitted_values(values: String) -> Result<impl View> {
+async fn submitted_values(cx: &Cx, values: String) -> Result<impl View> {
     Ok(view! {
         <div role="status" class="mt-6 grid gap-2 text-sm font-base">
             <p class="font-heading">"You submitted the following values:"</p>

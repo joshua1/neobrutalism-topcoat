@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, StaticClass, View, class, component, view},
 };
 
@@ -91,6 +92,7 @@ const THUMB: StaticClass = class!(
 /// ```
 #[component]
 pub async fn switch(
+    cx: &Cx,
     #[default] size: SwitchSize,
     #[default] mut attrs: Attributes,
 ) -> Result<impl View> {

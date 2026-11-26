@@ -6,6 +6,7 @@ use std::iter;
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, StaticClass, View, class, component, view},
 };
 
@@ -151,6 +152,7 @@ const SYNC: &str = "const s = [...this.querySelectorAll('input')], t = event.tar
 /// ```
 #[component]
 pub async fn slider(
+    cx: &Cx,
     #[default] value: Vec<f64>,
     #[default(0.0)] min: f64,
     #[default(100.0)] max: f64,

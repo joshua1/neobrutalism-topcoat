@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -13,14 +14,14 @@ use crate::components::{
 // component already sets carries Tailwind's `!` (important) modifier.
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input(attrs: attributes! { class="w-[200px]!" type="email" placeholder="Email" })
     })
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input(attrs: attributes! {
             class="max-w-[200px]" type="email" placeholder="Email" disabled=""
@@ -29,7 +30,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn file() -> Result<impl View> {
+pub async fn file(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="grid w-full max-w-64 items-center gap-1.5">
             label(attrs: attributes! { for="picture" }, "Picture")
@@ -39,7 +40,7 @@ pub async fn file() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_button() -> Result<impl View> {
+pub async fn with_button(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-sm items-center space-x-2">
             input(attrs: attributes! { type="email" placeholder="Email" })
@@ -51,7 +52,7 @@ pub async fn with_button() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_label() -> Result<impl View> {
+pub async fn with_label(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="grid max-w-[200px] items-center gap-1.5">
             label(attrs: attributes! { for="email" }, "Email")

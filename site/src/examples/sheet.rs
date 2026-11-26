@@ -3,6 +3,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, class, component, view},
 };
 
@@ -31,7 +32,7 @@ const LOREM: &str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Se
     laborum.";
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         sheet_trigger(
             target: "sheet-demo",
@@ -75,7 +76,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn no_close_button() -> Result<impl View> {
+pub async fn no_close_button(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         sheet_trigger(
             target: "sheet-no-close-button",
@@ -112,7 +113,7 @@ const SHEET_SIDES: [(&str, SheetSide); 4] = [
 ];
 
 #[component]
-pub async fn side() -> Result<impl View> {
+pub async fn side(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex gap-2">
             for (name, side) in SHEET_SIDES {

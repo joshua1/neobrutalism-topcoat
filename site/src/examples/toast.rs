@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -11,7 +12,7 @@ use crate::components::button::{ButtonVariant, button};
 use crate::components::toast::toaster;
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     // The action closes the toast after running its (optional) `onClick`.
     Ok(view! {
         toaster()
@@ -29,7 +30,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn types() -> Result<impl View> {
+pub async fn types(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toaster()
         <div class="flex flex-wrap justify-center gap-2">
@@ -78,7 +79,7 @@ pub async fn types() -> Result<impl View> {
 }
 
 #[component]
-pub async fn action() -> Result<impl View> {
+pub async fn action(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toaster()
         button(
@@ -102,7 +103,7 @@ const CREATE_EVENT: &str = r#"toast.promise(
 )"#;
 
 #[component]
-pub async fn promise() -> Result<impl View> {
+pub async fn promise(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toaster()
         button(

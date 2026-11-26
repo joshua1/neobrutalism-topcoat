@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -61,6 +62,7 @@ impl AvatarSize {
 /// ```
 #[component]
 pub async fn avatar(
+    cx: &Cx,
     #[default] size: AvatarSize,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -90,6 +92,7 @@ pub async fn avatar(
 /// appended to its classes.
 #[component]
 pub async fn avatar_image(
+    cx: &Cx,
     /// The image URL.
     #[into]
     src: String,
@@ -119,6 +122,7 @@ pub async fn avatar_image(
 /// follows the avatar's size.
 #[component]
 pub async fn avatar_fallback(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -149,6 +153,7 @@ const BADGE_SIZES: StaticClass = class!(
 /// children to show it inside the dot (hidden on small avatars).
 #[component]
 pub async fn avatar_badge(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -173,6 +178,7 @@ pub async fn avatar_badge(
 /// show how many more there are.
 #[component]
 pub async fn avatar_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -191,6 +197,7 @@ pub async fn avatar_group(
 /// or an icon.
 #[component]
 pub async fn avatar_group_count(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

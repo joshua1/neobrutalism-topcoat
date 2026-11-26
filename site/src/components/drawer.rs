@@ -18,6 +18,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     runtime::Expr,
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -72,6 +73,7 @@ const FADE: StaticClass = class!(
 /// ```
 #[component]
 pub async fn drawer(
+    cx: &Cx,
     /// Whether the drawer shows without being opened by a trigger.
     #[into]
     #[default(Expr::from(false))]
@@ -117,6 +119,7 @@ pub async fn drawer(
 /// styling with `class=(button_variants(..))`.
 #[component]
 pub async fn drawer_trigger(
+    cx: &Cx,
     /// The `id` of the drawer to open.
     target: &str,
     /// Whether to open the drawer as a modal. Must match the drawer's `modal`.
@@ -150,6 +153,7 @@ pub async fn drawer_trigger(
 /// A button that closes the [`drawer`] it is inside. It is unstyled.
 #[component]
 pub async fn drawer_close(
+    cx: &Cx,
     #[default] attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -201,7 +205,7 @@ impl DrawerSwipeDirection {
 /// A grab bar drawn at the edge of a [`drawer_content`]. It is decorative and
 /// does not drag.
 #[component]
-pub async fn drawer_swipe_handle(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn drawer_swipe_handle(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="drawer-swipe-handle"
@@ -281,6 +285,7 @@ const POPUP: StaticClass = class!(
 /// scroll-contained column inside it.
 #[component]
 pub async fn drawer_content(
+    cx: &Cx,
     /// The edge the drawer slides in from.
     #[default]
     swipe_direction: DrawerSwipeDirection,
@@ -324,6 +329,7 @@ pub async fn drawer_content(
 /// and a [`drawer_description`].
 #[component]
 pub async fn drawer_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -341,6 +347,7 @@ pub async fn drawer_header(
 /// The actions at the bottom of a [`drawer_content`], stacked.
 #[component]
 pub async fn drawer_footer(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -358,6 +365,7 @@ pub async fn drawer_footer(
 /// The heading of a [`drawer`], rendered as an `<h2>`.
 #[component]
 pub async fn drawer_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -375,6 +383,7 @@ pub async fn drawer_title(
 /// Text that explains the drawer's purpose, rendered as a `<p>`.
 #[component]
 pub async fn drawer_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

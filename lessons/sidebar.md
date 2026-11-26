@@ -22,8 +22,9 @@
    variable and match anything.
 
 4. **A plain function can build a view.** `app_sidebar` in the examples is an
-   ordinary `fn`, not a `#[component]`. It names the request context with
-   `view! { cx => .. }` and returns `.into()` a `Child<'_>`. Returning
+   ordinary `fn`, not a `#[component]`. It takes the request context as
+   `cx: &Cx`, which `view!` picks up by name, and returns `.into()` a
+   `Child<'_>`. Returning
    `impl View` would hide the type: callers would only know "some `View`",
    which `view!` cannot interpolate, while `Child` is a concrete type it
    knows how to render.

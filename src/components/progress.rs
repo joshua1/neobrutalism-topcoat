@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     runtime::Expr,
     view::{Attributes, Child, View, class, component, view},
 };
@@ -32,6 +33,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn progress(
+    cx: &Cx,
     /// The completed percentage, from 0 to 100.
     #[into]
     value: Expr<f64>,
@@ -59,6 +61,7 @@ pub async fn progress(
 /// only to build a bar by hand.
 #[component]
 pub async fn progress_track(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -80,6 +83,7 @@ pub async fn progress_track(
 /// The filled part of a [`progress_track`], `value` percent wide.
 #[component]
 pub async fn progress_indicator(
+    cx: &Cx,
     /// The completed percentage, from 0 to 100.
     #[into]
     value: Expr<f64>,
@@ -101,6 +105,7 @@ pub async fn progress_indicator(
 /// A heading for a [`progress`] bar, shown above it at the start.
 #[component]
 pub async fn progress_label(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -119,6 +124,7 @@ pub async fn progress_label(
 /// end of the row. Pass the same `value` as the bar.
 #[component]
 pub async fn progress_value(
+    cx: &Cx,
     /// The completed percentage, from 0 to 100.
     #[into]
     value: Expr<f64>,

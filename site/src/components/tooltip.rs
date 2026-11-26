@@ -14,6 +14,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -21,7 +22,7 @@ use topcoat::{
 /// tooltips; the CSS tooltips here open instantly, so there is nothing to
 /// share. It exists so markup ported from Octane keeps its shape.
 #[component]
-pub async fn tooltip_provider(#[default] child: Child<'_>) -> Result<impl View> {
+pub async fn tooltip_provider(cx: &Cx, #[default] child: Child<'_>) -> Result<impl View> {
     Ok(view! { (child) })
 }
 
@@ -48,6 +49,7 @@ pub async fn tooltip_provider(#[default] child: Child<'_>) -> Result<impl View> 
 /// ```
 #[component]
 pub async fn tooltip(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -67,6 +69,7 @@ pub async fn tooltip(
 /// inside the wrapper works as a trigger too.
 #[component]
 pub async fn tooltip_trigger(
+    cx: &Cx,
     #[default] attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -173,6 +176,7 @@ const CONTENT: StaticClass = class!(
 /// `side` defaults to `Top` and `align` to `Center`.
 #[component]
 pub async fn tooltip_content(
+    cx: &Cx,
     /// The side of the trigger to show on.
     #[default]
     side: TooltipSide,

@@ -179,6 +179,7 @@ def main() -> None:
         "",
         "use topcoat::{",
         "    Result,",
+        "    context::Cx,",
         "    view::{View, ViewExt, component, view},",
         "};",
         "",
@@ -199,7 +200,7 @@ def main() -> None:
         "///",
         "/// Each arm is a different view type, so `.boxed()` gives them one type.",
         "#[component]",
-        "pub async fn render_example(module: &str, example: &str) -> Result<impl View> {",
+        "pub async fn render_example(cx: &Cx, module: &str, example: &str) -> Result<impl View> {",
         "    Ok(match (module, example) {",
     ]
     for _, module, _, _, _, fns in docs:

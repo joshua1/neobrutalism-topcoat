@@ -7,6 +7,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -19,7 +20,7 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="w-full flex-col items-center gap-4 flex">
             carousel(attrs: attributes! { class="w-full max-w-[200px]" },
@@ -45,7 +46,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn sizes() -> Result<impl View> {
+pub async fn sizes(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         carousel(attrs: attributes! { class="w-full max-w-[12rem] sm:max-w-xs md:max-w-sm" },
             carousel_content(
@@ -69,7 +70,7 @@ pub async fn sizes() -> Result<impl View> {
 }
 
 #[component]
-pub async fn spacing() -> Result<impl View> {
+pub async fn spacing(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         carousel(attrs: attributes! { class="w-full max-w-[12rem] sm:max-w-xs md:max-w-sm" },
             carousel_content(attrs: attributes! { class="-ml-1!" },
@@ -93,7 +94,7 @@ pub async fn spacing() -> Result<impl View> {
 }
 
 #[component]
-pub async fn orientation() -> Result<impl View> {
+pub async fn orientation(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         carousel(
             orientation: CarouselOrientation::Vertical,
@@ -124,7 +125,7 @@ const SHOW_SLIDE: &str =
     "document.getElementById('carousel-api-status').textContent=`Slide ${index+1} of ${count}`";
 
 #[component]
-pub async fn api() -> Result<impl View> {
+pub async fn api(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="mx-auto max-w-[10rem] sm:max-w-xs">
             carousel(on_select: Some(SHOW_SLIDE), attrs: attributes! { class="w-full max-w-xs" },

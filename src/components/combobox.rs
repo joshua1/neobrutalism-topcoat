@@ -26,6 +26,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, View, attributes, class, component, view},
 };
@@ -118,6 +119,7 @@ if (list.matches(':popover-open')) list.querySelector('[data-slot=command]').oni
 /// ```
 #[component]
 pub async fn combobox(
+    cx: &Cx,
     /// The `name` the hidden input submits the value under.
     #[into]
     #[default]
@@ -157,6 +159,7 @@ pub async fn combobox(
 /// [`button`]: super::button::button
 #[component]
 pub async fn combobox_trigger(
+    cx: &Cx,
     /// The `id` of the popover content to open.
     target: &str,
     #[default] mut attrs: Attributes,
@@ -189,6 +192,7 @@ pub async fn combobox_trigger(
 /// `hidden in-data-[slot=combobox-value]:inline` shows only here.
 #[component]
 pub async fn combobox_value(
+    cx: &Cx,
     /// The text shown while nothing is checked.
     placeholder: &str,
     #[default] mut attrs: Attributes,
@@ -237,6 +241,7 @@ pub async fn combobox_value(
 /// ```
 #[component]
 pub async fn combobox_input(
+    cx: &Cx,
     /// The `id` of the popover content that lists the choices.
     target: &str,
     #[default] mut attrs: Attributes,
@@ -281,6 +286,7 @@ pub async fn combobox_input(
 /// taken.
 #[component]
 pub async fn combobox_item(
+    cx: &Cx,
     /// The value written to the hidden input.
     value: &str,
     /// The text shown for the item once chosen, if not its own text.
@@ -315,7 +321,10 @@ pub async fn combobox_item(
 /// out of the copy shown in the trigger. `attrs` are forwarded to the `<svg>`,
 /// with extra classes appended (`ml-auto` puts it at the end).
 #[component]
-pub async fn combobox_item_indicator(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn combobox_item_indicator(
+    cx: &Cx,
+    #[default] mut attrs: Attributes,
+) -> Result<impl View> {
     Ok(view! {
         icon(
             data: iconify_icon!("lucide:check"),

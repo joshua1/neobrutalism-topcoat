@@ -1,12 +1,13 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, component, view},
 };
 
 use crate::components::image_card::image_card;
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         image_card(
             caption: "Image",

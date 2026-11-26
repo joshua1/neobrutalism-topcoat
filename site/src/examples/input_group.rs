@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -17,7 +18,7 @@ use crate::components::{
 // component already sets carries Tailwind's `!` (important) modifier.
 
 #[component]
-pub async fn block_start() -> Result<impl View> {
+pub async fn block_start(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_group(attrs: attributes! { class="max-w-sm" },
             input_group_input(attrs: attributes! { placeholder="John" })
@@ -32,7 +33,7 @@ pub async fn block_start() -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_group(attrs: attributes! { class="max-w-sm" },
             input_group_input(attrs: attributes! { placeholder="Search..." })
@@ -43,7 +44,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn textarea() -> Result<impl View> {
+pub async fn textarea(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_group(attrs: attributes! { class="max-w-md" },
             input_group_textarea(attrs: attributes! { placeholder="Ask anything..." })
@@ -63,7 +64,7 @@ pub async fn textarea() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_button() -> Result<impl View> {
+pub async fn with_button(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-sm flex-col gap-4">
             input_group(

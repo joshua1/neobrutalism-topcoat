@@ -75,7 +75,7 @@ async fn default_picker(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! { default_picker() })
 }
 
@@ -116,7 +116,7 @@ async fn basic_picker(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! { basic_picker() })
 }
 
@@ -164,7 +164,7 @@ async fn range_picker_shard(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn range_picker() -> Result<impl View> {
+pub async fn range_picker(cx: &Cx) -> Result<impl View> {
     Ok(view! { range_picker_shard() })
 }
 
@@ -212,7 +212,7 @@ async fn date_of_birth_picker(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn date_of_birth() -> Result<impl View> {
+pub async fn date_of_birth(cx: &Cx) -> Result<impl View> {
     Ok(view! { date_of_birth_picker() })
 }
 
@@ -315,7 +315,7 @@ async fn input_picker(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn input() -> Result<impl View> {
+pub async fn input(cx: &Cx) -> Result<impl View> {
     Ok(view! { input_picker() })
 }
 
@@ -376,6 +376,6 @@ async fn time_picker_shard(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn time_picker() -> Result<impl View> {
+pub async fn time_picker(cx: &Cx) -> Result<impl View> {
     Ok(view! { time_picker_shard() })
 }

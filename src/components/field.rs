@@ -6,6 +6,7 @@ use std::collections::HashSet;
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
 
@@ -32,6 +33,7 @@ use super::label::label;
 /// ```
 #[component]
 pub async fn field_set(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -79,6 +81,7 @@ impl FieldLegendVariant {
 /// `variant` defaults to `Legend`; `Label` matches the size of a field label.
 #[component]
 pub async fn field_legend(
+    cx: &Cx,
     #[default] variant: FieldLegendVariant,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -102,6 +105,7 @@ pub async fn field_legend(
 /// `FieldOrientation::Responsive` fields measure.
 #[component]
 pub async fn field_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -193,6 +197,7 @@ const FIELD: StaticClass =
 /// ```
 #[component]
 pub async fn field(
+    cx: &Cx,
     #[default] orientation: FieldOrientation,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -214,6 +219,7 @@ pub async fn field(
 /// horizontal [`field`].
 #[component]
 pub async fn field_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -259,6 +265,7 @@ const FIELD_LABEL: StaticClass = class!(
 /// or switch is checked.
 #[component]
 pub async fn field_label(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -278,6 +285,7 @@ pub async fn field_label(
 /// title. Use [`field_label`] to label a control.
 #[component]
 pub async fn field_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -301,6 +309,7 @@ pub async fn field_title(
 /// Give it an `id` and reference it from the control's `aria-describedby`.
 #[component]
 pub async fn field_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -328,6 +337,7 @@ pub async fn field_description(
 /// and `empty:hidden` hides it.
 #[component]
 pub async fn field_separator(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -383,6 +393,7 @@ fn unique_messages<'a>(errors: &[&'a str]) -> Vec<&'a str> {
 /// ```
 #[component]
 pub async fn field_error(
+    cx: &Cx,
     #[default] errors: &[&str],
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,

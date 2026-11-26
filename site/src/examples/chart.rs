@@ -349,7 +349,7 @@ enum Footer {
 
 /// "Trending up by 5.2% this month", with its icon.
 #[component]
-async fn trend() -> Result<impl View> {
+async fn trend(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         "Trending up by 5.2% this month "
         icon(data: iconify_icon!("lucide:trending-up"), attrs: attributes! { class="h-4 w-4" })
@@ -359,6 +359,7 @@ async fn trend() -> Result<impl View> {
 /// A card with a chart: a title, a description, the chart and a footer.
 #[component]
 async fn chart_card(
+    cx: &Cx,
     title: &str,
     description: &str,
     footer: Footer,
@@ -413,7 +414,7 @@ const NO_LABEL: ChartTooltip = ChartTooltip {
 // Area charts.
 
 #[component]
-pub async fn chart_area_default() -> Result<impl View> {
+pub async fn chart_area_default(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Area Chart",
@@ -425,7 +426,7 @@ pub async fn chart_area_default() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_area_linear() -> Result<impl View> {
+pub async fn chart_area_linear(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Area Chart - Linear",
@@ -442,7 +443,7 @@ pub async fn chart_area_linear() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_area_step() -> Result<impl View> {
+pub async fn chart_area_step(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Area Chart - Step",
@@ -460,7 +461,7 @@ pub async fn chart_area_step() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_area_stacked() -> Result<impl View> {
+pub async fn chart_area_stacked(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Area Chart - Stacked",
@@ -478,7 +479,7 @@ pub async fn chart_area_stacked() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_area_stacked_expand() -> Result<impl View> {
+pub async fn chart_area_stacked_expand(cx: &Cx) -> Result<impl View> {
     // Other, mobile and desktop, bottom to top, as Octane declares them.
     const CONFIG: ChartConfig = &[OTHER, MOBILE, DESKTOP];
     const DATA: &[ChartRow] = &[
@@ -507,7 +508,7 @@ pub async fn chart_area_stacked_expand() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_area_legend() -> Result<impl View> {
+pub async fn chart_area_legend(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Area Chart - Legend",
@@ -527,7 +528,7 @@ pub async fn chart_area_legend() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_area_icons() -> Result<impl View> {
+pub async fn chart_area_icons(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Area Chart - Icons",
@@ -547,7 +548,7 @@ pub async fn chart_area_icons() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_area_axes() -> Result<impl View> {
+pub async fn chart_area_axes(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Area Chart - Axes",
@@ -628,14 +629,14 @@ async fn area_interactive_card(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_area_interactive() -> Result<impl View> {
+pub async fn chart_area_interactive(cx: &Cx) -> Result<impl View> {
     Ok(view! { area_interactive_card() })
 }
 
 // Bar charts.
 
 #[component]
-pub async fn chart_bar_default() -> Result<impl View> {
+pub async fn chart_bar_default(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Bar Chart", description: "January - June 2024", footer: Footer::Column,
             bar_chart(
@@ -650,7 +651,7 @@ pub async fn chart_bar_default() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_horizontal() -> Result<impl View> {
+pub async fn chart_bar_horizontal(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Bar Chart - Horizontal", description: "January - June 2024", footer: Footer::Column,
             bar_chart(
@@ -667,7 +668,7 @@ pub async fn chart_bar_horizontal() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_multiple() -> Result<impl View> {
+pub async fn chart_bar_multiple(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Bar Chart - Multiple", description: "January - June 2024", footer: Footer::Column,
             bar_chart(config: DESKTOP_MOBILE, data: MONTHS, radius: 4.0, category_format: short_month)
@@ -676,7 +677,7 @@ pub async fn chart_bar_multiple() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_stacked() -> Result<impl View> {
+pub async fn chart_bar_stacked(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Bar Chart - Stacked + Legend", description: "January - June 2024", footer: Footer::Column,
             bar_chart(
@@ -693,7 +694,7 @@ pub async fn chart_bar_stacked() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_label() -> Result<impl View> {
+pub async fn chart_bar_label(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Bar Chart - Label", description: "January - June 2024", footer: Footer::Column,
             bar_chart(
@@ -709,7 +710,7 @@ pub async fn chart_bar_label() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_label_custom() -> Result<impl View> {
+pub async fn chart_bar_label_custom(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Bar Chart - Custom Label", description: "January - June 2024", footer: Footer::Column,
             bar_chart(
@@ -727,7 +728,7 @@ pub async fn chart_bar_label_custom() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_mixed() -> Result<impl View> {
+pub async fn chart_bar_mixed(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Bar Chart - Mixed", description: "January - June 2024", footer: Footer::Column,
             bar_chart(
@@ -744,7 +745,7 @@ pub async fn chart_bar_mixed() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_active() -> Result<impl View> {
+pub async fn chart_bar_active(cx: &Cx) -> Result<impl View> {
     const DATA: &[ChartRow] = &[
         ("Chrome", &[187.0]),
         ("Safari", &[200.0]),
@@ -767,7 +768,7 @@ pub async fn chart_bar_active() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_negative() -> Result<impl View> {
+pub async fn chart_bar_negative(cx: &Cx) -> Result<impl View> {
     const DATA: &[ChartRow] = &[
         ("January", &[186.0]),
         ("February", &[205.0]),
@@ -805,6 +806,7 @@ pub async fn chart_bar_negative() -> Result<impl View> {
 /// button per series showing its total, which sets `active`.
 #[component]
 async fn interactive_header(
+    cx: &Cx,
     title: &str,
     active: topcoat::runtime::Signal<String>,
     shown: &str,
@@ -891,14 +893,14 @@ async fn bar_interactive_card(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_bar_interactive() -> Result<impl View> {
+pub async fn chart_bar_interactive(cx: &Cx) -> Result<impl View> {
     Ok(view! { bar_interactive_card() })
 }
 
 // Line charts.
 
 #[component]
-pub async fn chart_line_default() -> Result<impl View> {
+pub async fn chart_line_default(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Line Chart", description: "January - June 2024", footer: Footer::Column,
             line_chart(
@@ -913,7 +915,7 @@ pub async fn chart_line_default() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_linear() -> Result<impl View> {
+pub async fn chart_line_linear(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Line Chart - Linear", description: "January - June 2024", footer: Footer::Column,
             line_chart(
@@ -927,7 +929,7 @@ pub async fn chart_line_linear() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_step() -> Result<impl View> {
+pub async fn chart_line_step(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Line Chart - Step", description: "January - June 2024", footer: Footer::Column,
             line_chart(
@@ -942,7 +944,7 @@ pub async fn chart_line_step() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_multiple() -> Result<impl View> {
+pub async fn chart_line_multiple(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Line Chart - Multiple",
@@ -959,7 +961,7 @@ pub async fn chart_line_multiple() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_dots() -> Result<impl View> {
+pub async fn chart_line_dots(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Line Chart - Dots", description: "January - June 2024", footer: Footer::Column,
             line_chart(
@@ -976,7 +978,7 @@ pub async fn chart_line_dots() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_dots_custom() -> Result<impl View> {
+pub async fn chart_line_dots_custom(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Line Chart - Custom Dots", description: "January - June 2024", footer: Footer::Column,
             line_chart(
@@ -992,7 +994,7 @@ pub async fn chart_line_dots_custom() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_dots_colors() -> Result<impl View> {
+pub async fn chart_line_dots_colors(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Line Chart - Dots Colors", description: "January - June 2024", footer: Footer::Column,
             line_chart(
@@ -1011,7 +1013,7 @@ pub async fn chart_line_dots_colors() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_label() -> Result<impl View> {
+pub async fn chart_line_label(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Line Chart - Label", description: "January - June 2024", footer: Footer::Column,
             line_chart(
@@ -1029,7 +1031,7 @@ pub async fn chart_line_label() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_label_custom() -> Result<impl View> {
+pub async fn chart_line_label_custom(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Line Chart - Custom Label", description: "January - June 2024", footer: Footer::Column,
             line_chart(
@@ -1086,7 +1088,7 @@ async fn line_interactive_card(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_line_interactive() -> Result<impl View> {
+pub async fn chart_line_interactive(cx: &Cx) -> Result<impl View> {
     Ok(view! { line_interactive_card() })
 }
 
@@ -1103,7 +1105,7 @@ const DONUT: &[PieRing] = &[PieRing {
 }];
 
 #[component]
-pub async fn chart_pie_simple() -> Result<impl View> {
+pub async fn chart_pie_simple(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Pie Chart", description: "January - June 2024", footer: Footer::Centered, pie: true,
             pie_chart(
@@ -1116,7 +1118,7 @@ pub async fn chart_pie_simple() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_pie_label() -> Result<impl View> {
+pub async fn chart_pie_label(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Pie Chart - Label", description: "January - June 2024", footer: Footer::Centered, pie: true,
             pie_chart(
@@ -1130,7 +1132,7 @@ pub async fn chart_pie_label() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_pie_label_custom() -> Result<impl View> {
+pub async fn chart_pie_label_custom(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Pie Chart - Custom Label", description: "January - June 2024", footer: Footer::Centered, pie: true,
             pie_chart(
@@ -1145,7 +1147,7 @@ pub async fn chart_pie_label_custom() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_pie_label_list() -> Result<impl View> {
+pub async fn chart_pie_label_list(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Pie Chart - Label List", description: "January - June 2024", footer: Footer::Centered, pie: true,
             pie_chart(
@@ -1160,7 +1162,7 @@ pub async fn chart_pie_label_list() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_pie_legend() -> Result<impl View> {
+pub async fn chart_pie_legend(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Pie Chart - Legend", description: "January - June 2024", footer: Footer::None, pie: true,
             pie_chart(
@@ -1176,7 +1178,7 @@ pub async fn chart_pie_legend() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_pie_donut() -> Result<impl View> {
+pub async fn chart_pie_donut(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Pie Chart - Donut", description: "January - June 2024", footer: Footer::Centered, pie: true,
             pie_chart(
@@ -1189,7 +1191,7 @@ pub async fn chart_pie_donut() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_pie_donut_active() -> Result<impl View> {
+pub async fn chart_pie_donut_active(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Pie Chart - Donut Active", description: "January - June 2024", footer: Footer::Centered, pie: true,
             pie_chart(
@@ -1203,7 +1205,7 @@ pub async fn chart_pie_donut_active() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_pie_donut_text() -> Result<impl View> {
+pub async fn chart_pie_donut_text(cx: &Cx) -> Result<impl View> {
     // This example has its own figures for Firefox and Other.
     const SHARES: &[f64] = &[275.0, 200.0, 287.0, 173.0, 190.0];
     const RINGS: &[PieRing] = &[PieRing {
@@ -1224,7 +1226,7 @@ pub async fn chart_pie_donut_text() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_pie_stacked() -> Result<impl View> {
+pub async fn chart_pie_stacked(cx: &Cx) -> Result<impl View> {
     // Desktop inside, mobile in a ring around it; each slice is a month.
     const RINGS: &[PieRing] = &[
         PieRing {
@@ -1257,6 +1259,7 @@ pub async fn chart_pie_stacked() -> Result<impl View> {
 /// The stacked workout bar chart shared by the tooltip examples.
 #[component]
 async fn workout_chart(
+    cx: &Cx,
     #[default] config: Option<ChartConfig<'static>>,
     tooltip: ChartTooltip<'static>,
 ) -> Result<impl View> {
@@ -1274,7 +1277,7 @@ async fn workout_chart(
 }
 
 #[component]
-pub async fn chart_tooltip_default() -> Result<impl View> {
+pub async fn chart_tooltip_default(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Tooltip - Default", description: "Default tooltip with ChartTooltipContent.", footer: Footer::None,
             workout_chart(tooltip: ChartTooltip::DEFAULT)
@@ -1283,7 +1286,7 @@ pub async fn chart_tooltip_default() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_tooltip_indicator_line() -> Result<impl View> {
+pub async fn chart_tooltip_indicator_line(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Tooltip - Line Indicator", description: "Tooltip with line indicator.", footer: Footer::None,
             workout_chart(tooltip: LINE_TOOLTIP)
@@ -1292,7 +1295,7 @@ pub async fn chart_tooltip_indicator_line() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_tooltip_indicator_none() -> Result<impl View> {
+pub async fn chart_tooltip_indicator_none(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Tooltip - No Indicator", description: "Tooltip with no indicator.", footer: Footer::None,
             workout_chart(tooltip: ChartTooltip { hide_indicator: true, ..ChartTooltip::DEFAULT })
@@ -1301,7 +1304,7 @@ pub async fn chart_tooltip_indicator_none() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_tooltip_label_custom() -> Result<impl View> {
+pub async fn chart_tooltip_label_custom(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Tooltip - Custom label",
@@ -1313,7 +1316,7 @@ pub async fn chart_tooltip_label_custom() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_tooltip_label_formatter() -> Result<impl View> {
+pub async fn chart_tooltip_label_formatter(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Tooltip - Label Formatter", description: "Tooltip with label formatter.", footer: Footer::None,
             workout_chart(tooltip: ChartTooltip { label_format: Some(long_date), ..ChartTooltip::DEFAULT })
@@ -1322,7 +1325,7 @@ pub async fn chart_tooltip_label_formatter() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_tooltip_label_none() -> Result<impl View> {
+pub async fn chart_tooltip_label_none(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Tooltip - No Label", description: "Tooltip with no label.", footer: Footer::None,
             workout_chart(tooltip: ChartTooltip { hide_indicator: true, ..NO_LABEL })
@@ -1331,7 +1334,7 @@ pub async fn chart_tooltip_label_none() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_tooltip_formatter() -> Result<impl View> {
+pub async fn chart_tooltip_formatter(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Tooltip - Formatter", description: "Tooltip with custom formatter .", footer: Footer::None,
             workout_chart(tooltip: ChartTooltip { hide_indicator: true, unit: Some("kcal"), ..NO_LABEL })
@@ -1340,7 +1343,7 @@ pub async fn chart_tooltip_formatter() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_tooltip_icons() -> Result<impl View> {
+pub async fn chart_tooltip_icons(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(title: "Tooltip - Icons", description: "Tooltip with icons.", footer: Footer::None,
             workout_chart(config: Some(&ACTIVITY_ICONS), tooltip: NO_LABEL)
@@ -1349,7 +1352,7 @@ pub async fn chart_tooltip_icons() -> Result<impl View> {
 }
 
 #[component]
-pub async fn chart_tooltip_advanced() -> Result<impl View> {
+pub async fn chart_tooltip_advanced(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         chart_card(
             title: "Tooltip - Advanced",

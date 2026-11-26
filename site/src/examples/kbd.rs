@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -10,7 +11,7 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex items-center gap-2">
             kbd("Ctrl")
@@ -21,14 +22,14 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn group() -> Result<impl View> {
+pub async fn group(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         kbd_group(kbd("Ctrl") kbd("Shift") kbd("P"))
     })
 }
 
 #[component]
-pub async fn with_icon() -> Result<impl View> {
+pub async fn with_icon(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         kbd_group(
             kbd(icon(data: iconify_icon!("lucide:circle-dashed")))
@@ -39,7 +40,7 @@ pub async fn with_icon() -> Result<impl View> {
 }
 
 #[component]
-pub async fn in_tooltip() -> Result<impl View> {
+pub async fn in_tooltip(cx: &Cx) -> Result<impl View> {
     // A stand-in for the `tooltip` component: CSS shows the content while the
     // trigger is hovered or focused. Its `data-slot="tooltip-content"` gives
     // the key its in-tooltip colors.

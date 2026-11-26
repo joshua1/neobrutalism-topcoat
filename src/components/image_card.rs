@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, View, class, component, view},
 };
 
@@ -19,6 +20,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn image_card(
+    cx: &Cx,
     /// The image's address.
     image_url: &str,
     /// The text shown under the image.

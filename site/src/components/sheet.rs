@@ -12,6 +12,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     runtime::Expr,
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
@@ -55,6 +56,7 @@ const FADE: StaticClass = class!(
 /// ```
 #[component]
 pub async fn sheet(
+    cx: &Cx,
     /// Whether the sheet shows without being opened by a trigger.
     #[into]
     #[default(Expr::from(false))]
@@ -96,6 +98,7 @@ pub async fn sheet(
 /// It is unstyled; give it button styling with `class=(button_variants(..))`.
 #[component]
 pub async fn sheet_trigger(
+    cx: &Cx,
     /// The `id` of the sheet to open.
     target: &str,
     #[default] attrs: Attributes,
@@ -113,6 +116,7 @@ pub async fn sheet_trigger(
 /// A button that closes the [`sheet`] it is inside. It is unstyled.
 #[component]
 pub async fn sheet_close(
+    cx: &Cx,
     #[default] attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -195,6 +199,7 @@ const CONTENT: StaticClass = class!(
 /// corner button out.
 #[component]
 pub async fn sheet_content(
+    cx: &Cx,
     /// The edge the panel slides in from.
     #[default]
     side: SheetSide,
@@ -235,6 +240,7 @@ pub async fn sheet_content(
 /// [`sheet_description`].
 #[component]
 pub async fn sheet_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -252,6 +258,7 @@ pub async fn sheet_header(
 /// The actions at the bottom of a [`sheet_content`], stacked.
 #[component]
 pub async fn sheet_footer(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -269,6 +276,7 @@ pub async fn sheet_footer(
 /// The heading of a [`sheet`], rendered as an `<h2>`.
 #[component]
 pub async fn sheet_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -286,6 +294,7 @@ pub async fn sheet_title(
 /// Text that explains the sheet's purpose, rendered as a `<p>`.
 #[component]
 pub async fn sheet_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

@@ -43,17 +43,17 @@ pub async fn controlled(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! { slider(value: vec![33.0], max: 100.0, step: 1.0) })
 }
 
 #[component]
-pub async fn two_thumbs() -> Result<impl View> {
+pub async fn two_thumbs(cx: &Cx) -> Result<impl View> {
     Ok(view! { slider(value: vec![25.0, 50.0], max: 100.0, step: 1.0) })
 }
 
 #[component]
-pub async fn vertical() -> Result<impl View> {
+pub async fn vertical(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         slider(
             value: vec![25.0],

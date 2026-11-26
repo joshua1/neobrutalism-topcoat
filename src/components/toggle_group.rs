@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -50,6 +51,7 @@ pub enum ToggleGroupOrientation {
 /// ```
 #[component]
 pub async fn toggle_group(
+    cx: &Cx,
     /// The gap between items, in Tailwind spacing units.
     #[default(2)]
     spacing: u8,
@@ -110,6 +112,7 @@ const ITEM: StaticClass = class!(
 /// `disabled=""`) goes on the `<input>`.
 #[component]
 pub async fn toggle_group_item(
+    cx: &Cx,
     /// Whether the item presses on its own or as one of the group's choices.
     #[default]
     kind: ToggleKind,

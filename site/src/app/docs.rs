@@ -5,6 +5,7 @@ mod slug;
 
 use topcoat::{
     Result,
+    context::Cx,
     router::page,
     view::{View, class, component, view},
 };
@@ -13,7 +14,7 @@ use crate::catalog::{DOCS, doc_href};
 
 /// How to set up a Topcoat app and install the components.
 #[page]
-async fn getting_started() -> Result<impl View> {
+async fn getting_started(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="min-h-dvh w-full pt-[70px]">
             sidebar(current: "")
@@ -111,7 +112,7 @@ curl -fsSL https://raw.githubusercontent.com/joshua1/neobrutalism-topcoat/main/t
 const LAYOUT_RS: &str = r#"use topcoat::{Result, router::{Slot, layout}, tailwind, view::{View, view}};
 
 #[layout]
-async fn root_layout(slot: Slot<'_>) -> Result<impl View> {
+async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
     Ok(view! {
         <!DOCTYPE html>
         <html>
@@ -143,7 +144,12 @@ view! {
 
 /// A numbered setup step.
 #[component]
-async fn step(number: u8, title: &str, child: topcoat::view::Child<'_>) -> Result<impl View> {
+async fn step(
+    cx: &Cx,
+    number: u8,
+    title: &str,
+    child: topcoat::view::Child<'_>,
+) -> Result<impl View> {
     Ok(view! {
         <section class="mt-12">
             <h2 class="mb-4 flex items-center gap-3 font-heading text-xl sm:text-2xl">
@@ -158,7 +164,7 @@ async fn step(number: u8, title: &str, child: topcoat::view::Child<'_>) -> Resul
 }
 
 #[component]
-async fn code(text: &str) -> Result<impl View> {
+async fn code(cx: &Cx, text: &str) -> Result<impl View> {
     Ok(view! {
         <pre class="overflow-auto border-2 border-border bg-[#272933] p-4 text-sm leading-6 text-white shadow-shadow"><code>(text)</code></pre>
     })
@@ -166,7 +172,7 @@ async fn code(text: &str) -> Result<impl View> {
 
 /// The fixed navigation on the left: getting started, then every component.
 #[component]
-async fn sidebar(current: &str) -> Result<impl View> {
+async fn sidebar(cx: &Cx, current: &str) -> Result<impl View> {
     Ok(view! {
         <aside class="fixed top-[70px] hidden h-[calc(100svh-70px)] w-[250px] overflow-y-auto border-r-4 border-border bg-secondary-background lg:block">
             <p class="border-b-4 border-border p-4 font-heading text-xl">"Getting started"</p>

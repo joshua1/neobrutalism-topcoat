@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, class, component, view},
 };
@@ -12,7 +13,7 @@ use crate::components::dropdown_menu::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         button_group(
             button(variant: ButtonVariant::Neutral, "Archive")
@@ -23,7 +24,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn vertical() -> Result<impl View> {
+pub async fn vertical(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         button_group(
             orientation: ButtonGroupOrientation::Vertical,
@@ -48,7 +49,7 @@ pub async fn vertical() -> Result<impl View> {
 /// classes land on it rather than on the trigger button inside. The trigger
 /// joins the group with its own classes instead.
 #[component]
-pub async fn with_dropdown() -> Result<impl View> {
+pub async fn with_dropdown(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         button_group(
             button(variant: ButtonVariant::Neutral, "Update")
@@ -79,7 +80,7 @@ pub async fn with_dropdown() -> Result<impl View> {
 /// Octane's `Input` belongs to another component, so a plain `<input>` with
 /// the same classes stands in for it.
 #[component]
-pub async fn with_input() -> Result<impl View> {
+pub async fn with_input(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         button_group(attrs: attributes! { class="w-full max-w-sm" },
             <input
@@ -102,7 +103,7 @@ pub async fn with_input() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_text() -> Result<impl View> {
+pub async fn with_text(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         button_group(
             button_group_text("Text")

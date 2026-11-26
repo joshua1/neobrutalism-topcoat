@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -38,6 +39,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn navigation_menu(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -59,6 +61,7 @@ pub async fn navigation_menu(
 /// The row of items in a [`navigation_menu`], rendered as a `<ul>`.
 #[component]
 pub async fn navigation_menu_list(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -82,6 +85,7 @@ pub async fn navigation_menu_list(
 /// anything inside it opens its panel.
 #[component]
 pub async fn navigation_menu_item(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -133,6 +137,7 @@ pub fn navigation_menu_trigger_style() -> StaticClass {
 /// chevron that flips while the panel is open.
 #[component]
 pub async fn navigation_menu_trigger(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -166,6 +171,7 @@ pub async fn navigation_menu_trigger(
 /// `<ul class="grid w-[500px]">`.
 #[component]
 pub async fn navigation_menu_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -215,6 +221,7 @@ const POPUP: StaticClass = class!(
 /// classes.
 #[component]
 pub async fn navigation_menu_viewport(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -239,6 +246,7 @@ pub async fn navigation_menu_viewport(
 /// the current page, which adds `aria-current="page"`.
 #[component]
 pub async fn navigation_menu_link(
+    cx: &Cx,
     /// Whether the link points at the current page.
     #[default]
     active: bool,
@@ -275,6 +283,7 @@ pub async fn navigation_menu_link(
 #[component]
 #[allow(dead_code)]
 pub async fn navigation_menu_indicator(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

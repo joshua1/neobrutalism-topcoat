@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, class, component, view},
 };
 
@@ -9,7 +10,7 @@ use crate::components::hover_card::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         hover_card(
             hover_card_trigger(
@@ -25,7 +26,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         hover_card(delay: 10, close_delay: 100,
             hover_card_trigger(
@@ -44,7 +45,7 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn sides() -> Result<impl View> {
+pub async fn sides(cx: &Cx) -> Result<impl View> {
     // `!` overrides the button's main fill and text color.
     Ok(view! {
         <div class="flex flex-wrap justify-center gap-2">

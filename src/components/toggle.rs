@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, Class, PromotedStr, StaticClass, View, class, component, view},
 };
 
@@ -134,6 +135,7 @@ pub fn toggle_variants(
 /// ```
 #[component]
 pub async fn toggle(
+    cx: &Cx,
     /// Whether the toggle presses on its own or as one of a set.
     #[default]
     kind: ToggleKind,

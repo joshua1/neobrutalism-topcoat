@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -7,7 +8,7 @@ use topcoat::{
 use crate::components::toggle::{ToggleSize, ToggleVariant, toggle};
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toggle(attrs: attributes! { aria-label="Toggle bold" checked="" },
             icon(data: iconify_icon!("lucide:bold"))
@@ -16,7 +17,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toggle(attrs: attributes! { aria-label="Toggle underline" disabled="" },
             icon(data: iconify_icon!("lucide:underline"))
@@ -25,7 +26,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn outline() -> Result<impl View> {
+pub async fn outline(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex items-center gap-2">
             toggle(
@@ -45,7 +46,7 @@ pub async fn outline() -> Result<impl View> {
 }
 
 #[component]
-pub async fn size() -> Result<impl View> {
+pub async fn size(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-wrap items-center gap-2">
             toggle(
@@ -70,7 +71,7 @@ pub async fn size() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_text() -> Result<impl View> {
+pub async fn with_text(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toggle(attrs: attributes! { aria-label="Toggle italic" },
             icon(data: iconify_icon!("lucide:italic"))

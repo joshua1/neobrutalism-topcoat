@@ -191,6 +191,7 @@ const PROVIDER: StaticClass = class!(
 /// ```
 #[component]
 pub async fn sidebar_provider(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -363,6 +364,7 @@ const MOBILE_SHEET: StaticClass = class!(
 /// ```
 #[component]
 pub async fn sidebar(
+    cx: &Cx,
     /// The edge of the page.
     #[default]
     side: SidebarSide,
@@ -481,7 +483,7 @@ pub async fn sidebar(
 /// `attrs` are forwarded to the `<button>`, with extra classes appended. It
 /// sets `onclick` itself; use `@click` to run more code on click.
 #[component]
-pub async fn sidebar_trigger(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn sidebar_trigger(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <button
             type="button"
@@ -505,7 +507,7 @@ pub async fn sidebar_trigger(#[default] mut attrs: Attributes) -> Result<impl Vi
 /// An invisible strip along the sidebar's inner edge that toggles it on
 /// click, with a resize cursor. Place it last inside the [`sidebar`].
 #[component]
-pub async fn sidebar_rail(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn sidebar_rail(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <button
             type="button"
@@ -538,6 +540,7 @@ pub async fn sidebar_rail(#[default] mut attrs: Attributes) -> Result<impl View>
 /// the `Inset` variant it is drawn as a rounded card.
 #[component]
 pub async fn sidebar_inset(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -562,7 +565,7 @@ pub async fn sidebar_inset(
 ///
 /// Every attribute in `attrs` goes on the `<input>`.
 #[component]
-pub async fn sidebar_input(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn sidebar_input(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         input(attrs: attributes! {
             data-slot="sidebar-input"
@@ -578,6 +581,7 @@ pub async fn sidebar_input(#[default] mut attrs: Attributes) -> Result<impl View
 /// thick bottom border.
 #[component]
 pub async fn sidebar_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -597,6 +601,7 @@ pub async fn sidebar_header(
 /// thick top border.
 #[component]
 pub async fn sidebar_footer(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -618,7 +623,7 @@ pub async fn sidebar_footer(
 /// provided for markup ported from shadcn/ui.
 #[component]
 #[allow(dead_code)]
-pub async fn sidebar_separator(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn sidebar_separator(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="sidebar-separator"
@@ -633,6 +638,7 @@ pub async fn sidebar_separator(#[default] mut attrs: Attributes) -> Result<impl 
 /// The scrolling middle of a [`sidebar`], holding its [`sidebar_group`]s.
 #[component]
 pub async fn sidebar_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -655,6 +661,7 @@ pub async fn sidebar_content(
 /// last.
 #[component]
 pub async fn sidebar_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -677,6 +684,7 @@ pub async fn sidebar_group(
 /// collapses to icons.
 #[component]
 pub async fn sidebar_group_label(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -703,6 +711,7 @@ pub async fn sidebar_group_label(
 #[component]
 #[allow(dead_code)]
 pub async fn sidebar_group_action(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -730,6 +739,7 @@ pub async fn sidebar_group_action(
 /// The body of a [`sidebar_group`], usually a [`sidebar_menu`].
 #[component]
 pub async fn sidebar_group_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -748,6 +758,7 @@ pub async fn sidebar_group_content(
 /// A list of [`sidebar_menu_item`]s, rendered as a `<ul>`.
 #[component]
 pub async fn sidebar_menu(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -770,6 +781,7 @@ pub async fn sidebar_menu(
 /// [`sidebar_menu_tooltip`] (`group/tooltip`, `anchor-name`).
 #[component]
 pub async fn sidebar_menu_item(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -885,6 +897,7 @@ pub fn sidebar_menu_button_variants(
 /// ```
 #[component]
 pub async fn sidebar_menu_button(
+    cx: &Cx,
     /// The row height.
     #[default]
     size: SidebarMenuButtonSize,
@@ -940,6 +953,7 @@ const MENU_TOOLTIP: StaticClass = class!(
 /// the same [`sidebar_menu_item`], outside any `<details>`.
 #[component]
 pub async fn sidebar_menu_tooltip(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -987,6 +1001,7 @@ pub fn sidebar_menu_action_variants(
 #[component]
 #[allow(dead_code)]
 pub async fn sidebar_menu_action(
+    cx: &Cx,
     /// Hides the action until its item is hovered or focused.
     #[default]
     show_on_hover: bool,
@@ -1011,6 +1026,7 @@ pub async fn sidebar_menu_action(
 #[component]
 #[allow(dead_code)]
 pub async fn sidebar_menu_badge(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -1054,6 +1070,7 @@ fn random_percent() -> u64 {
 #[component]
 #[allow(dead_code)]
 pub async fn sidebar_menu_skeleton(
+    cx: &Cx,
     /// Shows an icon placeholder before the text.
     #[default]
     show_icon: bool,
@@ -1087,6 +1104,7 @@ pub async fn sidebar_menu_skeleton(
 /// left. It hides when the sidebar collapses to icons.
 #[component]
 pub async fn sidebar_menu_sub(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -1110,6 +1128,7 @@ pub async fn sidebar_menu_sub(
 /// One entry of a [`sidebar_menu_sub`], rendered as an `<li>`.
 #[component]
 pub async fn sidebar_menu_sub_item(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -1160,6 +1179,7 @@ impl SidebarMenuSubButtonSize {
 /// in `attrs`; `active` highlights it.
 #[component]
 pub async fn sidebar_menu_sub_button(
+    cx: &Cx,
     /// The text size.
     #[default]
     size: SidebarMenuSubButtonSize,

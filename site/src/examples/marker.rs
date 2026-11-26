@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -7,7 +8,7 @@ use topcoat::{
 use crate::components::marker::{MarkerVariant, marker, marker_content, marker_icon};
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="w-full max-w-sm">
             marker(
@@ -19,7 +20,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn separator() -> Result<impl View> {
+pub async fn separator(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="w-full max-w-sm">
             marker(variant: MarkerVariant::Separator, marker_content("Yesterday"))
@@ -30,7 +31,7 @@ pub async fn separator() -> Result<impl View> {
 /// The Octane example uses `Spinner`; this inlines the same spinning
 /// `loader-circle` icon so the example doesn't depend on that component.
 #[component]
-pub async fn with_spinner() -> Result<impl View> {
+pub async fn with_spinner(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="w-full max-w-sm">
             marker(attrs: attributes! { role="status" },

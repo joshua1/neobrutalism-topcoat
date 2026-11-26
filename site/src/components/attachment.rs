@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
 
@@ -151,6 +152,7 @@ const ATTACHMENT: StaticClass = class!(
 /// ```
 #[component]
 pub async fn attachment(
+    cx: &Cx,
     #[default] state: AttachmentState,
     #[default] size: AttachmentSize,
     #[default] orientation: AttachmentOrientation,
@@ -215,6 +217,7 @@ impl AttachmentMediaVariant {
 #[component]
 #[allow(dead_code)]
 pub async fn attachment_media(
+    cx: &Cx,
     #[default] variant: AttachmentMediaVariant,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -247,6 +250,7 @@ pub async fn attachment_media(
 #[component]
 #[allow(dead_code)]
 pub async fn attachment_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -269,6 +273,7 @@ pub async fn attachment_content(
 #[component]
 #[allow(dead_code)]
 pub async fn attachment_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -292,6 +297,7 @@ pub async fn attachment_title(
 #[component]
 #[allow(dead_code)]
 pub async fn attachment_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -316,6 +322,7 @@ pub async fn attachment_description(
 #[component]
 #[allow(dead_code)]
 pub async fn attachment_actions(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -344,6 +351,7 @@ pub async fn attachment_actions(
 #[component]
 #[allow(dead_code)]
 pub async fn attachment_action(
+    cx: &Cx,
     #[default(ButtonVariant::Neutral)] variant: ButtonVariant,
     #[default(ButtonSize::Icon)] size: ButtonSize,
     #[default] mut attrs: Attributes,
@@ -372,6 +380,7 @@ pub async fn attachment_action(
 #[component]
 #[allow(dead_code)]
 pub async fn attachment_trigger(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

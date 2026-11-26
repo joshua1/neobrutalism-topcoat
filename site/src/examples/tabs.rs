@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -27,7 +28,7 @@ const INPUT: &str = "flex h-10 w-full rounded-base border-2 border-border bg-sec
 
 /// Two panels that switch in the browser, without a server round trip.
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         tabs(attrs: attributes! { class="max-w-[400px]" },
             // `grid!` beats the list's own `inline-flex` (class! doesn't merge).
@@ -86,7 +87,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         // `w-fit!` overrides the tabs' own `w-full`.
         tabs(attrs: attributes! { class="w-fit!" },
@@ -99,7 +100,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn icons() -> Result<impl View> {
+pub async fn icons(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         // `w-fit!` overrides the tabs' own `w-full`.
         tabs(attrs: attributes! { class="w-fit!" },
@@ -118,7 +119,7 @@ pub async fn icons() -> Result<impl View> {
 }
 
 #[component]
-pub async fn vertical() -> Result<impl View> {
+pub async fn vertical(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         // `w-fit!` overrides the tabs' own `w-full`.
         tabs(orientation: TabsOrientation::Vertical, attrs: attributes! { class="w-fit!" },

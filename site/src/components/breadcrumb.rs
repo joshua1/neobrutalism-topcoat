@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, View, attributes, class, component, view},
 };
@@ -29,6 +30,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn breadcrumb(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -48,6 +50,7 @@ pub async fn breadcrumb(
 /// line when the trail outgrows its container.
 #[component]
 pub async fn breadcrumb_list(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -70,6 +73,7 @@ pub async fn breadcrumb_list(
 /// [`breadcrumb_page`] or a [`breadcrumb_ellipsis`].
 #[component]
 pub async fn breadcrumb_item(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -91,6 +95,7 @@ pub async fn breadcrumb_item(
 /// `attrs: link_attrs(cx, "/docs", prefetch_mode(cx))`.
 #[component]
 pub async fn breadcrumb_link(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -105,6 +110,7 @@ pub async fn breadcrumb_link(
 /// navigate.
 #[component]
 pub async fn breadcrumb_page(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -129,6 +135,7 @@ pub async fn breadcrumb_page(
 /// `icon(data: iconify_icon!("lucide:dot"))`.
 #[component]
 pub async fn breadcrumb_separator(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[into]
     #[default]
@@ -153,7 +160,7 @@ pub async fn breadcrumb_separator(
 /// An ellipsis standing in for collapsed [`breadcrumb_item`]s, with a
 /// screen-reader-only "More" label.
 #[component]
-pub async fn breadcrumb_ellipsis(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn breadcrumb_ellipsis(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <span
             data-slot="breadcrumb-ellipsis"

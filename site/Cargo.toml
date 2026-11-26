@@ -6,10 +6,10 @@ publish = false
 description = "Documentation site for the neobrutalism Topcoat components."
 
 [dependencies]
-topcoat = { version = "0.10.0", features = ["ui", "tailwind", "icon-iconify"] }
+topcoat = { version = "0.12.1", features = ["ui", "tailwind", "icon-iconify"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
 # The registry the components are installed from (`topcoat ui add --registry neobrutalism`).
 neobrutalism = { path = ".." }
 
 [build-dependencies]
-topcoat = { version = "0.10.0", default-features = false, features = ["tailwind", "icon-iconify"] }
+topcoat = { version = "0.12.1", default-features = false, features = ["tailwind", "icon-iconify"] }

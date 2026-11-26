@@ -11,7 +11,7 @@ use crate::components::toggle_group::{ToggleGroupOrientation, toggle_group, togg
 
 /// Several can be pressed at once: independent (checkbox) items.
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toggle_group(
             toggle_group_item(attrs: attributes! { name="bold" aria-label="Toggle bold" checked="" },
@@ -78,7 +78,7 @@ pub async fn custom(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toggle_group(attrs: attributes! { disabled="" },
             toggle_group_item(attrs: attributes! { name="bold" aria-label="Toggle bold" },
@@ -96,7 +96,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn outline() -> Result<impl View> {
+pub async fn outline(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toggle_group(
             toggle_group_item(
@@ -116,7 +116,7 @@ pub async fn outline() -> Result<impl View> {
 }
 
 #[component]
-pub async fn single() -> Result<impl View> {
+pub async fn single(cx: &Cx) -> Result<impl View> {
     let items = [("all", "All"), ("missed", "Missed"), ("archived", "Archived")];
 
     Ok(view! {
@@ -139,7 +139,7 @@ pub async fn single() -> Result<impl View> {
 }
 
 #[component]
-pub async fn size() -> Result<impl View> {
+pub async fn size(cx: &Cx) -> Result<impl View> {
     let sides = [("top", "Top"), ("bottom", "Bottom"), ("left", "Left"), ("right", "Right")];
 
     Ok(view! {
@@ -169,7 +169,7 @@ pub async fn size() -> Result<impl View> {
 }
 
 #[component]
-pub async fn spacing() -> Result<impl View> {
+pub async fn spacing(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toggle_group(spacing: 0,
             toggle_group_item(
@@ -192,7 +192,7 @@ pub async fn spacing() -> Result<impl View> {
 }
 
 #[component]
-pub async fn vertical() -> Result<impl View> {
+pub async fn vertical(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         toggle_group(orientation: ToggleGroupOrientation::Vertical,
             toggle_group_item(attrs: attributes! { name="bold" aria-label="Toggle bold" },

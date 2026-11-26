@@ -16,6 +16,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -41,6 +42,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn hover_card(
+    cx: &Cx,
     /// Milliseconds the pointer must rest on the trigger before the card opens.
     #[default(600)]
     delay: u32,
@@ -74,6 +76,7 @@ pub async fn hover_card(
 /// style it as a button, add `class=(button_variants(..))`.
 #[component]
 pub async fn hover_card_trigger(
+    cx: &Cx,
     #[default] attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -186,6 +189,7 @@ const CONTENT: StaticClass = class!(
 /// `side` defaults to `Bottom` and `align` to `Center`.
 #[component]
 pub async fn hover_card_content(
+    cx: &Cx,
     /// The side of the trigger to open on.
     #[default]
     side: HoverCardSide,

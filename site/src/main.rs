@@ -11,6 +11,10 @@ mod examples;
 mod styling_demos;
 mod theme;
 
+// `topcoat ui` finds the registry through this dependency; nothing from it is
+// linked. Naming it keeps Cargo's `unused_dependencies` lint quiet.
+use neobrutalism as _;
+
 #[tokio::main]
 async fn main() {
     topcoat::start(app::router()).await.unwrap();

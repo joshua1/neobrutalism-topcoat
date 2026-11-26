@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -11,7 +12,7 @@ use crate::components::menubar::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         menubar(
             menubar_menu(
@@ -100,7 +101,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn checkbox() -> Result<impl View> {
+pub async fn checkbox(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         menubar(attrs: attributes! { class="w-72" },
             menubar_menu(
@@ -133,7 +134,7 @@ pub async fn checkbox() -> Result<impl View> {
 /// The Octane version keeps the choices in `useState`; native radio buttons
 /// sharing a `name` hold the choice here.
 #[component]
-pub async fn radio() -> Result<impl View> {
+pub async fn radio(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         menubar(attrs: attributes! { class="w-72" },
             menubar_menu(
@@ -178,7 +179,7 @@ pub async fn radio() -> Result<impl View> {
 }
 
 #[component]
-pub async fn submenu() -> Result<impl View> {
+pub async fn submenu(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         menubar(attrs: attributes! { class="w-72" },
             menubar_menu(
@@ -221,7 +222,7 @@ pub async fn submenu() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_icons() -> Result<impl View> {
+pub async fn with_icons(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         menubar(attrs: attributes! { class="w-72" },
             menubar_menu(

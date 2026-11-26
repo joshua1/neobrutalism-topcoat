@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -11,7 +12,7 @@ use crate::components::attachment::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         attachment(attrs: attributes! { class="w-full max-w-xs" },
             attachment_media(icon(data: iconify_icon!("lucide:file-text")))
@@ -29,7 +30,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn image() -> Result<impl View> {
+pub async fn image(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         attachment(attrs: attributes! { class="w-full max-w-xs" },
             attachment_media(variant: AttachmentMediaVariant::Image,
@@ -54,7 +55,7 @@ pub async fn image() -> Result<impl View> {
 /// The Octane example uses `Spinner` for the uploading state; this inlines the
 /// same spinning `loader-circle` icon so the example doesn't depend on it.
 #[component]
-pub async fn states() -> Result<impl View> {
+pub async fn states(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-xs flex-col gap-4">
             attachment(state: AttachmentState::Idle, attrs: attributes! { class="w-full" },
@@ -115,7 +116,7 @@ pub async fn states() -> Result<impl View> {
 }
 
 #[component]
-pub async fn vertical() -> Result<impl View> {
+pub async fn vertical(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex gap-4">
             attachment(orientation: AttachmentOrientation::Vertical,

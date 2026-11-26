@@ -12,6 +12,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     runtime::Expr,
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -52,6 +53,7 @@ use super::dialog::{DIALOG_POPUP_MOTION, dialog, dialog_close, dialog_trigger};
 /// ```
 #[component]
 pub async fn alert_dialog(
+    cx: &Cx,
     /// Whether the alert dialog shows without being opened by a trigger.
     #[into]
     #[default(Expr::from(false))]
@@ -83,6 +85,7 @@ pub async fn alert_dialog(
 /// It is unstyled; give it button styling with `class=(button_variants(..))`.
 #[component]
 pub async fn alert_dialog_trigger(
+    cx: &Cx,
     /// The `id` of the alert dialog to open.
     target: &str,
     #[default] attrs: Attributes,
@@ -133,6 +136,7 @@ const CONTENT: StaticClass = class!(
 /// [`alert_dialog_cancel`] or [`alert_dialog_action`].
 #[component]
 pub async fn alert_dialog_content(
+    cx: &Cx,
     /// The panel's width and layout.
     #[default]
     size: AlertDialogSize,
@@ -155,6 +159,7 @@ pub async fn alert_dialog_content(
 /// title and the description.
 #[component]
 pub async fn alert_dialog_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -177,6 +182,7 @@ pub async fn alert_dialog_header(
 /// size the actions sit side by side in two equal columns.
 #[component]
 pub async fn alert_dialog_footer(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -199,6 +205,7 @@ pub async fn alert_dialog_footer(
 /// A boxed icon shown above the title of an [`alert_dialog_content`].
 #[component]
 pub async fn alert_dialog_media(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -222,6 +229,7 @@ pub async fn alert_dialog_media(
 /// The heading of an [`alert_dialog`], rendered as an `<h2>`.
 #[component]
 pub async fn alert_dialog_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -239,6 +247,7 @@ pub async fn alert_dialog_title(
 /// The message of an [`alert_dialog`], rendered as a `<p>`.
 #[component]
 pub async fn alert_dialog_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -261,6 +270,7 @@ pub async fn alert_dialog_description(
 /// `onclick` / runtime handler next to the close.
 #[component]
 pub async fn alert_dialog_action(
+    cx: &Cx,
     #[default] variant: ButtonVariant,
     #[default] size: ButtonSize,
     #[default] mut attrs: Attributes,
@@ -286,6 +296,7 @@ pub async fn alert_dialog_action(
 /// `Neutral` and `size` to `Default`.
 #[component]
 pub async fn alert_dialog_cancel(
+    cx: &Cx,
     #[default(ButtonVariant::Neutral)] variant: ButtonVariant,
     #[default] size: ButtonSize,
     #[default] mut attrs: Attributes,

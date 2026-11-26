@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -19,7 +20,7 @@ use crate::components::{
 // `checked=""` on the matching item.
 
 #[component]
-pub async fn choice_card() -> Result<impl View> {
+pub async fn choice_card(cx: &Cx) -> Result<impl View> {
     let plans = [
         ("plus", "plus-plan", "Plus", "For individuals and small teams."),
         ("pro", "pro-plan", "Pro", "For growing businesses."),
@@ -46,7 +47,7 @@ pub async fn choice_card() -> Result<impl View> {
 }
 
 #[component]
-pub async fn description() -> Result<impl View> {
+pub async fn description(cx: &Cx) -> Result<impl View> {
     let options = [
         ("default", "desc-r1", "Default", "Standard spacing for most use cases."),
         ("comfortable", "desc-r2", "Comfortable", "More space between elements."),
@@ -72,7 +73,7 @@ pub async fn description() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         radio_group(attrs: attributes! { class="w-fit" },
             field(
@@ -100,7 +101,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn fieldset() -> Result<impl View> {
+pub async fn fieldset(cx: &Cx) -> Result<impl View> {
     let plans = [
         ("monthly", "plan-monthly", "Monthly ($9.99/month)"),
         ("yearly", "plan-yearly", "Yearly ($99.99/year)"),
@@ -127,7 +128,7 @@ pub async fn fieldset() -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     let options = [
         ("default", "r1", "Default"),
         ("comfortable", "r2", "Comfortable"),
@@ -149,7 +150,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn invalid() -> Result<impl View> {
+pub async fn invalid(cx: &Cx) -> Result<impl View> {
     let options = [
         ("email", "invalid-email", "Email only"),
         ("sms", "invalid-sms", "SMS only"),

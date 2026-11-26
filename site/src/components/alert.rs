@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -58,6 +59,7 @@ const BASE: StaticClass = class!(
 /// ```
 #[component]
 pub async fn alert(
+    cx: &Cx,
     #[default] variant: AlertVariant,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -77,6 +79,7 @@ pub async fn alert(
 /// The heading of an [`alert`], clamped to one line.
 #[component]
 pub async fn alert_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -97,6 +100,7 @@ pub async fn alert_title(
 /// Text that explains an [`alert`]. Paragraphs inside it get relaxed leading.
 #[component]
 pub async fn alert_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

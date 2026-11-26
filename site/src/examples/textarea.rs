@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -12,7 +13,7 @@ use crate::components::{
 // they use, so those components are called by their full paths.
 
 #[component]
-pub async fn button() -> Result<impl View> {
+pub async fn button(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="grid w-full max-w-xs gap-2">
             textarea(attrs: attributes! { placeholder="Type your message here." })
@@ -22,14 +23,14 @@ pub async fn button() -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         textarea(attrs: attributes! { placeholder="Type your message here." })
     })
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         crate::components::field::field(
             attrs: attributes! { data-disabled="true" class="max-w-xs" },
@@ -42,7 +43,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn field() -> Result<impl View> {
+pub async fn field(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         crate::components::field::field(attrs: attributes! { class="max-w-xs" },
             field_label(attrs: attributes! { for="textarea-message" }, "Message")
@@ -55,7 +56,7 @@ pub async fn field() -> Result<impl View> {
 }
 
 #[component]
-pub async fn invalid() -> Result<impl View> {
+pub async fn invalid(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         crate::components::field::field(
             attrs: attributes! { data-invalid="true" class="max-w-xs" },

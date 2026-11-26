@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -122,6 +123,7 @@ impl BubbleSide {
 #[component]
 #[allow(dead_code)]
 pub async fn bubble_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -150,6 +152,7 @@ pub async fn bubble_group(
 /// ```
 #[component]
 pub async fn bubble(
+    cx: &Cx,
     #[default] variant: BubbleVariant,
     #[default(BubbleAlign::Start)] align: BubbleAlign,
     #[default] mut attrs: Attributes,
@@ -202,6 +205,7 @@ pub const BUBBLE_CONTENT: StaticClass = class!(
 #[component]
 #[allow(dead_code)]
 pub async fn bubble_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -228,6 +232,7 @@ pub async fn bubble_content(
 #[component]
 #[allow(dead_code)]
 pub async fn bubble_reactions(
+    cx: &Cx,
     #[default] side: BubbleSide,
     #[default(BubbleAlign::End)] align: BubbleAlign,
     #[default] mut attrs: Attributes,

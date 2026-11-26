@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, class, component, view},
 };
@@ -16,7 +17,7 @@ use crate::components::{
 /// subtree, so its English text runs left to right; `dir="ltr"` on the text
 /// keeps that.
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         direction_provider(direction: Direction::Rtl,
             <div class="flex flex-col items-start gap-4">

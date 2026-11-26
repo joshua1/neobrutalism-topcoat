@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{StaticClass, View, attributes, class, component, view},
 };
@@ -12,7 +13,7 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         avatar(
             avatar_image(src: "https://github.com/shadcn.png", alt: "@shadcn")
@@ -22,7 +23,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         avatar(
             avatar_image(
@@ -36,14 +37,14 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn fallback() -> Result<impl View> {
+pub async fn fallback(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         avatar(avatar_fallback("CN"))
     })
 }
 
 #[component]
-pub async fn sizes() -> Result<impl View> {
+pub async fn sizes(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-wrap items-center gap-2 grayscale">
             avatar(
@@ -65,7 +66,7 @@ pub async fn sizes() -> Result<impl View> {
 }
 
 #[component]
-pub async fn badge() -> Result<impl View> {
+pub async fn badge(cx: &Cx) -> Result<impl View> {
     // `!` beats the badge's own `bg-main`: `class!` does not drop conflicting
     // classes the way Octane's `cn` does.
     Ok(view! {
@@ -78,7 +79,7 @@ pub async fn badge() -> Result<impl View> {
 }
 
 #[component]
-pub async fn badge_with_icon() -> Result<impl View> {
+pub async fn badge_with_icon(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         avatar(
             attrs: attributes! { class="grayscale" },
@@ -97,7 +98,7 @@ const PEOPLE: [(&str, &str, &str); 3] = [
 ];
 
 #[component]
-pub async fn avatar_group() -> Result<impl View> {
+pub async fn avatar_group(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         ui::avatar_group(
             attrs: attributes! { class="grayscale" },
@@ -113,7 +114,7 @@ pub async fn avatar_group() -> Result<impl View> {
 }
 
 #[component]
-pub async fn avatar_group_count() -> Result<impl View> {
+pub async fn avatar_group_count(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         ui::avatar_group(
             attrs: attributes! { class="grayscale" },
@@ -130,7 +131,7 @@ pub async fn avatar_group_count() -> Result<impl View> {
 }
 
 #[component]
-pub async fn avatar_group_with_icon() -> Result<impl View> {
+pub async fn avatar_group_with_icon(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         ui::avatar_group(
             attrs: attributes! { class="grayscale" },
@@ -161,7 +162,7 @@ const MENU_ITEM: StaticClass = class!(
 const MENU_SEPARATOR: StaticClass = class!("-mx-1 my-1 h-0.5 bg-border");
 
 #[component]
-pub async fn dropdown() -> Result<impl View> {
+pub async fn dropdown(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <button
             type="button"

@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -10,7 +11,7 @@ use crate::components::bubble::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-sm flex-col gap-4">
             bubble(variant: BubbleVariant::Muted,
@@ -24,7 +25,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn as_button() -> Result<impl View> {
+pub async fn as_button(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-sm flex-col gap-4">
             bubble(variant: BubbleVariant::Muted,
@@ -43,7 +44,7 @@ pub async fn as_button() -> Result<impl View> {
 }
 
 #[component]
-pub async fn variants() -> Result<impl View> {
+pub async fn variants(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-sm flex-col gap-4">
             bubble(bubble_content("Default bubbles use the main color."))
@@ -61,7 +62,7 @@ pub async fn variants() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_reactions() -> Result<impl View> {
+pub async fn with_reactions(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-sm flex-col gap-8">
             bubble(variant: BubbleVariant::Muted,

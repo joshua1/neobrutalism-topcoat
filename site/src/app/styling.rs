@@ -126,7 +126,7 @@ const OPTION: &str = "flex h-8 cursor-pointer items-center justify-center rounde
 
 /// The Customize sheet: every setting in one form.
 #[component]
-async fn customize_sheet(theme: &Theme) -> Result<impl View> {
+async fn customize_sheet(cx: &Cx, theme: &Theme) -> Result<impl View> {
     let radii: Vec<(String, String, bool)> = RADII
         .iter()
         .map(|r| (r.to_string(), format!("{r} px"), *r == theme.radius))
@@ -223,7 +223,7 @@ async fn customize_sheet(theme: &Theme) -> Result<impl View> {
 /// The palettes, as swatch radios. Only the selected color mode's palettes
 /// show: each swatch hides itself unless the form's checked `mode` matches.
 #[component]
-async fn presets() -> Result<impl View> {
+async fn presets(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="grid grid-cols-2 gap-2">
             for preset in PRESETS {
@@ -272,7 +272,7 @@ fn preset_colors(preset: &crate::theme::Preset) -> String {
 
 /// A labelled block in the sheet.
 #[component]
-async fn setting(title: &str, #[default] child: Child<'_>) -> Result<impl View> {
+async fn setting(cx: &Cx, title: &str, #[default] child: Child<'_>) -> Result<impl View> {
     Ok(view! {
         <fieldset class="grid gap-3">
             <legend class="mb-3 text-sm font-heading">(title)</legend>
@@ -284,6 +284,7 @@ async fn setting(title: &str, #[default] child: Child<'_>) -> Result<impl View> 
 /// A row of option buttons for one numeric setting: `(value, label, checked)`.
 #[component]
 async fn option_group(
+    cx: &Cx,
     title: &str,
     name: &str,
     columns: u8,
@@ -310,7 +311,7 @@ async fn option_group(
 
 /// The Copy dialog: the whole `styles.css`, or just the `:root` block.
 #[component]
-async fn copy_dialog(stylesheet: &str, root_block: &str) -> Result<impl View> {
+async fn copy_dialog(cx: &Cx, stylesheet: &str, root_block: &str) -> Result<impl View> {
     Ok(view! {
         dialog(
             id: "copy-theme",
@@ -364,7 +365,7 @@ async fn copy_dialog(stylesheet: &str, root_block: &str) -> Result<impl View> {
 }
 
 #[component]
-async fn css_block(id: &str, css: &str) -> Result<impl View> {
+async fn css_block(cx: &Cx, id: &str, css: &str) -> Result<impl View> {
     Ok(view! {
         <pre class="max-h-[50dvh] min-w-0 overflow-auto rounded-base border-2 border-border bg-[#272933] p-4 text-xs leading-5 text-white"><code id=(id)>(css)</code></pre>
     })
@@ -372,7 +373,7 @@ async fn css_block(id: &str, css: &str) -> Result<impl View> {
 
 /// Copies an element's text and says so on the button for a moment.
 #[component]
-async fn copy_button(target: &str, #[default] attrs: Attributes) -> Result<impl View> {
+async fn copy_button(cx: &Cx, target: &str, #[default] attrs: Attributes) -> Result<impl View> {
     let script = format!(
         "navigator.clipboard.writeText(document.getElementById('{target}').textContent); \
          this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500)"

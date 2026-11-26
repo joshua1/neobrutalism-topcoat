@@ -260,7 +260,7 @@ fn app_sidebar(cx: &Cx, default_open: bool) -> Child<'_> {
     let team_names: Vec<String> = TEAMS.iter().map(|team| team.name.to_owned()).collect();
     let team_plans: Vec<String> = TEAMS.iter().map(|team| team.plan.to_owned()).collect();
 
-    view! { cx =>
+    view! {
         sidebar(collapsible: SidebarCollapsible::Icon, default_open: default_open, contained: true,
             sidebar_header(
                 sidebar_menu(
@@ -513,7 +513,7 @@ fn app_sidebar(cx: &Cx, default_open: bool) -> Child<'_> {
 
 /// The avatar, name and email of the user, in the footer button and its menu.
 fn user_summary(cx: &Cx) -> Child<'_> {
-    view! { cx =>
+    view! {
         // `!` replaces the avatar's own `size-10`.
         avatar(
             attrs: attributes! { class="h-8! w-8!" },

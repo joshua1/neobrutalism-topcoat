@@ -12,6 +12,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -38,6 +39,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn accordion(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -67,6 +69,7 @@ const ANIMATION: StaticClass = class!(
 /// be opened, focused or clicked.
 #[component]
 pub async fn accordion_item(
+    cx: &Cx,
     /// Whether the item is disabled.
     #[default]
     disabled: bool,
@@ -100,6 +103,7 @@ pub async fn accordion_item(
 /// `<summary>`. A chevron turns over while the item is open.
 #[component]
 pub async fn accordion_trigger(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -134,6 +138,7 @@ pub async fn accordion_trigger(
 /// `attrs` go on the padded inner `<div>`, with extra classes appended.
 #[component]
 pub async fn accordion_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

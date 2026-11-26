@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -10,7 +11,7 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert(
             icon(data: iconify_icon!("lucide:circle-check"))
@@ -21,7 +22,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn description_only() -> Result<impl View> {
+pub async fn description_only(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert(
             alert_description("This one has a description only. No title. No icon.")
@@ -30,7 +31,7 @@ pub async fn description_only() -> Result<impl View> {
 }
 
 #[component]
-pub async fn destructive() -> Result<impl View> {
+pub async fn destructive(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert(
             variant: AlertVariant::Destructive,
@@ -42,7 +43,7 @@ pub async fn destructive() -> Result<impl View> {
 }
 
 #[component]
-pub async fn icon_description() -> Result<impl View> {
+pub async fn icon_description(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert(
             icon(data: iconify_icon!("lucide:bookmark-check"))
@@ -52,7 +53,7 @@ pub async fn icon_description() -> Result<impl View> {
 }
 
 #[component]
-pub async fn icon_title() -> Result<impl View> {
+pub async fn icon_title(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert(
             icon(data: iconify_icon!("lucide:popcorn"))
@@ -62,7 +63,7 @@ pub async fn icon_title() -> Result<impl View> {
 }
 
 #[component]
-pub async fn long_description() -> Result<impl View> {
+pub async fn long_description(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert(
             icon(data: iconify_icon!("lucide:gift"))
@@ -75,7 +76,7 @@ pub async fn long_description() -> Result<impl View> {
 }
 
 #[component]
-pub async fn long_title_and_description() -> Result<impl View> {
+pub async fn long_title_and_description(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert(
             icon(data: iconify_icon!("lucide:circle-alert"))
@@ -96,7 +97,7 @@ pub async fn long_title_and_description() -> Result<impl View> {
 }
 
 #[component]
-pub async fn long_title() -> Result<impl View> {
+pub async fn long_title(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         alert(
             icon(data: iconify_icon!("lucide:shield-alert"))
@@ -109,7 +110,7 @@ pub async fn long_title() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_button() -> Result<impl View> {
+pub async fn with_button(cx: &Cx) -> Result<impl View> {
     // `!` makes the overrides beat the button's own height and colors: unlike
     // Octane's `cn`, `class!` does not drop conflicting classes.
     Ok(view! {

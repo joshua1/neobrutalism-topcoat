@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
@@ -10,12 +11,12 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! { spinner() })
 }
 
 #[component]
-pub async fn size() -> Result<impl View> {
+pub async fn size(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex items-center gap-6">
             spinner(attrs: attributes! { class="size-4" })
@@ -27,7 +28,7 @@ pub async fn size() -> Result<impl View> {
 }
 
 #[component]
-pub async fn in_button() -> Result<impl View> {
+pub async fn in_button(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-wrap items-center gap-4">
             button(attrs: attributes! { disabled="" }, spinner() "Please wait")
@@ -42,7 +43,7 @@ pub async fn in_button() -> Result<impl View> {
 }
 
 #[component]
-pub async fn with_badge() -> Result<impl View> {
+pub async fn with_badge(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex flex-wrap items-center gap-4">
             badge(spinner() "Syncing")

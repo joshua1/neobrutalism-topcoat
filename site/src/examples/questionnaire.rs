@@ -32,7 +32,7 @@ const SHOW_ANSWERS: &str = "event.preventDefault();\
     out.hidden = false;";
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="flex w-full max-w-md flex-col gap-4">
             <div class="w-full">

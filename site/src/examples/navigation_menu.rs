@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{Child, View, attributes, component, view},
 };
 
@@ -44,7 +45,12 @@ const COMPONENTS: [(&str, &str, &str); 6] = [
 
 /// A titled link with a short description, as one entry of a panel.
 #[component]
-async fn list_item(title: &str, href: &str, #[default] child: Child<'_>) -> Result<impl View> {
+async fn list_item(
+    cx: &Cx,
+    title: &str,
+    href: &str,
+    #[default] child: Child<'_>,
+) -> Result<impl View> {
     Ok(view! {
         <li>
             navigation_menu_link(
@@ -64,7 +70,7 @@ async fn list_item(title: &str, href: &str, #[default] child: Child<'_>) -> Resu
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         navigation_menu(attrs: attributes! { class="z-5" },
             navigation_menu_list(

@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, View, class, component, view},
 };
 
@@ -34,6 +35,7 @@ impl MessageAlign {
 #[component]
 #[allow(dead_code)]
 pub async fn message_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -65,6 +67,7 @@ pub async fn message_group(
 /// ```
 #[component]
 pub async fn message(
+    cx: &Cx,
     #[default] align: MessageAlign,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -90,6 +93,7 @@ pub async fn message(
 #[component]
 #[allow(dead_code)]
 pub async fn message_avatar(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -114,6 +118,7 @@ pub async fn message_avatar(
 #[component]
 #[allow(dead_code)]
 pub async fn message_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -136,6 +141,7 @@ pub async fn message_content(
 #[component]
 #[allow(dead_code)]
 pub async fn message_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -158,6 +164,7 @@ pub async fn message_header(
 #[component]
 #[allow(dead_code)]
 pub async fn message_footer(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

@@ -11,16 +11,17 @@ Topcoat component in `src/components/<snake_name>.rs`.
   components, not restyled Topcoat ones.
 - **Rust structure and behavior:** the matching Topcoat component, when there
   is one, in
-  `~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/topcoat-ui-registry-0.10.0/src/components/`.
+  `~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/topcoat-ui-registry-0.12.1/src/components/`.
   `src/components/button.rs` and `badge.rs` here are the house style.
-- **Topcoat docs:** `topcoat-0.10.0/docs/runtime.md` (signals, `$(..)`,
-  `@event`, `:bind`), `topcoat-view-macro-0.10.0/docs/{component,class,attributes}.md`.
+- **Topcoat docs:** `topcoat-0.12.1/docs/runtime.md` (signals, `$(..)`,
+  `@event`, `:bind`), `topcoat-view-macro-0.12.1/docs/{component,class,attributes,view}.md`.
 
 ## API shape
 
 - File name: hyphens become underscores (`alert-dialog` -> `alert_dialog.rs`).
-- Every part is `#[component] pub async fn <name>(...) -> Result<impl View>`.
-  Compound parts are separate functions named after the Octane export in
+- Every part is `#[component] pub async fn <name>(cx: &Cx, ...) -> Result<impl View>`.
+  Topcoat requires `cx: &Cx` as the first parameter even when it is unused;
+  callers leave it out, because `view!` passes it. Compound parts are separate functions named after the Octane export in
   snake_case (`CardHeader` -> `card_header`).
 - Props: `#[default] mut attrs: Attributes` (forwarded with `(attrs)`, caller
   classes appended via `attrs.remove("class")`), and `#[default] child: Child<'_>`.
@@ -76,8 +77,10 @@ Gotchas found while porting:
 - A prop typed as a bare function pointer (`fn(&str) -> String`) doesn't
   compile inside `#[component]`; name it with a type alias
   (`type Format = fn(&str) -> String;`).
-- `attributes!` in a plain function (not a component) needs `cx =>` first,
-  and its handler closures need typed parameters (`|_e: Event|`).
+- `view!` and `attributes!` capture the variable named `cx` from the
+  surrounding scope, so a plain function (not a component) that uses them
+  takes `cx: &Cx`. Handler closures in `attributes!` need typed parameters
+  (`|_e: Event|`).
 - A config holding `IconData` must be a `static`, not a `const`.
 - `field`'s `*:w-full` also hits a `popover_content` placed inside a field;
   give the panel `w-auto!`.

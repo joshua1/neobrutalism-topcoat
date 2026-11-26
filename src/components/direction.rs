@@ -64,6 +64,7 @@ impl AttributeValueViewParts for Direction {
 /// ```
 #[component]
 pub async fn direction_provider(
+    cx: &Cx,
     #[default] direction: Direction,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,

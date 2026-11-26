@@ -1,12 +1,13 @@
 use topcoat::{
     Result,
+    context::Cx,
     view::{View, attributes, component, view},
 };
 
 use crate::components::scroll_area::{ScrollBarOrientation, scroll_area, scroll_bar};
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         scroll_area(
             attrs: attributes! {
@@ -45,7 +46,7 @@ const WORKS: [Artwork; 3] = [
 ];
 
 #[component]
-pub async fn horizontal() -> Result<impl View> {
+pub async fn horizontal(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         scroll_area(
             attrs: attributes! {

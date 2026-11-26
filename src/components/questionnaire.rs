@@ -37,6 +37,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     runtime::Expr,
     view::{Attributes, Child, StaticClass, Unescaped, View, attributes, class, component, view},
@@ -339,6 +340,7 @@ const ROOT: StaticClass = class!(
 /// ```
 #[component]
 pub async fn questionnaire(
+    cx: &Cx,
     /// Keys that pick a choice, if any.
     #[into]
     #[default]
@@ -369,6 +371,7 @@ pub async fn questionnaire(
 /// set on its `aria-` attributes.
 #[component]
 pub async fn questionnaire_progress(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -400,6 +403,7 @@ pub async fn questionnaire_progress(
 /// runtime expression to check it as the user types.
 #[component]
 pub async fn questionnaire_item(
+    cx: &Cx,
     /// The form field name of the item's answers.
     name: &str,
     /// Whether the item must be answered.
@@ -442,6 +446,7 @@ pub async fn questionnaire_item(
 /// The question, rendered as the item's `<legend>`.
 #[component]
 pub async fn questionnaire_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -463,6 +468,7 @@ pub async fn questionnaire_title(
 /// Help text under the question. The item is described by it.
 #[component]
 pub async fn questionnaire_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -480,6 +486,7 @@ pub async fn questionnaire_description(
 /// The list of [`questionnaire_choice`]s of an item.
 #[component]
 pub async fn questionnaire_choices(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -548,6 +555,7 @@ const SHORTCUT: StaticClass = class!(
 /// text for a second line.
 #[component]
 pub async fn questionnaire_choice(
+    cx: &Cx,
     /// The value submitted when the choice is picked.
     value: &str,
     /// Picks the choice initially.
@@ -598,6 +606,7 @@ pub async fn questionnaire_choice(
 /// A second line of text inside a [`questionnaire_choice`].
 #[component]
 pub async fn questionnaire_choice_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -627,7 +636,7 @@ const INPUT: StaticClass = class!(
 /// default), `placeholder`, `aria-label`, `autocomplete`, `@input`. Name it
 /// with `aria-label`, since the item's title is the fieldset's legend.
 #[component]
-pub async fn questionnaire_input(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn questionnaire_input(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <div
             data-slot="questionnaire-input-wrapper"
@@ -649,6 +658,7 @@ pub async fn questionnaire_input(#[default] mut attrs: Attributes) -> Result<imp
 /// item and "Choose an answer or skip this question." on an optional one.
 #[component]
 pub async fn questionnaire_error(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[into]
     #[default]
@@ -685,6 +695,7 @@ pub async fn questionnaire_error(
 /// Previous on the left, then Skip and Next (or Submit) on the right.
 #[component]
 pub async fn questionnaire_actions(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -706,6 +717,7 @@ pub async fn questionnaire_actions(
 /// `Neutral` and `size` to `Sm`; children replace the "Previous" label.
 #[component]
 pub async fn questionnaire_previous(
+    cx: &Cx,
     #[default(ButtonVariant::Neutral)] variant: ButtonVariant,
     #[default(ButtonSize::Sm)] size: ButtonSize,
     #[default] mut attrs: Attributes,
@@ -739,6 +751,7 @@ pub async fn questionnaire_previous(
 /// "Skip" label.
 #[component]
 pub async fn questionnaire_skip(
+    cx: &Cx,
     #[default(ButtonVariant::Neutral)] variant: ButtonVariant,
     #[default(ButtonSize::Sm)] size: ButtonSize,
     #[default] mut attrs: Attributes,
@@ -771,6 +784,7 @@ pub async fn questionnaire_skip(
 /// the "Next" label.
 #[component]
 pub async fn questionnaire_next(
+    cx: &Cx,
     #[default] variant: ButtonVariant,
     #[default(ButtonSize::Sm)] size: ButtonSize,
     #[default] mut attrs: Attributes,
@@ -804,6 +818,7 @@ pub async fn questionnaire_next(
 /// and `size` to `Sm`; children replace the "Submit" label.
 #[component]
 pub async fn questionnaire_submit(
+    cx: &Cx,
     #[default] variant: ButtonVariant,
     #[default(ButtonSize::Sm)] size: ButtonSize,
     #[default] mut attrs: Attributes,

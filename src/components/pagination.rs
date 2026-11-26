@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, StaticClass, View, attributes, class, component, view},
 };
@@ -33,6 +34,7 @@ use super::button::{ButtonSize, ButtonVariant, button_variants};
 /// ```
 #[component]
 pub async fn pagination(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -52,6 +54,7 @@ pub async fn pagination(
 /// The list of steps in a [`pagination`], rendered as a `<ul>`.
 #[component]
 pub async fn pagination_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -69,6 +72,7 @@ pub async fn pagination_content(
 /// One step of a [`pagination_content`], holding a link or an ellipsis.
 #[component]
 pub async fn pagination_item(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -89,6 +93,7 @@ const INACTIVE: StaticClass = class!("bg-background! text-foreground!");
 /// `size` defaults to `ButtonSize::Icon`, a square for a page number.
 #[component]
 pub async fn pagination_link(
+    cx: &Cx,
     /// Whether this link points at the page being shown.
     #[default]
     active: bool,
@@ -122,7 +127,7 @@ pub async fn pagination_link(
 ///
 /// Pass its destination as `href` in `attrs`.
 #[component]
-pub async fn pagination_previous(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn pagination_previous(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <a
             data-slot="pagination-previous"
@@ -149,7 +154,7 @@ pub async fn pagination_previous(#[default] mut attrs: Attributes) -> Result<imp
 ///
 /// Pass its destination as `href` in `attrs`.
 #[component]
-pub async fn pagination_next(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn pagination_next(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <a
             data-slot="pagination-next"
@@ -174,7 +179,7 @@ pub async fn pagination_next(#[default] mut attrs: Attributes) -> Result<impl Vi
 
 /// An ellipsis standing in for the page links left out.
 #[component]
-pub async fn pagination_ellipsis(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn pagination_ellipsis(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         <span
             data-slot="pagination-ellipsis"

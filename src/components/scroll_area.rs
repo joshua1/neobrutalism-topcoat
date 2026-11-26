@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -38,6 +39,7 @@ const SCROLLBAR: StaticClass = class!(
 /// ```
 #[component]
 pub async fn scroll_area(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -101,7 +103,10 @@ impl ScrollBarOrientation {
 /// ```
 #[component]
 #[allow(dead_code)]
-pub async fn scroll_bar(#[default] orientation: ScrollBarOrientation) -> Result<impl View> {
+pub async fn scroll_bar(
+    cx: &Cx,
+    #[default] orientation: ScrollBarOrientation,
+) -> Result<impl View> {
     Ok(view! {
         <span
             data-slot="scroll-area-scrollbar"

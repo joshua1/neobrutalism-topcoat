@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, Class, StaticClass, View, class, component, view},
 };
 
@@ -83,6 +84,7 @@ pub fn button_group_variants(
 /// ```
 #[component]
 pub async fn button_group(
+    cx: &Cx,
     /// Whether the children sit in a row or a column.
     #[default]
     orientation: ButtonGroupOrientation,
@@ -109,6 +111,7 @@ pub async fn button_group(
 /// another element (such as a `<label>`) yourself.
 #[component]
 pub async fn button_group_text(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -134,6 +137,7 @@ pub async fn button_group_text(
 /// a horizontal group).
 #[component]
 pub async fn button_group_separator(
+    cx: &Cx,
     /// The direction of the rule.
     #[default(ButtonGroupOrientation::Vertical)]
     orientation: ButtonGroupOrientation,

@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -31,6 +32,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn empty(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -53,6 +55,7 @@ pub async fn empty(
 /// The centered heading block of an [`empty`] state.
 #[component]
 pub async fn empty_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -112,6 +115,7 @@ const MEDIA: StaticClass = class!(
 /// `Default`; use `Icon` to frame a single icon.
 #[component]
 pub async fn empty_media(
+    cx: &Cx,
     #[default] variant: EmptyMediaVariant,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -131,6 +135,7 @@ pub async fn empty_media(
 /// The heading of an [`empty`] state.
 #[component]
 pub async fn empty_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -148,6 +153,7 @@ pub async fn empty_title(
 /// Text explaining an [`empty`] state. Links inside it are underlined.
 #[component]
 pub async fn empty_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -169,6 +175,7 @@ pub async fn empty_description(
 /// The actions of an [`empty`] state, such as a button or a search field.
 #[component]
 pub async fn empty_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

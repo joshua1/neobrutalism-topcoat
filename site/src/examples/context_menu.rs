@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -17,7 +18,7 @@ const ZONE: &str = "flex aspect-video w-full max-w-xs items-center justify-cente
                     border-2 border-dashed border-border text-sm font-base";
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(
@@ -83,7 +84,7 @@ pub async fn demo() -> Result<impl View> {
 
 /// The trigger text for pointer and touch devices, as in the Octane examples.
 #[component]
-async fn zone_text(#[into] fine: String, #[into] coarse: String) -> Result<impl View> {
+async fn zone_text(cx: &Cx, #[into] fine: String, #[into] coarse: String) -> Result<impl View> {
     Ok(view! {
         <span class="hidden pointer-fine:inline-block">(fine)</span>
         <span class="hidden pointer-coarse:inline-block">(coarse)</span>
@@ -91,7 +92,7 @@ async fn zone_text(#[into] fine: String, #[into] coarse: String) -> Result<impl 
 }
 
 #[component]
-pub async fn basic() -> Result<impl View> {
+pub async fn basic(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(attrs: attributes! { class=(ZONE) },
@@ -109,7 +110,7 @@ pub async fn basic() -> Result<impl View> {
 }
 
 #[component]
-pub async fn checkboxes() -> Result<impl View> {
+pub async fn checkboxes(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(attrs: attributes! { class=(ZONE) },
@@ -131,7 +132,7 @@ pub async fn checkboxes() -> Result<impl View> {
 }
 
 #[component]
-pub async fn destructive() -> Result<impl View> {
+pub async fn destructive(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(attrs: attributes! { class=(ZONE) },
@@ -155,7 +156,7 @@ pub async fn destructive() -> Result<impl View> {
 }
 
 #[component]
-pub async fn groups() -> Result<impl View> {
+pub async fn groups(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(attrs: attributes! { class=(ZONE) },
@@ -193,7 +194,7 @@ pub async fn groups() -> Result<impl View> {
 }
 
 #[component]
-pub async fn icons() -> Result<impl View> {
+pub async fn icons(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(attrs: attributes! { class=(ZONE) },
@@ -220,7 +221,7 @@ pub async fn icons() -> Result<impl View> {
 /// The Octane version keeps the choices in `useState`; native radio buttons
 /// sharing a `name` hold the choice here.
 #[component]
-pub async fn radio() -> Result<impl View> {
+pub async fn radio(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(attrs: attributes! { class=(ZONE) },
@@ -264,7 +265,7 @@ pub async fn radio() -> Result<impl View> {
 }
 
 #[component]
-pub async fn shortcuts() -> Result<impl View> {
+pub async fn shortcuts(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(attrs: attributes! { class=(ZONE) },
@@ -290,7 +291,7 @@ pub async fn shortcuts() -> Result<impl View> {
 }
 
 #[component]
-pub async fn sides() -> Result<impl View> {
+pub async fn sides(cx: &Cx) -> Result<impl View> {
     let sides = [
         (ContextMenuSide::Top, "top"),
         (ContextMenuSide::Right, "right"),
@@ -322,7 +323,7 @@ pub async fn sides() -> Result<impl View> {
 }
 
 #[component]
-pub async fn submenu() -> Result<impl View> {
+pub async fn submenu(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         context_menu(
             context_menu_trigger(attrs: attributes! { class=(ZONE) },

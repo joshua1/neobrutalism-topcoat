@@ -20,7 +20,7 @@ use crate::components::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         card(
             attrs: attributes! { class="w-full max-w-sm" },
@@ -73,7 +73,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn image() -> Result<impl View> {
+pub async fn image(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         card(
             attrs: attributes! { class="relative mx-auto w-full max-w-sm overflow-hidden pt-0" },
@@ -96,7 +96,7 @@ pub async fn image() -> Result<impl View> {
 }
 
 #[component]
-pub async fn size() -> Result<impl View> {
+pub async fn size(cx: &Cx) -> Result<impl View> {
     let feature_name = "Scheduled reports";
     let points = [
         "Choose a schedule (daily, or weekly).",

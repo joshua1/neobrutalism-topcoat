@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{IconData, iconify::iconify_icon},
     view::{Attributes, View, class, component, view},
 };
@@ -29,6 +30,7 @@ const LOADER: IconData = iconify_icon!("lucide:loader-circle");
 /// ```
 #[component]
 pub async fn spinner(
+    cx: &Cx,
     /// The accessible name announced to assistive technology.
     #[into]
     #[default(String::from("Loading"))]

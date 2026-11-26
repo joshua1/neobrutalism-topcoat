@@ -10,6 +10,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, class, component, view},
 };
@@ -44,7 +45,7 @@ use crate::components::{
 /// screens, two on small ones (the chat and items column is hidden), one on
 /// phones (the chart moves to the top and the scroll area is hidden).
 #[component]
-pub async fn styling_examples() -> Result<impl View> {
+pub async fn styling_examples(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="w-full grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-10 gap-5 not-prose">
             <div class="flex flex-col gap-5">
@@ -70,7 +71,7 @@ pub async fn styling_examples() -> Result<impl View> {
 }
 
 #[component]
-async fn settings_demo() -> Result<impl View> {
+async fn settings_demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field_group(
             attrs: attributes! {
@@ -105,7 +106,7 @@ async fn settings_demo() -> Result<impl View> {
 }
 
 #[component]
-async fn input_group_demo() -> Result<impl View> {
+async fn input_group_demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_group(attrs: attributes! { class="w-full" },
             input_group_input(attrs: attributes! { placeholder="Search components..." })
@@ -116,7 +117,7 @@ async fn input_group_demo() -> Result<impl View> {
 }
 
 #[component]
-async fn collapsible_demo() -> Result<impl View> {
+async fn collapsible_demo(cx: &Cx) -> Result<impl View> {
     // The `<details>` trigger must be its direct child and hides everything
     // else in it while closed, so the always-visible rows sit outside it and
     // the trigger is positioned over the header's empty slot (inside its 2px
@@ -166,7 +167,7 @@ async fn collapsible_demo() -> Result<impl View> {
 }
 
 #[component]
-async fn slider_demo() -> Result<impl View> {
+async fn slider_demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         <div class="grid w-full gap-3 text-foreground">
             <div class="flex items-center justify-between">
@@ -179,7 +180,7 @@ async fn slider_demo() -> Result<impl View> {
 }
 
 #[component]
-async fn alert_demo() -> Result<impl View> {
+async fn alert_demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         // `!` overrides the alert's `bg-background`.
         alert(attrs: attributes! { class="bg-secondary-background!" },
@@ -191,7 +192,7 @@ async fn alert_demo() -> Result<impl View> {
 }
 
 #[component]
-async fn input_group_textarea_demo() -> Result<impl View> {
+async fn input_group_textarea_demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_group(attrs: attributes! { class="w-full" },
             input_group_textarea(attrs: attributes! { placeholder="Ask anything..." })
@@ -255,7 +256,7 @@ const THREAD: [ChatMessage; 3] = [
 ];
 
 #[component]
-async fn chat_demo() -> Result<impl View> {
+async fn chat_demo(cx: &Cx) -> Result<impl View> {
     // A loop binding named `message` would match the `message` component's
     // unit struct, so each one is an `entry`.
     Ok(view! {
@@ -276,7 +277,7 @@ async fn chat_demo() -> Result<impl View> {
 }
 
 #[component]
-async fn items_demo() -> Result<impl View> {
+async fn items_demo(cx: &Cx) -> Result<impl View> {
     let items = [
         (
             iconify_icon!("lucide:git-pull-request"),
@@ -306,7 +307,7 @@ async fn items_demo() -> Result<impl View> {
 }
 
 #[component]
-async fn scroll_area_demo() -> Result<impl View> {
+async fn scroll_area_demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         scroll_area(
             attrs: attributes! {

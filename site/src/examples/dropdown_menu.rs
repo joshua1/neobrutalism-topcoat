@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -13,7 +14,7 @@ use crate::components::dropdown_menu::{
 };
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         dropdown_menu(
             dropdown_menu_trigger(
@@ -107,7 +108,7 @@ pub async fn demo() -> Result<impl View> {
 /// The Octane version keeps each checkbox in `useState`; here each native
 /// checkbox holds its own state.
 #[component]
-pub async fn checkboxes() -> Result<impl View> {
+pub async fn checkboxes(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         dropdown_menu(
             dropdown_menu_trigger(
@@ -150,7 +151,7 @@ pub async fn checkboxes() -> Result<impl View> {
 /// The radio buttons share the `position` name, so checking one unchecks the
 /// others without any state of our own.
 #[component]
-pub async fn radio() -> Result<impl View> {
+pub async fn radio(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         dropdown_menu(
             dropdown_menu_trigger(

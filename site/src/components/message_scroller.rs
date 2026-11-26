@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{Attributes, Child, View, attributes, class, component, view},
 };
@@ -28,7 +29,7 @@ const ON_CLICK: &str = r#"const v=this.closest('[data-slot=message-scroller]')?.
 /// so ported markup reads the same.
 #[component]
 #[allow(dead_code)]
-pub async fn message_scroller_provider(#[default] child: Child<'_>) -> Result<impl View> {
+pub async fn message_scroller_provider(cx: &Cx, #[default] child: Child<'_>) -> Result<impl View> {
     Ok(view! { (child) })
 }
 
@@ -60,6 +61,7 @@ pub async fn message_scroller_provider(#[default] child: Child<'_>) -> Result<im
 /// ```
 #[component]
 pub async fn message_scroller(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -85,6 +87,7 @@ pub async fn message_scroller(
 #[component]
 #[allow(dead_code)]
 pub async fn message_scroller_viewport(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -119,6 +122,7 @@ pub async fn message_scroller_viewport(
 #[component]
 #[allow(dead_code)]
 pub async fn message_scroller_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -143,6 +147,7 @@ pub async fn message_scroller_content(
 #[component]
 #[allow(dead_code)]
 pub async fn message_scroller_item(
+    cx: &Cx,
     /// A stable id for the message.
     #[default]
     message_id: Option<&str>,
@@ -209,6 +214,7 @@ impl ScrollDirection {
 #[component]
 #[allow(dead_code)]
 pub async fn message_scroller_button(
+    cx: &Cx,
     #[default] direction: ScrollDirection,
     #[default(ButtonVariant::Neutral)] variant: ButtonVariant,
     #[default(ButtonSize::Icon)] size: ButtonSize,

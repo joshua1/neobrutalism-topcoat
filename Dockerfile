@@ -10,10 +10,10 @@
 # Vercel (Container runtime), Railway, Render, Fly.io and Cloud Run can all
 # build this file from the repository root.
 
-FROM rust:1.98-trixie AS build
+FROM rust:1.100-trixie AS build
 
 # `topcoat asset bundle` writes the asset bundle the server loads at runtime.
-RUN cargo install topcoat-cli --version 0.10.0 --locked
+RUN cargo install topcoat-cli --version 0.12.1 --locked
 
 WORKDIR /app
 COPY . .

@@ -489,6 +489,7 @@ const SELECTION_JS: &str = "const t=event.target;if(!t.dataset||!t.dataset.selec
 /// ```
 #[component]
 pub async fn data_table(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -514,6 +515,7 @@ pub async fn data_table(
 /// as a child of the toolbar.
 #[component]
 pub async fn data_table_filter(
+    cx: &Cx,
     /// The table's state, whose sort and hidden columns the form keeps.
     state: &DataTableState,
     /// Extra attributes for the `<input>`.
@@ -563,6 +565,7 @@ const NEUTRAL_FILL: StaticClass = class!("bg-secondary-background! text-foregrou
 /// such as `ml-auto` there.
 #[component]
 pub async fn data_table_column_toggle<T: 'static>(
+    cx: &Cx,
     /// The table's state, which says which columns are hidden.
     state: &DataTableState,
     /// The table's columns; those with `hideable` are listed.
@@ -617,6 +620,7 @@ pub async fn data_table_column_toggle<T: 'static>(
 /// with extra classes appended to its classes.
 #[component]
 pub async fn data_table_sort_button(
+    cx: &Cx,
     /// The table's state.
     state: &DataTableState,
     /// The id of the column this header sorts.
@@ -653,7 +657,7 @@ const SELECT_BOX: StaticClass =
 /// reload, which the count would not show. Attributes in `attrs` go on the
 /// `<input>`, classes on the visible box.
 #[component]
-pub async fn data_table_select_all(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn data_table_select_all(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         checkbox(attrs: attributes! {
             data-select="all"
@@ -671,7 +675,7 @@ pub async fn data_table_select_all(#[default] mut attrs: Attributes) -> Result<i
 /// selection with a surrounding form. Attributes in `attrs` go on the
 /// `<input>`, classes on the visible box.
 #[component]
-pub async fn data_table_select_row(#[default] mut attrs: Attributes) -> Result<impl View> {
+pub async fn data_table_select_row(cx: &Cx, #[default] mut attrs: Attributes) -> Result<impl View> {
     Ok(view! {
         checkbox(attrs: attributes! {
             data-select="row"
@@ -687,6 +691,7 @@ pub async fn data_table_select_row(#[default] mut attrs: Attributes) -> Result<i
 /// up to date, out of `total` rows.
 #[component]
 pub async fn data_table_selection(
+    cx: &Cx,
     /// How many rows pass the filter.
     total: usize,
     #[default] mut attrs: Attributes,
@@ -708,6 +713,7 @@ pub async fn data_table_selection(
 /// last page the matching one is a disabled button instead.
 #[component]
 pub async fn data_table_pagination(
+    cx: &Cx,
     /// The table's state, holding the current page.
     state: &DataTableState,
     /// How many pages there are.
@@ -732,6 +738,7 @@ pub async fn data_table_pagination(
 /// or a disabled button when there is no page to go to.
 #[component]
 async fn page_step(
+    cx: &Cx,
     href: Option<String>,
     rel: &str,
     #[default] child: Child<'_>,

@@ -17,7 +17,7 @@ use crate::components::{
 // component already sets carries Tailwind's `!` (important) modifier.
 
 #[component]
-pub async fn alphanumeric() -> Result<impl View> {
+pub async fn alphanumeric(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_otp(max_length: 6, pattern: Some(REGEXP_ONLY_DIGITS_AND_CHARS),
             input_otp_group(
@@ -63,7 +63,7 @@ pub async fn controlled(cx: &Cx) -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_otp(max_length: 6, value: "123456", attrs: attributes! { id="disabled" disabled="" },
             input_otp_group(
@@ -82,7 +82,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn four_digits() -> Result<impl View> {
+pub async fn four_digits(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_otp(max_length: 4, pattern: Some(REGEXP_ONLY_DIGITS),
             input_otp_group(
@@ -96,7 +96,7 @@ pub async fn four_digits() -> Result<impl View> {
 }
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_otp(max_length: 6,
             input_otp_group(
@@ -115,8 +115,8 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn invalid() -> Result<impl View> {
-    let invalid = || attributes! { aria-invalid="true" };
+pub async fn invalid(cx: &Cx) -> Result<impl View> {
+    let invalid = move || attributes! { aria-invalid="true" };
     Ok(view! {
         input_otp(max_length: 6, value: "000000",
             input_otp_group(
@@ -138,7 +138,7 @@ pub async fn invalid() -> Result<impl View> {
 }
 
 #[component]
-pub async fn pattern() -> Result<impl View> {
+pub async fn pattern(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         field(attrs: attributes! { class="w-fit!" },
             field_label(attrs: attributes! { for="digits-only" }, "Digits Only")
@@ -158,7 +158,7 @@ pub async fn pattern() -> Result<impl View> {
 }
 
 #[component]
-pub async fn separator() -> Result<impl View> {
+pub async fn separator(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         input_otp(max_length: 6,
             input_otp_group(

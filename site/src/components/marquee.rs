@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, View, class, component, view},
 };
 
@@ -21,6 +22,7 @@ use topcoat::{
 /// ```
 #[component]
 pub async fn marquee(
+    cx: &Cx,
     /// The words or phrases to scroll.
     items: &[&str],
     #[default] mut attrs: Attributes,

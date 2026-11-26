@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, StaticClass, View, class, component, view},
 };
 
@@ -65,6 +66,7 @@ const CARD: StaticClass = class!(
 /// ```
 #[component]
 pub async fn card(
+    cx: &Cx,
     #[default] size: CardSize,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -85,6 +87,7 @@ pub async fn card(
 /// [`card_description`]. A [`card_action`] child moves into a second column.
 #[component]
 pub async fn card_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -107,6 +110,7 @@ pub async fn card_header(
 /// The heading of a [`card`].
 #[component]
 pub async fn card_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -124,6 +128,7 @@ pub async fn card_title(
 /// The supporting text under a [`card_title`].
 #[component]
 pub async fn card_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -142,6 +147,7 @@ pub async fn card_description(
 /// a badge. It spans the title and description rows.
 #[component]
 pub async fn card_action(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -162,6 +168,7 @@ pub async fn card_action(
 /// The main body of a [`card`].
 #[component]
 pub async fn card_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -179,6 +186,7 @@ pub async fn card_content(
 /// The closing section of a [`card`], a horizontal row for actions.
 #[component]
 pub async fn card_footer(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

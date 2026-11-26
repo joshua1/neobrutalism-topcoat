@@ -4,6 +4,7 @@
 
 use topcoat::{
     Result,
+    context::Cx,
     view::{Attributes, Child, Class, StaticClass, View, class, component, view},
 };
 
@@ -96,6 +97,7 @@ pub fn item_variants(size: ItemSize) -> Class<(StaticClass, StaticClass)> {
 /// ```
 #[component]
 pub async fn item(
+    cx: &Cx,
     #[default] size: ItemSize,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -116,6 +118,7 @@ pub async fn item(
 #[component]
 #[allow(dead_code)]
 pub async fn item_group(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -181,6 +184,7 @@ impl ItemMediaVariant {
 #[component]
 #[allow(dead_code)]
 pub async fn item_media(
+    cx: &Cx,
     #[default] variant: ItemMediaVariant,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
@@ -208,6 +212,7 @@ pub async fn item_media(
 #[component]
 #[allow(dead_code)]
 pub async fn item_content(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -230,6 +235,7 @@ pub async fn item_content(
 #[component]
 #[allow(dead_code)]
 pub async fn item_title(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -252,6 +258,7 @@ pub async fn item_title(
 #[component]
 #[allow(dead_code)]
 pub async fn item_description(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -275,6 +282,7 @@ pub async fn item_description(
 #[component]
 #[allow(dead_code)]
 pub async fn item_actions(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -293,6 +301,7 @@ pub async fn item_actions(
 #[component]
 #[allow(dead_code)]
 pub async fn item_header(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {
@@ -314,6 +323,7 @@ pub async fn item_header(
 #[component]
 #[allow(dead_code)]
 pub async fn item_footer(
+    cx: &Cx,
     #[default] mut attrs: Attributes,
     #[default] child: Child<'_>,
 ) -> Result<impl View> {

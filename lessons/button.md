@@ -17,9 +17,11 @@
 4. **`const BASE: StaticClass = class!(...)`** is a value fixed at compile
    time: the base string you passed first to `cva(...)`.
 
-5. **`#[component] pub async fn button(...)`.** An attribute macro turns the
-   function into a component. Each parameter becomes a prop, `#[default]` makes
-   a prop optional, and `pub` exports it from the module.
+5. **`#[component] pub async fn button(cx: &Cx, ...)`.** An attribute macro
+   turns the function into a component. Its first parameter is always
+   `cx: &Cx`, the request context, which `view!` passes for you: callers write
+   `button(...)` without it. Every other parameter becomes a prop, `#[default]`
+   makes a prop optional, and `pub` exports it from the module.
 
 6. **`mut attrs` and `attrs.remove("class")`.** A variable can only be changed
    if it is marked `mut`. We take the caller's `class` out of `attrs`, append

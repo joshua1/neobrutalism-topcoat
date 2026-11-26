@@ -1,5 +1,6 @@
 use topcoat::{
     Result,
+    context::Cx,
     icon::{icon, iconify::iconify_icon},
     view::{View, attributes, component, view},
 };
@@ -18,7 +19,7 @@ const FRUITS: [(&str, &str); 5] = [
 ];
 
 #[component]
-pub async fn demo() -> Result<impl View> {
+pub async fn demo(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         select(
             placeholder: "Select a fruit",
@@ -37,7 +38,7 @@ pub async fn demo() -> Result<impl View> {
 }
 
 #[component]
-pub async fn disabled() -> Result<impl View> {
+pub async fn disabled(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         select(
             placeholder: "Disabled",
@@ -56,7 +57,7 @@ pub async fn disabled() -> Result<impl View> {
 }
 
 #[component]
-pub async fn large_list() -> Result<impl View> {
+pub async fn large_list(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         select(
             placeholder: "Large List",
@@ -78,7 +79,7 @@ pub async fn large_list() -> Result<impl View> {
 /// customizable selects show the chosen icon in the closed control too; the
 /// placeholder is a hand-written option so it can hold an icon.
 #[component]
-pub async fn with_icon() -> Result<impl View> {
+pub async fn with_icon(cx: &Cx) -> Result<impl View> {
     Ok(view! {
         select(attrs: attributes! { name="chart" class="w-[180px]" },
             select_trigger(select_value())

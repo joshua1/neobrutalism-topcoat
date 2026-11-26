@@ -61,3 +61,4 @@ pub mod chart;
 pub mod resizable;
 pub mod questionnaire;
 pub mod sidebar;
+pub mod stars;

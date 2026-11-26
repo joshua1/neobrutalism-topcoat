@@ -213,3 +213,6 @@ dependencies = ["button"]
 [components.sidebar]
 source = "src/components/sidebar.rs"
 dependencies = ["button", "input", "sheet", "skeleton", "tooltip"]
+
+[components.stars]
+source = "src/components/stars.rs"

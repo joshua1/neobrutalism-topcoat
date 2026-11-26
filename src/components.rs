@@ -53,6 +53,7 @@ pub mod sidebar;
 pub mod skeleton;
 pub mod slider;
 pub mod spinner;
+pub mod stars;
 pub mod switch;
 pub mod table;
 pub mod tabs;

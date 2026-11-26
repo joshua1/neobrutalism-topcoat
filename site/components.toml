@@ -228,6 +228,10 @@ file = "src/components/slider.rs"
 hash = "sha256:314082c57a7e3c65abc780e7e93004b2e1fe3faf69b6dd0562b4ca021561ee0f"
 file = "src/components/spinner.rs"
 
+[registries.neobrutalism.components.stars]
+hash = "sha256:2a7283123a98c4dd4be78a1e5a46fcca7ea447d7a9f51c1ee5cec22c8af7de87"
+file = "src/components/stars.rs"
+
 [registries.neobrutalism.components.switch]
 hash = "sha256:88658416708b9875032b9561a4d063f83b5c1ba05eb36c5197ad5d482d8d1c5a"
 file = "src/components/switch.rs"

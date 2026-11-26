@@ -3,7 +3,8 @@
 Neobrutalism components for [Topcoat](https://github.com/tokio-rs/topcoat),
 ported from the Octane components in
 [neobrutalism-octane](https://github.com/joshua1/neobrutalism-octane)
-(`src/components/ui`). All 63 components are here, from Button to Sidebar.
+(`src/components/ui`). All 63 components are here, from Button to Sidebar,
+plus the 40 decorative stars (`/stars` on the docs site).
 
 **Docs:** https://neobrutalism-topcoat.vercel.app
 

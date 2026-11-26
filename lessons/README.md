@@ -69,3 +69,4 @@ enums and `match` to generics, iterators, closures and shared runtime state.
 63. [Questionnaire](questionnaire.md): `expr!` outside `view!`; Blocks are expressions; `else if` chains return values; Rust strings and browser strings agree
 64. [Sidebar](sidebar.md): `macro_rules!` and `concat!`: strings built at compile time; `?` works on `Option` too; Constants as patterns; A plain function can build a view; Randomness without a crate
 65. [Theme generator](theme_generator.md): The newtype pattern: `struct Hex(String)`; `impl Display` makes a type printable; Function pointers in data: `get: fn(&Theme) -> &Hex`; Pattern tricks for parsing; A generic function with trait bounds; `include_str!` embeds a file at compile time; Unit tests next to the code
+66. [Stars](stars.md): One enum instead of 40 components; An associated array constant; `#[into]` with an `Option` prop; `None` leaves an attribute out; `unwrap_or` for a fallback

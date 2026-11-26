@@ -34,6 +34,7 @@ DESCRIPTIONS = {
     "data-table": "Sortable, filterable, paginated tables driven by the URL.",
     "direction": "Sets the reading direction (LTR or RTL) for the components inside it.",
     "form": "Server-validated forms: labels, controls, descriptions and error messages.",
+    "stars": "40 geometric shapes for decorating neobrutalism layouts, drawn by one component.",
 }
 
 FN = re.compile(r"pub async fn (\w+)\s*[(<]")

@@ -1,7 +1,8 @@
-//! Routes. This module is `/`; `docs` serves `/docs/{slug}`, `styling` the
-//! theme generator at `/styling`.
+//! Routes. This module is `/`; `docs` serves `/docs/{slug}`, `stars` the star
+//! gallery at `/stars`, `styling` the theme generator at `/styling`.
 
 mod docs;
+mod stars;
 mod styling;
 
 use topcoat::{
@@ -98,6 +99,7 @@ async fn navbar(cx: &Cx) -> Result<impl View> {
                 <div class="flex items-center gap-8 font-base">
                     <a href="/docs" class="hover:underline">"Docs"</a>
                     <a href="/docs/button" class="hover:underline">"Components"</a>
+                    <a href="/stars" class="hover:underline">"Stars"</a>
                     <a href="/styling" class="flex items-center gap-2 hover:underline">
                         "Styling"
                         <span class="bg-chart-3 px-1.5 text-[10px] uppercase text-main-foreground">"new"</span>

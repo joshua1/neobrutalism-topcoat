@@ -73,8 +73,11 @@ pub const TEMPLATES: &[Template] = &[
         slug: "dashboard",
         name: "Dashboard",
         description: "A store analytics dashboard with a collapsible sidebar and six pages: overview, revenue, marketing, orders, customers and inventory. Date ranges, charts, heatmaps and searchable tables, all built with neobrutalism components.",
-        components: &["button", "sidebar"],
-        entry: "templates::dashboard::dashboard(page: ..)",
+        components: &[
+            "avatar", "badge", "button", "card", "chart", "dropdown_menu", "input", "label",
+            "progress", "select", "sidebar", "switch", "table",
+        ],
+        entry: "templates::dashboard::dashboard(page: Page::Overview)",
     },
 ];
 

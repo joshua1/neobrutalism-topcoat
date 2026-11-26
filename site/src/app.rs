@@ -9,7 +9,7 @@ mod templates;
 
 use topcoat::{
     Result,
-    asset::{AssetBundle, RouterBuilderAssetExt},
+    asset::{Asset, AssetBundle, RouterBuilderAssetExt, asset},
     context::Cx,
     cookie::{CookieLayer, Cookies, cookies},
     router::{Router, RouterBuilderDiscoverExt, Slot, layout, module_router, page, request},
@@ -31,6 +31,9 @@ pub fn router() -> Router {
         .layer(RuntimeLayer::new())
         .build()
 }
+
+/// The site's icon: the navbar's "N" logo.
+const FAVICON: Asset = asset!("favicon.svg");
 
 /// The theme saved by the styling page, if the visitor has one.
 pub fn visitor_theme(cx: &Cx) -> Option<Theme> {
@@ -67,6 +70,7 @@ async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
                 <title>"Neobrutalism components for Topcoat"</title>
                 <link rel="preconnect" href="https://fonts.googleapis.com">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+                <link rel="icon" type="image/svg+xml" href=(FAVICON)>
                 // Only the weight axis: with DM Sans's optical-size axis loaded,
                 // browsers draw large headings narrower than neobrutalism.dev,
                 // which keeps the axis at its default (14).

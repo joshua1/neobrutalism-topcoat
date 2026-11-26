@@ -123,7 +123,7 @@ async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
                 // The theme's font; or set --base-font-family to your own.
                 <link
                     rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap"
+                    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&display=swap"
                 >
                 <link rel="stylesheet" href=(tailwind::stylesheet!())>
                 topcoat::runtime::script()

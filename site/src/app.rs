@@ -67,9 +67,12 @@ async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
                 <title>"Neobrutalism components for Topcoat"</title>
                 <link rel="preconnect" href="https://fonts.googleapis.com">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+                // Only the weight axis: with DM Sans's optical-size axis loaded,
+                // browsers draw large headings narrower than neobrutalism.dev,
+                // which keeps the axis at its default (14).
                 <link
                     rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap"
+                    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&display=swap"
                 >
                 <link rel="stylesheet" href=(tailwind::stylesheet!())>
                 // The styling page swaps this link's href when the font changes.

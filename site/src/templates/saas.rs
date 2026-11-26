@@ -32,14 +32,10 @@ use topcoat::{
 /// The whole page: header, sections and footer.
 #[component]
 pub async fn saas_landing(cx: &Cx) -> Result<impl View> {
-    // The original loads DM Sans without its optical-size axis, which pins it
-    // at the text size (14) even in headings. Pinning the axis here matches
-    // its letterforms and line breaks where the font has the axis.
-    //
     // Each section is boxed: inline, the whole page's render state overflowed
     // a Tokio worker's stack in debug builds.
     Ok(view! {
-        <div class="min-h-screen bg-background font-base text-foreground [font-variation-settings:'opsz'_14]">
+        <div class="min-h-screen bg-background font-base text-foreground">
             (view! { navbar::navbar() }.boxed())
             <main>
                 (view! { hero::hero() }.boxed())

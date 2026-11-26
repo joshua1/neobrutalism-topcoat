@@ -27,6 +27,8 @@ pub struct Template {
     pub components: &'static [&'static str],
     /// What to call from a `#[page]` once the sources are copied.
     pub entry: &'static str,
+    /// Anything else an app has to add, or "" when the entry is enough.
+    pub setup: &'static str,
 }
 
 impl Template {
@@ -68,6 +70,7 @@ pub const TEMPLATES: &[Template] = &[
             "tabs",
         ],
         entry: "templates::saas::saas_landing()",
+        setup: "",
     },
     Template {
         slug: "dashboard",
@@ -78,6 +81,7 @@ pub const TEMPLATES: &[Template] = &[
             "progress", "select", "sidebar", "switch", "table",
         ],
         entry: "templates::dashboard::dashboard(page: Page::Overview)",
+        setup: "Each page has its own URL and the export is a route: copy site/src/app/templates/dashboard.rs and dashboard/slug.rs as your routes, set BASE in the template to where you mount it, and keep .discover() on the router for its two shards. The module docs have the details.",
     },
 ];
 
@@ -199,6 +203,9 @@ async fn install_dialog(cx: &Cx, template: &Template) -> Result<impl View> {
                     <li>
                         "Render it from a page: " <code>(template.entry)</code> "."
                     </li>
+                    if !template.setup.is_empty() {
+                        <li>(template.setup)</li>
+                    }
                 </ol>
             )
         )

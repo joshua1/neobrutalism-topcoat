@@ -70,8 +70,8 @@ neobrutalism-topcoat/
 
 4. In the root layout, load the stylesheet, the DM Sans font, and
    `topcoat::runtime::script()`. Add `.assets(AssetBundle::load().unwrap())`
-   and `.runtime()` to the router. The docs site's `site/src/app.rs` is a
-   complete example.
+   and `.layer(RuntimeLayer::new())` to the router, after any other layers.
+   The docs site's `site/src/app.rs` is a complete example.
 
 5. Add components and use them:
 

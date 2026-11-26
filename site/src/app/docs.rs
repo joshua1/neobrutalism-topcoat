@@ -33,6 +33,9 @@ async fn getting_started(cx: &Cx) -> Result<impl View> {
                             <code class=(INLINE_CODE)>"tailwind"</code> " and "
                             <code class=(INLINE_CODE)>"icon-iconify"</code> " features."</p>
                         code(text: CARGO_TOML)
+                        <p class="mt-4">"Nothing from the registry crate is linked into your app, so Cargo warns that it is unused. Add "
+                            <code class=(INLINE_CODE)>"use neobrutalism as _;"</code> " to "
+                            <code class=(INLINE_CODE)>"main.rs"</code> " to quiet it."</p>
                     )
                     step(number: 2, title: "Build the stylesheet and stage the icons",
                         <p>"Add a " <code class=(INLINE_CODE)>"build.rs"</code>
@@ -44,7 +47,7 @@ async fn getting_started(cx: &Cx) -> Result<impl View> {
                             " once, then replace the " <code class=(INLINE_CODE)>"styles.css"</code>
                             " it writes with the registry's theme, "
                             <code class=(INLINE_CODE)>"themes/neobrutalism.css"</code>
-                            ". Topcoat 0.10 only installs themes from its built-in registry, so this step is a copy."</p>
+                            ". Topcoat 0.12 only installs themes from its built-in registry, so this step is a copy."</p>
                         code(text: THEME)
                         <p class="mt-4">"Want your own colors? Build a theme on the "
                             <a href="/styling" class="font-heading underline decoration-2 underline-offset-2">"Styling"</a>
@@ -85,12 +88,12 @@ async fn getting_started(cx: &Cx) -> Result<impl View> {
 const INLINE_CODE: &str = "mx-0.5 whitespace-nowrap rounded-base border-2 border-border bg-secondary-background px-[5px] py-[2px] text-sm";
 
 const CARGO_TOML: &str = r#"[dependencies]
-topcoat = { version = "0.10.0", features = ["ui", "tailwind", "icon-iconify"] }
+topcoat = { version = "0.12.1", features = ["ui", "tailwind", "icon-iconify"] }
 neobrutalism = { git = "https://github.com/joshua1/neobrutalism-topcoat" }
 # or, from a local checkout: neobrutalism = { path = "../neobrutalism-topcoat" }
 
 [build-dependencies]
-topcoat = { version = "0.10.0", default-features = false, features = ["tailwind", "icon-iconify"] }"#;
+topcoat = { version = "0.12.1", default-features = false, features = ["tailwind", "icon-iconify"] }"#;
 
 const BUILD_RS: &str = r#"fn main() {
     for path in ["src", "styles.css", "build.rs"] {
@@ -109,7 +112,7 @@ const BUILD_RS: &str = r#"fn main() {
 const THEME: &str = r#"topcoat ui init
 curl -fsSL https://raw.githubusercontent.com/joshua1/neobrutalism-topcoat/main/themes/neobrutalism.css -o styles.css"#;
 
-const LAYOUT_RS: &str = r#"use topcoat::{Result, router::{Slot, layout}, tailwind, view::{View, view}};
+const LAYOUT_RS: &str = r#"use topcoat::{Result, context::Cx, router::{Slot, layout}, tailwind, view::{View, view}};
 
 #[layout]
 async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
@@ -130,7 +133,7 @@ async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
     })
 }
 
-// And on the router: .assets(AssetBundle::load().unwrap()).runtime()"#;
+// And on the router: .assets(AssetBundle::load().unwrap()).layer(RuntimeLayer::new())"#;
 
 const ADD: &str = r#"topcoat ui add button card dialog --registry neobrutalism
 # or everything:

@@ -129,7 +129,11 @@ checkout next to this one, or wherever `NEOBRUTALISM_OCTANE` points).
 Its `/styling` page is the theme generator: pick any colors (or start from
 one of 30 palettes), radius, shadow, font weights and font, see the whole site
 restyle live, and copy the resulting `styles.css`. The generator lives in
-`site/src/theme.rs`.
+`site/src/theme.rs`. `/stars` shows the 40 star shapes, and `/templates`
+previews two full-page templates ported from neobrutalism.dev, a SaaS landing
+page and a store dashboard. Their sources are in `site/src/templates/`, ready
+to copy into an app (each preview's Install button lists the components they
+need).
 
 ```sh
 cd site

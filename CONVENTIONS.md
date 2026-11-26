@@ -82,6 +82,15 @@ Gotchas found while porting:
   takes `cx: &Cx`. Handler closures in `attributes!` need typed parameters
   (`|_e: Event|`).
 - A config holding `IconData` must be a `static`, not a `const`.
+- `#[component] fn hero` inside `mod hero` defines a type named like the
+  module, so the parent can't `use hero::hero`; call it by path
+  (`hero::hero()`).
+- A runtime `$(..)` expression can't return an element of a `[&str; N]`
+  array or a borrowed number; give it owned values (`[String; N]`,
+  `.to_owned()`).
+- A very large page can overflow a Tokio worker's stack in debug builds;
+  box big sections (`view! { section() }.boxed()`), as the SaaS template
+  does.
 - `field`'s `*:w-full` also hits a `popover_content` placed inside a field;
   give the panel `w-auto!`.
 - Form controls are native inputs inside a `data-slot` wrapper (see

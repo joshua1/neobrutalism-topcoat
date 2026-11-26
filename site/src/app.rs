@@ -1,16 +1,18 @@
 //! Routes. This module is `/`; `docs` serves `/docs/{slug}`, `stars` the star
-//! gallery at `/stars`, `styling` the theme generator at `/styling`.
+//! gallery at `/stars`, `styling` the theme generator at `/styling`, and
+//! `templates` the full-page templates at `/templates`.
 
 mod docs;
 mod stars;
 mod styling;
+mod templates;
 
 use topcoat::{
     Result,
     asset::{AssetBundle, RouterBuilderAssetExt},
     context::Cx,
     cookie::{CookieLayer, Cookies, cookies},
-    router::{Router, RouterBuilderDiscoverExt, Slot, layout, module_router, page},
+    router::{Router, RouterBuilderDiscoverExt, Slot, layout, module_router, page, request},
     runtime::RuntimeLayer,
     tailwind,
     view::{Unescaped, View, component, view},
@@ -53,6 +55,8 @@ async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
         .as_ref()
         .filter(|theme| theme.font.name != FONTS[0].name)
         .map(|theme| theme.font.href());
+    // Template previews replace the site's navbar with their own toolbar.
+    let template = templates::template_for(request::uri(cx).path());
 
     Ok(view! {
         <!DOCTYPE html>
@@ -77,8 +81,13 @@ async fn root_layout(cx: &Cx, slot: Slot<'_>) -> Result<impl View> {
                 topcoat::dev::script()
             </head>
             <body class="min-h-dvh bg-background">
-                navbar()
+                if template.is_none() {
+                    navbar()
+                }
                 (slot)
+                if let Some(template) = template {
+                    templates::toolbar(template: template)
+                }
             </body>
         </html>
     })
@@ -100,6 +109,7 @@ async fn navbar(cx: &Cx) -> Result<impl View> {
                     <a href="/docs" class="hover:underline">"Docs"</a>
                     <a href="/docs/button" class="hover:underline">"Components"</a>
                     <a href="/stars" class="hover:underline">"Stars"</a>
+                    <a href="/templates" class="hover:underline">"Templates"</a>
                     <a href="/styling" class="flex items-center gap-2 hover:underline">
                         "Styling"
                         <span class="bg-chart-3 px-1.5 text-[10px] uppercase text-main-foreground">"new"</span>

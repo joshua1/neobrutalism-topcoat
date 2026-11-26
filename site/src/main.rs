@@ -9,6 +9,7 @@ mod catalog;
 mod components;
 mod examples;
 mod styling_demos;
+mod templates;
 mod theme;
 
 // `topcoat ui` finds the registry through this dependency; nothing from it is
